@@ -112,5 +112,7 @@
     tomb
     pwgen
     pwgen-secure
+
+    polkit
   ];
 }
