@@ -1,5 +1,5 @@
 {
-  description = "XNM's NixOS Configuration";
+  description = "v33's NixOS Configuration"; # forked from https://github.com/XNM1/linux-nixos-hyprland-config-dotfiles
 
   inputs = {
       nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -15,15 +15,14 @@
       modules = [
         ./configuration.nix
         ./hardware-configuration.nix
-        ./nvidia.nix
-        # ./disable-nvidia.nix
-        ./opengl.nix
-        # ./fingerprint-scanner.nix
+        ./amdgpu.nix
+        ./graphics.nix
         # ./clamav-scanner.nix
-        ./yubikey.nix
+        # ./yubikey.nix
         ./sound.nix
         ./usb.nix
-        ./keyboard.nix
+        ./udev.nix
+        # ./keyboard.nix
         ./time.nix
         ./swap.nix
         ./bootloader.nix
@@ -32,7 +31,7 @@
         ./gc.nix
         # ./auto-upgrade.nix
         ./linux-kernel.nix
-        ./screen.nix
+        # ./screen.nix
         # ./location.nix
         ./display-manager.nix
         ./theme.nix
@@ -43,27 +42,27 @@
         # ./printing.nix
         # ./gnome.nix
         ./hyprland.nix
-        ./environment-variables.nix
+        # ./environment-variables.nix
         ./bluetooth.nix
-        ./networking.nix
+        # ./networking.nix
         # ./mac-randomize.nix
         # ./open-ssh.nix
         ./mosh.nix
         ./firewall.nix
-        ./dns.nix
-        ./vpn.nix
+        # ./dns.nix
+        # ./vpn.nix
         ./users.nix
-        ./virtualisation.nix
-        ./programming-languages.nix
-        ./lsp.nix
-        ./rust.nix
+        # ./virtualisation.nix
+        # ./programming-languages.nix
+        # ./lsp.nix
+        # ./rust.nix
         ./radicle.nix
-        ./wasm.nix
+        # ./wasm.nix
         ./info-fetchers.nix
         ./utils.nix
         ./terminal-utils.nix
-        ./llm.nix
-        ./work.nix
+        # ./llm.nix
+        # ./work.nix
       ];
     };
   };

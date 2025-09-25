@@ -2,7 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    neofetch
+    fastfetch # replaced neofetch
     onefetch
     ipfetch
     cpufetch
@@ -20,8 +20,7 @@
     # clinfo
     # vdpauinfo
     # libva-utils
-    nvtopPackages.nvidia
-    nvtopPackages.intel
+    nvtopPackages.amd
     wlr-randr
     gpu-viewer
     dig

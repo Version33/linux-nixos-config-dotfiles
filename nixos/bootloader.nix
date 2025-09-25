@@ -1,4 +1,4 @@
-{ pkgs,  ... }:
+{ pkgs, ... }:
 
 {
   # Bootloader.
@@ -8,8 +8,8 @@
   boot.initrd.enable = true;
   boot.initrd.verbose = false;
   boot.initrd.systemd.enable = true;
-  boot.initrd.availableKernelModules = [ "i915" ];
-  boot.initrd.kernelModules          = [ "i915" ];
+  # boot.initrd.availableKernelModules = [ "i915" ];
+  # boot.initrd.kernelModules          = [ "i915" ];
   boot.consoleLogLevel = 3;
   boot.plymouth = {
     enable = true;

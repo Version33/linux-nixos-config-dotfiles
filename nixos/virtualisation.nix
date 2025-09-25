@@ -22,7 +22,7 @@
   # users.extraGroups.docker.members = [ "xnm" ];
 
 
-  # Enable Podman
+  # Enable Podman - a daemonless container engine for developing, managing, and running OCI Containers on your Linux System
   virtualisation.podman = {
     enable = true;
 
@@ -37,22 +37,22 @@
   users.extraGroups.podman.members = [ "xnm" ];
 
   environment.systemPackages = with pkgs; [
-    nvidia-docker
-    nerdctl
+    docker # Open source project to pack, ship and run any application as a lightweight container
+    nerdctl # Docker-compatible CLI for containerd
 
-    # firecracker
-    # firectl
-    # flintlock
+    # firecracker # Secure, fast, minimal micro-container virtualization
+    # firectl # Command-line tool to run Firecracker microVMs
+    # flintlock # Create and manage the lifecycle of MicroVMs backed by containerd
 
-    distrobox
-    qemu
-    lima
+    distrobox # Wrapper around podman or docker to create and start containers
+    qemu # Generic and open source machine emulator and virtualizer
+    lima # Linux virtual machines with automatic file sharing and port forwarding
 
-    podman-compose
-    podman-tui
+    podman-compose # Implementation of docker-compose with podman backend
+    podman-tui # Podman Terminal UI
 
-    docker-compose
-    # lazydocker
-    # docker-credential-helpers
+    docker-compose # Docker CLI plugin to define and run multi-container applications with Docker
+    # lazydocker # Simple terminal UI for both docker and docker-compose
+    # docker-credential-helpers # Suite of programs to use native stores to keep Docker credentials safe
   ];
 }

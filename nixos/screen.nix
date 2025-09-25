@@ -1,5 +1,5 @@
 { pkgs, ... }:
-
+# probably unneeded for a desktop
 {
   programs.light.enable = true;
 

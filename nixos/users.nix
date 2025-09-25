@@ -2,18 +2,16 @@
 
 {
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.xnm = {
+  users.users.vee = {
     isNormalUser = true;
-    description = "xnm";
-    extraGroups = [ "networkmanager" "input" "wheel" "video" "audio" "tss" ];
+    description = "vee";
+    extraGroups = [ "networkmanager" "input" "wheel" "video" "realtime" "audio" "tss" ];
     shell = pkgs.fish;
     packages = with pkgs; [
-      spotify
-      youtube-music
+      tidal-hifi
       discord
-      tdesktop
       vscodium
-      brave
+      firefox
     ];
   };
 
