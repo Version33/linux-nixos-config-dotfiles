@@ -14,8 +14,8 @@
     nixosConfigurations.k0or = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
-        ./modules/configuration.nix
-        ./modules/hardware-configuration.nix
+        ./configuration.nix
+        ./hardware-configuration.nix
         ./modules/secure-boot.nix
         ./modules/amdgpu.nix
         ./modules/graphics.nix
