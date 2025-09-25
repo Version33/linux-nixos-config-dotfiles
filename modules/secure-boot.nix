@@ -1,12 +1,15 @@
 { pkgs, lib, ... }:
-
+let
+  lanzaboote = {
+    url = "github:nix-community/lanzaboote/v0.4.2";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+in
 {
-  # This module assumes that the main lanzaboote module has already been
-  # imported into your NixOS configuration.
+  imports = [ lanzaboote.nixosModules.lanzaboote ];
 
-  # Add sbctl to system packages for key management
   environment.systemPackages = [
-    pkgs.sbctl
+    pkgs.sbctl # For debugging and troubleshooting Secure Boot.
   ];
 
   # Lanzaboote requires disabling the default systemd-boot loader
@@ -15,7 +18,6 @@
   # Enable and configure Lanzaboote
   boot.lanzaboote = {
     enable = true;
-    # This points to the location where sbctl stores the Secure Boot keys
     pkiBundle = "/var/lib/sbctl";
   };
 }
