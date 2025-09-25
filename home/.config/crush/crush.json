@@ -112,7 +112,7 @@
       "args": [
         "-y",
         "@modelcontextprotocol/server-filesystem",
-        "/home/xnm"
+        "/home/vee"
       ]
     },
     "n8n": {

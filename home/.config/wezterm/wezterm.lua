@@ -24,7 +24,7 @@ return {
     },
     {
       source = {
-        File = '/home/xnm/.config/wezterm/lain.gif',
+        File = '/home/vee/.config/wezterm/lain.gif',
       },
       opacity = 0.02,
       vertical_align = "Middle",
