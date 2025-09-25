@@ -6,7 +6,7 @@
 
   hardware.amdgpu = {
     # https://search.nixos.org/options?channel=unstable&query=hardware.amdgpu
-    hardware.amdgpu.overdrive.enable = true; # overclocking
+    overdrive.enable = true; # overclocking
   };
 
 

@@ -16,6 +16,7 @@
       modules = [
         ./configuration.nix
         ./hardware-configuration.nix
+	inputs.lanzaboote.nixosModules.lanzaboote
         ./modules/secure-boot.nix
         ./modules/amdgpu.nix
         ./modules/graphics.nix
