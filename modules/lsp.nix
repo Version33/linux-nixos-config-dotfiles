@@ -15,7 +15,7 @@
     sumneko-lua-language-server
     marksman
     markdown-oxide
-    nil
+    nixd # nil
     zls
     gopls
     delve
