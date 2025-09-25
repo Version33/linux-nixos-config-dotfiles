@@ -57,7 +57,7 @@
         ./modules/users.nix
         # ./modules/virtualisation.nix
         # ./modules/programming-languages.nix
-        # ./modules/lsp.nix
+        ./modules/lsp.nix
         # ./modules/rust.nix
         ./modules/radicle.nix
         # ./modules/wasm.nix

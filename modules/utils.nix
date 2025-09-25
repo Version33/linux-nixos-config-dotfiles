@@ -8,6 +8,8 @@
     lld # LLVM linker (unwrapped)
     lldb # Next-generation high-performance debugger
     musl # Efficient, small, quality libc implementation
+    unzip
+    zip
     # jdk # Open-source Java Development Kit
     # dioxus-cli # CLI tool for developing, testing, and publishing Dioxus apps
     # surrealdb # Scalable, distributed, collaborative, document-graph database, for the realtime web
