@@ -11,9 +11,10 @@
       tidal-hifi
       discord
       vscodium
-      firefox
     ];
   };
+
+  programs.firefox.enable = true;
 
   # Change runtime directory size
   services.logind.settings.Login = {
