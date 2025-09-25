@@ -2,8 +2,8 @@
 
 {
   services.xserver = {
-    xkb.layout = "us,ua,ru";
-    xkb.options = "grp:alt_shift_toggle";
+    # xkb.layout = "us,ua,ru"; # default: "us"
+    # xkb.options = "grp:alt_shift_toggle";
   };
 
   environment.systemPackages = with pkgs; [

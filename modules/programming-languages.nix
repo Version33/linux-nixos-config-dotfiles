@@ -1,5 +1,5 @@
 { pkgs, ... }:
-
+# TODO: add langs I actually use
 {
   environment.systemPackages = with pkgs; [
     go

@@ -1,5 +1,5 @@
 { pkgs, ... }:
-
+# TODO: configure for Proton VPN
 {
   # Enable Mullvad VPN
   services.mullvad-vpn.enable = true;
