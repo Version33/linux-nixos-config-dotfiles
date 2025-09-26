@@ -4,7 +4,17 @@
 
   services.ollama = {
     enable = true;
-    loadModels = [ "llama3.2:3b" "phi4-reasoning:14b" "dolphin3:8b" "smallthinker:3b" "gemma3n:e4b" "deepcoder:14b" "qwen3:14b" "qwen3-coder:30b"  "nomic-embed-text" ];
+    loadModels = [
+      "llama3.2:3b"
+      "phi4-reasoning:14b"
+      "dolphin3:8b"
+      "smallthinker:3b"
+      "gemma3n:e4b"
+      "deepcoder:14b"
+      "qwen3:14b"
+      "qwen3-coder:30b"
+      "nomic-embed-text"
+    ];
     acceleration = "cuda";
   };
 
@@ -17,7 +27,10 @@
         secret_key = "@SEARX_SECRET_KEY@"; # FIXME: Set up this key in the .env file described below, name of variable `SEARX_SECRET_KEY`
       };
       search = {
-        formats = [ "html" "json" ];
+        formats = [
+          "html"
+          "json"
+        ];
       };
     };
     environmentFile = "${config.users.users.vee.home}/.config/.env.searxng"; # FIXME: The location of the `.env` file where you need to set up the key
@@ -32,7 +45,7 @@
     port = 8888;
     host = "127.0.0.1";
   };
-  
+
   environment.systemPackages = with pkgs; [
     oterm
     alpaca

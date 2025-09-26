@@ -3,5 +3,5 @@
 {
   # Set your time zone.
   time.hardwareClockInLocalTime = true;
-  time.timeZone = "zramSwap";
+  time.timeZone = "America/New_York";
 }

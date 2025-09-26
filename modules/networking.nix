@@ -28,7 +28,7 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # environment.systemPackages = with pkgs; [
-    # iwgtk # Lightweight, graphical wifi management utility for Linux
-    # impala # TUI for managing wifi
+  # iwgtk # Lightweight, graphical wifi management utility for Linux
+  # impala # TUI for managing wifi
   # ];
 }

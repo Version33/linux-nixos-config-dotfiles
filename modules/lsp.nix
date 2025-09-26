@@ -16,6 +16,7 @@
     marksman
     markdown-oxide
     nixd # nil
+    nixfmt
     zls
     gopls
     delve
@@ -29,5 +30,5 @@
     ansible-language-server
     hyprls
     helix-gpt
-  ];  
+  ];
 }

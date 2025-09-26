@@ -5,19 +5,23 @@
   users.users.vee = {
     isNormalUser = true;
     description = "vee";
-    extraGroups = [ "networkmanager" "input" "wheel" "video" "realtime" "audio" "tss" ];
-    shell = pkgs.fish;
-    packages = with pkgs; [
-      tidal-hifi
-      discord
-      vscodium
+    extraGroups = [
+      "networkmanager"
+      "input"
+      "wheel"
+      "video"
+      "realtime"
+      "audio"
+      "tss"
     ];
+    shell = pkgs.fish;
   };
 
   programs.firefox.enable = true;
+  programs.steam.enable = true;
 
   # Change runtime directory size
   services.logind.settings.Login = {
-    RuntimeDirectorySize="8G";
+    RuntimeDirectorySize = "8G";
   };
 }

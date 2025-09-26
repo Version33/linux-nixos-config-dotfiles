@@ -8,7 +8,7 @@
   security.unprivilegedUsernsClone = true;
   security.virtualisation.flushL1DataCache = "cond";
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
-  boot.kernelParams = [ 
+  boot.kernelParams = [
     "quiet"
     "splash"
     "loglevel=3"
@@ -25,7 +25,7 @@
   # boot.kernelPatches = [ {
   #      name = "selinux-config";
   #      patch = null;
-  #      extraConfig = '' 
+  #      extraConfig = ''
   #              SECURITY_SELINUX y
   #              SECURITY_SELINUX_BOOTPARAM n
   #              SECURITY_SELINUX_DEVELOP y

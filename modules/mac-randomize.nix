@@ -4,8 +4,8 @@
   # When connecting to untrusted networks, such as public Wi-Fi use a random MAC address to prevent tracking and unauthorized access to your device.
   # But my recommendation is to avoid untrusted networks whenever possible, opting for trusted home or mobile hotspot connections.
   # Also, you can enhance your privacy and security by:
-    # - Employing a VPN (Virtual Private Network) to encrypt internet traffic.
-    # - Utilizing Encrypted DNS, with DNS over HTTPS (DoH) to encrypt communication with the DNS server and mask DNS traffic under HTTPS.
+  # - Employing a VPN (Virtual Private Network) to encrypt internet traffic.
+  # - Utilizing Encrypted DNS, with DNS over HTTPS (DoH) to encrypt communication with the DNS server and mask DNS traffic under HTTPS.
 
   # Enable MAC Randomize
   systemd.services.macchanger = {

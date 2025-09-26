@@ -41,19 +41,19 @@
 
   services.dbus.apparmor = "enabled";
   services.fail2ban.enable = true;
-  # security.polkit.enable = true;
+  security.polkit.enable = true;
   programs.browserpass.enable = true;
   services.clamav = {
     daemon.enable = true;
     fangfrisch.enable = true;
     fangfrisch.interval = "daily";
     updater.enable = true;
-    updater.interval = "daily"; #man systemd.time
+    updater.interval = "daily"; # man systemd.time
     updater.frequency = 12;
   };
   programs.firejail = {
     enable = true;
-    wrappedBinaries = { 
+    wrappedBinaries = {
       mpv = {
         executable = "${lib.getBin pkgs.mpv}/bin/mpv";
         profile = "${pkgs.firejail}/etc/firejail/mpv.profile";
@@ -98,8 +98,8 @@
   };
 
   environment.systemPackages = with pkgs; [
-    vulnix       #scan command: vulnix --system
-    clamav       #scan command: sudo freshclam; clamscan [options] [file/directory/-]
+    vulnix # scan command: vulnix --system
+    clamav # scan command: sudo freshclam; clamscan [options] [file/directory/-]
 
     # passphrase2pgp
     pass-wayland
@@ -112,7 +112,5 @@
     tomb
     pwgen
     pwgen-secure
-
-    polkit
   ];
 }
