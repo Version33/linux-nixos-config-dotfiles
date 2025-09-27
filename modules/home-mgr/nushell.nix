@@ -2,7 +2,7 @@
 
 {
   home.shell.enableNushellIntegration = true;
-  nushell = {
+  programs.nushell = {
     enable = true;
     shellAliases = {
       nix-shell = "nix-shell --command nu";
