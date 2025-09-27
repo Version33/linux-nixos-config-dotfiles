@@ -3,6 +3,6 @@
 {
   programs.starship = {
     enable = true;
+    enableNushellIntegration = true;
   };
-  starship.enableNushellIntegration = true;
 }
