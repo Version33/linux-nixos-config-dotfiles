@@ -70,7 +70,7 @@
           # ./modules/work.nix
 
           inputs.home-manager.nixosModules.home-manager
-          ./modules/home-manager.nix
+          ./modules/home-mgr/home-manager.nix
         ];
       };
     };
