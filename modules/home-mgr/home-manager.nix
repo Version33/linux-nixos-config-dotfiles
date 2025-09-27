@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   home-manager.users.vee =
@@ -8,6 +8,8 @@
       imports = [
         ./vscode.nix
         ./git.nix
+        ./nushell.nix
+        ./starship.nix
       ];
       home.packages = with pkgs; [
         tidal-hifi
@@ -15,23 +17,10 @@
         qimgv
         orca-slicer
       ];
-      home.shell.enableNushellIntegration = true;
+      
       programs = {
-        bash.enable = true;
-        starship.enableNushellIntegration = true;
-        nushell = {
-          enable = true;
-          shellAliases = {
-            nix-shell = "nix-shell --command nu";
-          };
-          settings = {
-            show_banner = false;
-          };
-          configFile.text = "fastfetch";
-        };
-        starship = {
-          enable = true;
-        };
+        
+        
 
       };
       # no touchy
