@@ -5,6 +5,10 @@
     { pkgs, ... }:
     {
       nixpkgs.config.allowUnfree = true;
+      imports = [
+        ./vscode.nix
+        ./git.nix
+      ];
       home.packages = with pkgs; [
         tidal-hifi
         discord
@@ -29,22 +33,6 @@
             ];
           };
         };
-
-        git = {
-          enable = true;
-          userName = "Version33";
-          userEmail = "vee@versionthirtythr.ee";
-          aliases = {
-            pu = "push";
-            co = "checkout";
-            cm = "commit";
-          };
-          extraConfig = {
-            init.defaultBranch = "main";
-            safe.directory = "/etc/nixos";
-          };
-        };
-
         nushell = {
           enable = true;
           shellAliases = {
