@@ -9,7 +9,7 @@
     lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
     home-manager.url = "github:nix-community/home-manager";
     audio = {
-      url = "path:./audio";
+      url = "github:polygon/audio.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -70,6 +70,7 @@
           ./modules/terminal-utils.nix
           # ./modules/llm.nix
           ./modules/file-mgr.nix
+          ./modules/audio.nix
 
           inputs.home-manager.nixosModules.home-manager
           ./modules/home-mgr/home-manager.nix
