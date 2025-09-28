@@ -30,7 +30,6 @@
 
     starship
     helix
-    neovim
 
     qutebrowser
     zathura

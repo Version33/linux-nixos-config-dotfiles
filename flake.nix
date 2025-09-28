@@ -8,6 +8,10 @@
     radicle-tui.url = "git+https://seed.radicle.xyz/z39mP9rQAaGmERfUMPULfPUi473tY.git?rev=dcc51b96a90d6e63cd69fae7f29e896f13816a1f";
     lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
     home-manager.url = "github:nix-community/home-manager";
+    audio = {
+      url = "path:./audio";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -27,7 +31,6 @@
           ./modules/sound.nix
           ./modules/usb.nix
           ./modules/udev.nix
-          # ./modules/keyboard.nix
           ./modules/time.nix
           ./modules/swap.nix
           ./modules/bootloader.nix
@@ -36,7 +39,6 @@
           ./modules/gc.nix
           # ./modules/auto-upgrade.nix
           ./modules/linux-kernel.nix
-          # ./modules/screen.nix
           # ./modules/location.nix
           ./modules/display-manager.nix
           ./modules/theme.nix
@@ -47,12 +49,12 @@
           # ./modules/printing.nix
           # ./modules/gnome.nix
           ./modules/hyprland.nix
-          # ./modules/environment-variables.nix
+          ./modules/environment-variables.nix
           ./modules/bluetooth.nix
           # ./modules/networking.nix
           # ./modules/mac-randomize.nix
           # ./modules/open-ssh.nix
-          ./modules/mosh.nix
+          # ./modules/mosh.nix
           ./modules/firewall.nix
           # ./modules/dns.nix
           # ./modules/vpn.nix
@@ -61,13 +63,13 @@
           # ./modules/programming-languages.nix
           ./modules/lsp.nix
           # ./modules/rust.nix
-          ./modules/radicle.nix
+          # ./modules/radicle.nix
           # ./modules/wasm.nix
           ./modules/info-fetchers.nix
           ./modules/utils.nix
           ./modules/terminal-utils.nix
           # ./modules/llm.nix
-          # ./modules/work.nix
+          ./modules/file-mgr.nix
 
           inputs.home-manager.nixosModules.home-manager
           ./modules/home-mgr/home-manager.nix

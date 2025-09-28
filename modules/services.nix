@@ -9,7 +9,7 @@
   # Enable Services
   programs.direnv.enable = true;
   services.upower.enable = true;
-  programs.fish.enable = true;
+  # programs.fish.enable = true;
   programs.dconf.enable = true;
   services.dbus = {
     enable = true;
@@ -20,9 +20,8 @@
     ];
   };
   services.mpd.enable = true;
-  programs.thunar.enable = true;
   programs.xfconf.enable = true;
-  services.tumbler.enable = true;
+  # services.tumbler.enable = true;
   services.fwupd.enable = true;
   services.auto-cpufreq.enable = true;
   # services.gnome.core-shell.enable = true;

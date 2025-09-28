@@ -14,7 +14,7 @@
       "audio"
       "tss"
     ];
-    shell = pkgs.fish;
+    shell = pkgs.nushell;
   };
 
   programs.firefox.enable = true;

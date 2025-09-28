@@ -12,6 +12,9 @@
         jnoortheen.nix-ide
         jeff-hykin.better-nix-syntax
         formulahendry.code-runner
+
+        catppuccin.catppuccin-vsc
+        catppuccin.catppuccin-vsc-icons
       ];
     };
   };
