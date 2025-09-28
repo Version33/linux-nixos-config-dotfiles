@@ -15,7 +15,6 @@
         ./starship.nix
         ./kitty.nix
 	      ./lazyvim/lazyvim.nix
-        #./yabridge.nix
       ];
 
       home.packages = with pkgs; [
