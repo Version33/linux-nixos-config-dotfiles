@@ -72,7 +72,7 @@
           # ./modules/llm.nix
           ./modules/file-mgr.nix
           ./modules/audio.nix
-          ./modules/home-mgr/home-manager.nix
+          ./modules/home/home.nix
         ];
       };
     };
