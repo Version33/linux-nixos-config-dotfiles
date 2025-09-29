@@ -46,11 +46,16 @@
     xdg-utils
     wtype
     wlrctl
-    waybar
-    rofi
+    # waybar
     dunst
     avizo
     wlogout
     gifsicle
   ];
+
+  programs = {
+    waybar.enable = true;
+  };
+
+
 }

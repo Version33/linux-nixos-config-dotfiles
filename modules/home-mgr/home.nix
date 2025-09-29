@@ -19,6 +19,8 @@
         ./starship.nix
         ./kitty.nix
 	      ./lazyvim/lazyvim.nix
+        ./rofi.nix
+        ./waybar.nix
       ];
 
       home.packages = with pkgs; [
