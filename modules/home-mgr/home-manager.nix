@@ -1,6 +1,10 @@
-{ ... }:
+{ inputs, ... }:
 
 {
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+  ];
+  
   home-manager.users.vee =
     { pkgs, ... }:
     {

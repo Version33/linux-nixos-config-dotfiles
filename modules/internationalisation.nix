@@ -26,7 +26,5 @@
     hyphen
     hunspell
     hunspellDicts.en_US
-    # hunspellDicts.uk_UA
-    # hunspellDicts.ru_RU
   ];
 }

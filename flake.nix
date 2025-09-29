@@ -23,7 +23,7 @@
         modules = [
           ./configuration.nix
           ./hardware-configuration.nix
-          inputs.lanzaboote.nixosModules.lanzaboote
+
           ./modules/secure-boot.nix
           ./modules/amdgpu.nix
           ./modules/graphics.nix
@@ -33,11 +33,11 @@
           ./modules/usb.nix
           ./modules/udev.nix
           ./modules/time.nix
-          ./modules/swap.nix
+          # ./modules/swap.nix
           ./modules/bootloader.nix
           ./modules/nix-settings.nix
           ./modules/nixpkgs.nix
-          ./modules/gc.nix
+          # ./modules/gc.nix
           # ./modules/auto-upgrade.nix
           ./modules/linux-kernel.nix
           # ./modules/location.nix
@@ -71,11 +71,7 @@
           ./modules/terminal-utils.nix
           # ./modules/llm.nix
           ./modules/file-mgr.nix
-
-          inputs.audio-nix.nixosModules.yabridgemgr
           ./modules/audio.nix
-
-          inputs.home-manager.nixosModules.home-manager
           ./modules/home-mgr/home-manager.nix
         ];
       };
