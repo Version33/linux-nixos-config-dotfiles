@@ -6,6 +6,7 @@
     enableGitIntegration = true;
     themeFile = "Catppuccin-Mocha";
     font = {
+      name = "Jetbrains Mono";
       size = 13;
     };
   };
