@@ -1,14 +1,11 @@
 { ... }:
 
-# waybar from https://github.com/Prateek7071/dotfiles/tree/main/waybar
+# waybar config from https://github.com/gaurav23b/simple-hyprland/tree/main/configs/waybar
 {
-  programs.waybar = {
-    enable = true;
-    style = ./style.css;
-  };
+  programs.waybar.enable = true; 
 
-  xdg.configFile = {
-    "waybar/config" = { source = ./config.jsonc; };
-    "waybar/scripts" = { source = ./scripts; };
+  home.file = {
+    ".config/waybar/config.jsonc" = { source = ./config.jsonc; };
+    ".config/waybar/style.css" = { source = ./style.css; };
   };
 }

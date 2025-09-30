@@ -21,6 +21,7 @@
 	      ./lazyvim/lazyvim.nix
         ./rofi.nix
         ./waybar/waybar.nix
+        ./hypr/hypr.nix
       ];
 
       home.packages = with pkgs; [
