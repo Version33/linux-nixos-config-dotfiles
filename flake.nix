@@ -12,7 +12,6 @@
       url = "github:polygon/audio.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-buildproxy.url = "github:polygon/nix-buildproxy/v0.1.0";
   };
 
   outputs =
