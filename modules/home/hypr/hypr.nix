@@ -19,7 +19,7 @@
       hyprcursor.enable = true;
       hyprcursor.size = 32;
       name = "Dark";
-      package = pkgs.catppuccin-cursors.mochaMauve;
+      package = pkgs.catppuccin-cursors.mochaDark;
       size = 32;
     };
   };
@@ -28,9 +28,15 @@
       hyprpaper = {
         enable = true;
         settings = {
-          exec-once = "swww init && swww img ${config.home.homeDirectory}/background";
-          "misc:disable_hyprland_ipc" = true;
-          "animations:first_launch_animation" = false;
+          ipc = "on";
+          splash = false;
+          splash_offset = 2.0;
+          preload = [ "~/background" ];
+          wallpaper = [
+            "DP-2,~/background"
+            "DP-3,~/background"
+            "HDMI-A-1,~/background"
+          ];
         };
       };
 
