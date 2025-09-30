@@ -42,7 +42,7 @@
           ./modules/linux-kernel.nix
           # ./modules/location.nix
           ./modules/display-manager.nix
-          ./modules/theme.nix
+          # ./modules/theme.nix
           ./modules/internationalisation.nix
           ./modules/fonts.nix
           ./modules/security-services.nix

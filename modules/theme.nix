@@ -7,30 +7,30 @@
   # environment.variables.XCURSOR_SIZE = "32";
   # environment.variables.HYPRCURSOR_THEME = "Catppuccin-Mocha-Teal";
   # environment.variables.HYPRCURSOR_SIZE = "32";
-  qt.enable = true;
-  qt.platformTheme = "gtk2";
-  qt.style = "gtk2";
-  console = {
-    earlySetup = true;
-    colors = [
-      "24273a"
-      "ed8796"
-      "a6da95"
-      "eed49f"
-      "8aadf4"
-      "f5bde6"
-      "8bd5ca"
-      "cad3f5"
-      "5b6078"
-      "ed8796"
-      "a6da95"
-      "eed49f"
-      "8aadf4"
-      "f5bde6"
-      "8bd5ca"
-      "a5adcb"
-    ];
-  };
+  # qt.enable = true;
+  # qt.platformTheme = "gtk2";
+  # qt.style = "gtk2";
+  # console = {
+  #   earlySetup = true;
+  #   colors = [
+  #     "24273a"
+  #     "ed8796"
+  #     "a6da95"
+  #     "eed49f"
+  #     "8aadf4"
+  #     "f5bde6"
+  #     "8bd5ca"
+  #     "cad3f5"
+  #     "5b6078"
+  #     "ed8796"
+  #     "a6da95"
+  #     "eed49f"
+  #     "8aadf4"
+  #     "f5bde6"
+  #     "8bd5ca"
+  #     "a5adcb"
+  #   ];
+  # };
 
   # Override packages
   # nixpkgs.config.packageOverrides = pkgs: {
