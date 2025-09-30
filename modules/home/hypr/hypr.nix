@@ -1,17 +1,13 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
+    ./hyprland.nix
     ./hypridle.nix
     ./hyprlock.nix
   ];
 
   home = {
-    file = {
-      ".config/hypr/hyprland.conf" = { source = ./hyprland.conf; };
-      ".config/hypr/monitor.conf" = { source = ./monitor.conf; };
-    };
-
     pointerCursor = {
       enable = true;
       gtk.enable = true;
