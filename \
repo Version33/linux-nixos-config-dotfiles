@@ -1,9 +1,0 @@
-{ ... }:
-
-# waybar config from https://github.com/gaurav23b/simple-hyprland/tree/main/configs/waybar
-{
-  programs.waybar = {
-    settings = builtins.fromJSON (builtins.readFile ./config.jsonc);
-    style = builtins.readFile ./style.css;
-  };
-}
