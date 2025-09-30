@@ -33,7 +33,7 @@
           ./modules/usb.nix
           ./modules/udev.nix
           ./modules/time.nix
-          # ./modules/swap.nix
+          ./modules/swap.nix
           ./modules/bootloader.nix
           ./modules/nix-settings.nix
           ./modules/nixpkgs.nix
