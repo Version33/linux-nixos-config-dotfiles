@@ -1,12 +1,12 @@
 { pkgs, ... }:
 
 {
-  # Enable Theme
-  environment.variables.GTK_THEME = "catppuccin-mocha-teal-standard";
-  environment.variables.XCURSOR_THEME = "Catppuccin-Mocha-Teal";
-  environment.variables.XCURSOR_SIZE = "32";
-  environment.variables.HYPRCURSOR_THEME = "Catppuccin-Mocha-Teal";
-  environment.variables.HYPRCURSOR_SIZE = "32";
+  # # Enable Theme
+  # environment.variables.GTK_THEME = "catppuccin-mocha-teal-standard";
+  # environment.variables.XCURSOR_THEME = "Catppuccin-Mocha-Teal";
+  # environment.variables.XCURSOR_SIZE = "32";
+  # environment.variables.HYPRCURSOR_THEME = "Catppuccin-Mocha-Teal";
+  # environment.variables.HYPRCURSOR_SIZE = "32";
   qt.enable = true;
   qt.platformTheme = "gtk2";
   qt.style = "gtk2";
@@ -53,7 +53,7 @@
     colloid-icon-theme
     catppuccin-gtk
     catppuccin-kvantum
-    catppuccin-cursors.macchiatoTeal
+    # catppuccin-cursors.macchiatoTeal
 
     # gnome.gnome-tweaks
     # gnome.gnome-shell

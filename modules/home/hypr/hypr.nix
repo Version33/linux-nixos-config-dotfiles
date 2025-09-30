@@ -13,9 +13,14 @@
     };
 
     pointerCursor = {
+      enable = true;
+      gtk.enable = true;
+      x11.enable = true;
       hyprcursor.enable = true;
+      hyprcursor.size = 32;
       name = "Dark";
       package = pkgs.catppuccin-cursors.mochaMauve;
+      size = 32;
     };
   };
 
