@@ -30,12 +30,11 @@
         settings = {
           ipc = "on";
           splash = false;
-          splash_offset = 2.0;
           preload = [ "~/background" ];
           wallpaper = [
-            "DP-2,~/background"
-            "DP-3,~/background"
-            "HDMI-A-1,~/background"
+            "DP-2,~/background"     # left
+            "DP-3,~/background"     # center
+            "HDMI-A-1,~/background" # right
           ];
         };
       };
