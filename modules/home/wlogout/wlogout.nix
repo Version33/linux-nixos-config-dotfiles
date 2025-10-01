@@ -1,0 +1,49 @@
+{ ... }:
+
+{
+  catppuccin.wlogout = {
+    enable = true;
+    iconStyle = "wlogout";
+  };
+  programs.wlogout = {
+    enable = true;
+    # layout = [
+    #   {
+    #     label = "exit";
+    #     action = "";
+    #     text = "Exit";
+    #     keybind = "h";
+    #   }
+    #   {
+    #     label = "shutdown";
+    #     action = "systemctl poweroff";
+    #     text = "Shutdown";
+    #     keybind = "s";
+    #   }
+    #   {
+    #     label = "suspend";
+    #     action = "systemctl suspend-then-hibernate";
+    #     text = "Suspend";
+    #     keybind = "u";
+    #   }
+    #   {
+    #     label = "exit";
+    #     action = "hyprlock";
+    #     text = "Lock";
+    #     keybind = "l";
+    #   }
+    #   {
+    #     label = "logout";
+    #     action = "hyprctl dispatch exit";
+    #     text = "Logout";
+    #     keybind = "e";
+    #   }
+    #   {
+    #     label = "reboot";
+    #     action = "systemctl reboot";
+    #     text = "Reboot";
+    #     keybind = "r";
+    #   }
+    # ];
+  };
+}

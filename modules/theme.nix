@@ -1,6 +1,15 @@
-{ pkgs, ... }:
+{ inputs, ... }:
 
 {
+  inports = [
+    inputs.catppuccin.nixosModules.catppuccin
+  ];
+  
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
+    accent = "sapphire";
+  };
   # # Enable Theme
   # environment.variables.GTK_THEME = "catppuccin-mocha-teal-standard";
   # environment.variables.XCURSOR_THEME = "Catppuccin-Mocha-Teal";

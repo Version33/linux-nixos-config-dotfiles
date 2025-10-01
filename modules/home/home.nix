@@ -1,18 +1,18 @@
-{ inputs, ... }:
-
+{ pkgs, inputs, ... }:
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
+    inputs.catppuccin.nixosModules.catppuccin
   ];
   
   home-manager.users.vee =
-    { pkgs, ... }:
     {
       home.username = "vee";
       home.homeDirectory = "/home/vee";
       nixpkgs.config.allowUnfree = true;
 
       imports = [
+        inputs.catppuccin.homeModules.catppuccin
         ./vscode.nix
         ./git.nix
         ./nushell.nix
@@ -22,6 +22,7 @@
         ./rofi.nix
         ./waybar/waybar.nix
         ./hypr/hypr.nix
+        ./wlogout/wlogout.nix
       ];
 
       home.packages = with pkgs; [
