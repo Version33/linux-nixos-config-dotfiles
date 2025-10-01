@@ -36,6 +36,6 @@
       };
 
       hyprsunset.enable = true;
-      hyprpolkitagent.enable = true;
+      # hyprpolkitagent.enable = true;
     };
 }
