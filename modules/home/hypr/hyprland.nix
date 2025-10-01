@@ -29,10 +29,10 @@
         "HDMI-A-1, 1920x1080@59, 1920x-400, 1, transform, 3"
       ];
       # Autostart necessary processes
-      # exec-once = [
+      exec-once = [
       #   "/usr/lib/polkit-kde-authentication-agent-1" # Polkit to manage passwords
       #   "/usr/bin/dunst"
-      #   "waybar" # topbar
+        "waybar" # topbar
       #   "swww-daemon" # wallpaper
       #   "swww img ~/.config/assets/backgrounds/cat_leaves.png --transition-fps 255 --transition-type outer --transition-duration 0.8"
       #   "wl-paste --type text --watch cliphist store" # clipboard
@@ -42,7 +42,9 @@
       #   "${terminal}"
       #   "nm-applet"
       #   "hyprpaper"
-      # ];
+        "tidal-hifi"
+        "discord"
+      ];
 
       # Look and Feel
       general = {
