@@ -48,7 +48,7 @@
     wlrctl # Command line utility for miscellaneous wlroots Wayland extensions.
     dunst # Lightweight and customizable notification daemon.
     avizo # Neat notification daemon for Wayland.
-    wlogout # Wayland based logout menu.
     gifsicle # Command-line tool for creating, editing, and getting information about GIF images and animations.
+    hyprshot # Utility to easily take screenshots in Hyprland using your mouse.
   ];
 }
