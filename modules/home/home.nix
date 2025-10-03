@@ -33,6 +33,7 @@
         kdePackages.filelight
         qimgv
         orca-slicer
+        godotPackages_4_5.godot
       ];
 
       home.sessionVariables = {

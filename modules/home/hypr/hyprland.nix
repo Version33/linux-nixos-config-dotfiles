@@ -110,7 +110,7 @@
       input = {
         kb_layout = "us";
         follow_mouse = 1;
-        sensitivity = -0.65;
+        sensitivity = -0.7;
         touchpad = {
           natural_scroll = true;
         };
