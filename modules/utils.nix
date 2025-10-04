@@ -14,5 +14,6 @@
     surrealdb-migrations # Awesome SurrealDB migration tool, with a user-friendly CLI and a versatile Rust library that enables seamless integration into any project
     surrealist # Visual management of your SurrealDB database
     trunk # Build, bundle & ship your Rust WASM application to the web
+    gparted
   ];
 }
