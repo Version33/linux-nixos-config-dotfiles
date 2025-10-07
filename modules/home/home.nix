@@ -13,6 +13,8 @@
 
       imports = [
         inputs.catppuccin.homeModules.catppuccin
+        # Import dots-hyprland home-manager module for Hyprland configuration
+        (inputs.dots-hyprland.homeModules.default or {})
         ./vscode.nix
         ./git.nix
         ./nushell.nix
@@ -22,7 +24,7 @@
         ./rofi.nix
         # ./waybar/waybar.nix # Disabled - qs (quickshell) is used instead
         # ./hypr/hypr.nix # Disabled - using hypr-custom.nix with dots-hyprland instead
-        ./hypr-custom.nix # dots-hyprland integration with customization examples
+        ./hypr-custom.nix # dots-hyprland customization examples (monitor config, keybindings, etc.)
         ./wlogout/wlogout.nix
       ];
 

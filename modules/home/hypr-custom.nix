@@ -1,15 +1,12 @@
-{ inputs, ... }:
+{ config, lib, ... }:
 
 {
-  # Import dots-hyprland home-manager module
-  # This provides the base Hyprland configuration from the dots-hyprland flake
-  imports = [
-    inputs.dots-hyprland.homeModules.default or {}
-  ];
-
-  # Example: Customize Hyprland configuration
-  # The dots-hyprland flake provides a base configuration, and you can override
-  # or extend it using wayland.windowManager.hyprland.settings
+  # Customize Hyprland configuration
+  # The dots-hyprland flake provides the base configuration (imported in home.nix)
+  # This file allows you to override or extend settings using wayland.windowManager.hyprland.settings
+  #
+  # Note: The dots-hyprland.homeModules.default is imported in the parent home.nix file
+  # to avoid infinite recursion issues with the module system.
   
   wayland.windowManager.hyprland = {
     enable = true;

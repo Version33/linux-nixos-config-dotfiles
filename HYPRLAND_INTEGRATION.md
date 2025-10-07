@@ -9,10 +9,15 @@ This document explains the integration of the dots-hyprland flake into this NixO
 - **Change**: Added the flake input `dots-hyprland.url = "github:version33/dots-hyprland-nixos"`
 
 ### 2. Integrated dots-hyprland in Home Manager
+- **File**: `modules/home/home.nix`
+- **Change**: Added `inputs.dots-hyprland.homeModules.default` to the home-manager imports list
+- **Purpose**: Provides base Hyprland configuration from dots-hyprland
+
+### 3. Created Customization Examples
 - **File**: `modules/home/hypr-custom.nix` (new file)
-- **Change**: Created a configuration file that imports `inputs.dots-hyprland.homeModules.default`
-- **Purpose**: Provides base Hyprland configuration from dots-hyprland with examples for customization
+- **Purpose**: Demonstrates how to customize Hyprland on top of dots-hyprland base configuration
 - **Includes**: Monitor configuration examples, keybinding overrides, workspace settings, and more
+- **Note**: Does not import dots-hyprland directly to avoid infinite recursion; that's done in home.nix
 
 ### 3. Re-enabled System-level Hyprland
 - **File**: `flake.nix`
@@ -21,7 +26,10 @@ This document explains the integration of the dots-hyprland flake into this NixO
 
 ### 4. Updated Home Manager Imports
 - **File**: `modules/home/home.nix`
-- **Change**: Added `./hypr-custom.nix` import and disabled local `./hypr/hypr.nix`
+- **Changes**: 
+  - Added `inputs.dots-hyprland.homeModules.default` to imports list
+  - Added `./hypr-custom.nix` import for customization examples
+  - Disabled local `./hypr/hypr.nix`
 - **Reason**: Use dots-hyprland as the base configuration with customization options
 
 ## Conflicts Resolved

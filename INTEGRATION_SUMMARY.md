@@ -11,10 +11,12 @@ flake.nix
 modules/home/home.nix
 ├── [DISABLED] ./hypr/hypr.nix  ──→  Replaced with hypr-custom.nix
 ├── [DISABLED] ./waybar/waybar.nix  ──→  qs (quickshell) used instead
-└── [ADDED] ./hypr-custom.nix  ──→  dots-hyprland home-manager integration
+├── [ADDED] inputs.dots-hyprland.homeModules.default  ──→  Base config import
+└── [ADDED] ./hypr-custom.nix  ──→  Customization layer
 
 modules/home/hypr-custom.nix (NEW)
-├── Imports dots-hyprland.homeModules.default
+├── Does NOT import dots-hyprland (to avoid infinite recursion)
+├── Provides customization layer on top of dots-hyprland base
 ├── Monitor configuration examples (multi-monitor, rotation, scaling)
 ├── Customization examples (keybindings, workspaces, window rules)
 └── Environment variable override examples
@@ -63,9 +65,9 @@ Documentation (UPDATED)
 ├─────────────────────────────────────────────────────────┤
 │ Home Manager:                                           │
 │  └─ ./modules/home/home.nix                            │
+│      ├─ imports dots-hyprland.homeModules.default     │
 │      ├─ ./hypr/hypr.nix (DISABLED)                     │
 │      └─ ./hypr-custom.nix (NEW!)                       │
-│          └─ imports dots-hyprland.homeModules.default  │
 │          └─ Provides customization examples            │
 │          └─ Monitor config, keybindings, etc.          │
 └─────────────────────────────────────────────────────────┘
