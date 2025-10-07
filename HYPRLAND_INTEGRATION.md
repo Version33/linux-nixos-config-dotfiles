@@ -93,3 +93,19 @@ If issues arise, revert these changes:
    - Comment out the dots-hyprland input
 2. In `modules/home/home.nix`:
    - Uncomment `./hypr/hypr.nix`
+
+## Fallback Configuration
+
+A fallback configuration module has been created at `modules/hyprland-fallback.nix`. This module contains commented-out packages and settings that were previously in `modules/hyprland.nix`.
+
+**When to use**: Enable this module (by uncommenting it in `flake.nix`) if:
+- The dots-hyprland flake doesn't provide required packages
+- You need additional Hyprland utilities not included in dots-hyprland
+- You want to supplement dots-hyprland's configuration with local settings
+
+**How to enable**: Add to `flake.nix` modules list:
+```nix
+./modules/hyprland-fallback.nix
+```
+
+Then uncomment the packages or settings you need in that file.
