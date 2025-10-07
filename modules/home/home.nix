@@ -29,7 +29,8 @@
         osu-lazer-bin
         tidal-hifi
         proton-pass
-        discord
+        #discord
+        vesktop
         kdePackages.filelight
         qimgv
         orca-slicer

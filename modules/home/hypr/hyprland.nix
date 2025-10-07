@@ -15,7 +15,7 @@
       # Set programs that you use
       mainMod = "SUPER";
       terminal = "kitty";
-      fileManager = "thunar";
+      fileManager = "dolphin";
       menu = "rofi -show drun";
       browser = "firefox";
       notes = "obsidian";
@@ -123,6 +123,7 @@
       # }];
 
       # Keybindings
+      bindr = "${mainMod}, ${mainMod}, exec, ${menu}";
       bind = [
         "${mainMod}, T, exec, ${terminal}"
         "${mainMod}, B, exec, ${browser}"
@@ -131,9 +132,8 @@
         "${mainMod}, S, exec, ${editor-alt}"
         "${mainMod}, Q, killactive,"
         "${mainMod}, M, exit,"
-        "${mainMod}, F, exec, ${fileManager}"
+        "${mainMod}, F, fullscreen"
         "${mainMod}, W, togglefloating,"
-        "${mainMod}, Space, exec, ${menu}"
         "${mainMod}, J, togglesplit,"
 
         "SUPER, E, exec, jome -d | wl-copy"

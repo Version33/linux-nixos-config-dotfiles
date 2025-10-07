@@ -26,6 +26,7 @@
   # services.auto-cpufreq.enable = true;
   # services.gnome.core-shell.enable = true;
   # services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+  hardware.opentabletdriver.enable = true;
 
   environment.systemPackages = with pkgs; [
     at-spi2-atk # Assistive Technology Service Provider Interface protocol definitions and daemon for D-Bus.
