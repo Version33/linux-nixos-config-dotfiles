@@ -72,7 +72,7 @@ Documentation (NEW)
 | Graphics (AMD)      | Enabled       | ❌ None           | ✅ Works with Wayland      |
 | Wayland Utils       | Enabled       | ❌ None           | ✅ Compatible              |
 | dbus/dconf          | Enabled       | ❌ None           | ✅ Required by apps        |
-| Waybar (local)      | Enabled       | ⚠️ Maybe          | ⚠️ Monitor if conflicts   |
+| Waybar (local)      | Disabled      | ✅ None           | ✓ qs (quickshell) used    |
 | Rofi (local)        | Enabled       | ⚠️ Maybe          | ⚠️ Monitor if conflicts   |
 
 Legend:
@@ -128,7 +128,6 @@ nixos-rebuild switch --flake .#k0or
 
 - `modules/hyprland-fallback.nix` - Uncomment packages as needed
 - `modules/environment-variables.nix` - Add extra env vars if needed
-- `modules/home/waybar/waybar.nix` - Keep or disable based on dots-hyprland
 - `modules/home/rofi.nix` - Keep or disable based on dots-hyprland
 
 ## Files You Should NOT Modify (unless rolling back)

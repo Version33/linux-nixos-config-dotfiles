@@ -60,11 +60,12 @@ The following environment variables are set for Hyprland compatibility:
    - Home-manager module for user-level Hyprland settings
    - Required environment variables
 
-2. **Waybar and Rofi**: These are still configured locally in:
-   - `modules/home/waybar/waybar.nix`
+2. **Rofi**: Still configured locally in:
    - `modules/home/rofi.nix`
    
-   If dots-hyprland provides its own waybar/rofi configs, these may conflict.
+   If dots-hyprland provides its own rofi config, this may conflict.
+
+3. **Waybar**: Disabled in favor of qs (quickshell) which is provided by dots-hyprland.
 
 3. **wlogout**: Still configured in `modules/home/wlogout/wlogout.nix`
 

@@ -20,7 +20,7 @@
         ./kitty.nix
 	      ./lazyvim/lazyvim.nix
         ./rofi.nix
-        ./waybar/waybar.nix
+        # ./waybar/waybar.nix # Disabled - qs (quickshell) is used instead
         # ./hypr/hypr.nix # Disabled in favor of dots-hyprland flake
         ./wlogout/wlogout.nix
       ];

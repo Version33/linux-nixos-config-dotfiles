@@ -32,5 +32,6 @@ sudo nixos-rebuild switch --flake .#k0or
 
 - System-level Hyprland config → `dots-hyprland` flake
 - Local Hyprland configs → Disabled (see `modules/hyprland.nix`, `modules/home/hypr/`)
+- Status bar → qs (quickshell) from dots-hyprland (waybar disabled)
 - Fallback packages → `modules/hyprland-fallback.nix` (optional)
 - Display manager → greetd with tuigreet + uwsm

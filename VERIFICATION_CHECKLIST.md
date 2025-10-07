@@ -57,10 +57,11 @@ Then adjust the import in `flake.nix` accordingly. For example, it might be:
 2. Remove dots-hyprland: Comment out `inputs.dots-hyprland.nixosModules.default`
 3. Re-enable home config: Uncomment `./hypr/hypr.nix` in `modules/home/home.nix`
 
-### Issue: Waybar or Rofi conflicts
-**Solution**: If dots-hyprland provides its own waybar/rofi configs:
-1. Comment out `./waybar/waybar.nix` in `modules/home/home.nix`
-2. Comment out `./rofi.nix` in `modules/home/home.nix`
+### Issue: Rofi conflicts
+**Solution**: If dots-hyprland provides its own rofi config:
+1. Comment out `./rofi.nix` in `modules/home/home.nix`
+
+Note: Waybar has been disabled as qs (quickshell) is used instead.
 
 ## Post-Build Verification
 
@@ -86,7 +87,7 @@ Then adjust the import in `flake.nix` accordingly. For example, it might be:
   - [ ] Super key alone opens menu (rofi)
 
 - [ ] Check if all expected applications are available:
-  - [ ] Waybar (top bar)
+  - [ ] qs (quickshell) - status bar
   - [ ] Rofi (app launcher)
   - [ ] Terminal emulator (kitty/wezterm)
   - [ ] File manager (dolphin)
