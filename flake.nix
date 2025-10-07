@@ -50,8 +50,7 @@
           ./modules/services.nix
           # ./modules/printing.nix
           # ./modules/gnome.nix
-          # ./modules/hyprland.nix # Disabled in favor of dots-hyprland flake
-          inputs.dots-hyprland.nixosModules.default
+          ./modules/hyprland.nix
           ./modules/environment-variables.nix
           ./modules/bluetooth.nix
           # ./modules/networking.nix

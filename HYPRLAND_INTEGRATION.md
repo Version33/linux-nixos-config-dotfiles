@@ -6,23 +6,23 @@ This document explains the integration of the dots-hyprland flake into this NixO
 
 ### 1. Enabled dots-hyprland Flake Input
 - **File**: `flake.nix`
-- **Change**: Uncommented and renamed the flake input from `illogical-impulse` to `dots-hyprland`
-- **Line**: `dots-hyprland.url = "github:version33/dots-hyprland-nixos";`
+- **Change**: Added the flake input `dots-hyprland.url = "github:version33/dots-hyprland-nixos"`
 
-### 2. Integrated dots-hyprland Module
+### 2. Integrated dots-hyprland in Home Manager
+- **File**: `modules/home/hypr-custom.nix` (new file)
+- **Change**: Created a configuration file that imports `inputs.dots-hyprland.homeModules.default`
+- **Purpose**: Provides base Hyprland configuration from dots-hyprland with examples for customization
+- **Includes**: Monitor configuration examples, keybinding overrides, workspace settings, and more
+
+### 3. Re-enabled System-level Hyprland
 - **File**: `flake.nix`
-- **Change**: Added `inputs.dots-hyprland.nixosModules.default` to the system modules list
-- **Location**: After the commented `./modules/gnome.nix` line
+- **Change**: Kept `./modules/hyprland.nix` enabled for system-level packages (pyprland, kitty, etc.)
+- **Reason**: System packages still needed; only the home-manager Hyprland config uses dots-hyprland
 
-### 3. Disabled Local Hyprland Configuration
-- **File**: `flake.nix`
-- **Change**: Commented out `./modules/hyprland.nix` to prevent conflicts with the dots-hyprland flake
-- **Reason**: The dots-hyprland flake provides its own Hyprland system-level configuration
-
-### 4. Disabled Home-Manager Hyprland Config
+### 4. Updated Home Manager Imports
 - **File**: `modules/home/home.nix`
-- **Change**: Commented out `./hypr/hypr.nix` import
-- **Reason**: The dots-hyprland flake should provide home-manager configuration for Hyprland
+- **Change**: Added `./hypr-custom.nix` import and disabled local `./hypr/hypr.nix`
+- **Reason**: Use dots-hyprland as the base configuration with customization options
 
 ## Conflicts Resolved
 
@@ -42,12 +42,12 @@ These components are compatible with Hyprland and remain enabled:
 
 ### Environment Variables
 The following environment variables are set for Hyprland compatibility:
-- **System Level** (in `modules/hyprland.nix`, now disabled):
+- **System Level** (in `modules/hyprland.nix`, now re-enabled):
   - `NIXOS_OZONE_WL = "1"` - Enables Wayland support for Electron apps
   - `WLR_NO_HARDWARE_CURSORS = "1"` - Fixes cursor issues on some hardware
 
-- **Home Level** (in `modules/home/hypr/hyprland.nix`, now disabled):
-  - Nvidia-specific variables (LIBVA_DRIVER_NAME, GBM_BACKEND, etc.)
+- **Home Level**: Can be customized in `modules/home/hypr-custom.nix` using the `env` setting
+  - Examples for Nvidia-specific variables, Qt/QT variables, XDG variables are provided in the file
   - Qt/QT variables for Wayland
   - XDG variables for Hyprland
 
@@ -56,26 +56,30 @@ The following environment variables are set for Hyprland compatibility:
 ## Remaining Manual Verification Needed
 
 1. **Check dots-hyprland flake structure**: Ensure it provides:
-   - `nixosModules.default` for system-level configuration
-   - Home-manager module for user-level Hyprland settings
-   - Required environment variables
+   - `homeModules.default` for home-manager-level Hyprland settings
+   - Required environment variables and base configuration
 
-2. **Rofi**: Still configured locally in:
+2. **Customize your setup**: Edit `modules/home/hypr-custom.nix` to:
+   - Configure your monitors (see detailed examples in the file)
+   - Adjust keybindings, workspaces, and window rules as needed
+   - Override any settings from dots-hyprland base configuration
+
+3. **Rofi**: Still configured locally in:
    - `modules/home/rofi.nix`
    
    If dots-hyprland provides its own rofi config, this may conflict.
 
-3. **Waybar**: Disabled in favor of qs (quickshell) which is provided by dots-hyprland.
+4. **Waybar**: Disabled in favor of qs (quickshell) which is provided by dots-hyprland.
 
-3. **wlogout**: Still configured in `modules/home/wlogout/wlogout.nix`
+5. **wlogout**: Still configured in `modules/home/wlogout/wlogout.nix`
 
-4. **Packages**: The disabled `modules/hyprland.nix` provided these packages:
+6. **Packages**: The `modules/hyprland.nix` (re-enabled) provides these packages:
    - pyprland, hyprpicker
    - lxsession (for polkit)
    - wezterm, kitty, cool-retro-term
    - starship, qutebrowser, zathura, mpv, imv
    
-   Verify these are provided by dots-hyprland or add them to `configuration.nix` if needed.
+   These remain available as system packages.
 
 ## Testing Recommendations
 
@@ -88,12 +92,13 @@ The following environment variables are set for Hyprland compatibility:
 ## Rollback Instructions
 
 If issues arise, revert these changes:
-1. In `flake.nix`:
-   - Uncomment `./modules/hyprland.nix`
-   - Remove `inputs.dots-hyprland.nixosModules.default`
-   - Comment out the dots-hyprland input
-2. In `modules/home/home.nix`:
+1. In `modules/home/home.nix`:
+   - Remove `./hypr-custom.nix` import
    - Uncomment `./hypr/hypr.nix`
+   - Optionally uncomment `./waybar/waybar.nix` if not using qs
+2. Delete `modules/home/hypr-custom.nix`
+3. In `flake.nix`:
+   - Comment out `./modules/hyprland.nix` if you want to disable system-level Hyprland
 
 ## Fallback Configuration
 

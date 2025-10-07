@@ -21,7 +21,8 @@
 	      ./lazyvim/lazyvim.nix
         ./rofi.nix
         # ./waybar/waybar.nix # Disabled - qs (quickshell) is used instead
-        # ./hypr/hypr.nix # Disabled in favor of dots-hyprland flake
+        # ./hypr/hypr.nix # Disabled - using hypr-custom.nix with dots-hyprland instead
+        ./hypr-custom.nix # dots-hyprland integration with customization examples
         ./wlogout/wlogout.nix
       ];
 

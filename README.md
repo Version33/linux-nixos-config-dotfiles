@@ -30,8 +30,9 @@ sudo nixos-rebuild switch --flake .#k0or
 
 ### 🔧 Configuration Structure
 
-- System-level Hyprland config → `dots-hyprland` flake
-- Local Hyprland configs → Disabled (see `modules/hyprland.nix`, `modules/home/hypr/`)
+- System-level Hyprland → `modules/hyprland.nix` (packages and system settings)
+- Home-manager Hyprland → `modules/home/hypr-custom.nix` (dots-hyprland integration)
+- Customization examples → Monitor configs, keybindings, workspaces in hypr-custom.nix
 - Status bar → qs (quickshell) from dots-hyprland (waybar disabled)
 - Fallback packages → `modules/hyprland-fallback.nix` (optional)
 - Display manager → greetd with tuigreet + uwsm

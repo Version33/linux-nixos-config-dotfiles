@@ -4,17 +4,25 @@
 
 ```
 flake.nix
-├── [ADDED] dots-hyprland.url = "github:version33/dots-hyprland-nixos"
-├── [DISABLED] ./modules/hyprland.nix  ──→  Replaced by dots-hyprland
-└── [ADDED] inputs.dots-hyprland.nixosModules.default
+├── [KEPT] dots-hyprland.url = "github:version33/dots-hyprland-nixos"
+├── [RE-ENABLED] ./modules/hyprland.nix  ──→  System packages and settings
+└── [REMOVED] inputs.dots-hyprland.nixosModules.default  ──→  Moved to home-manager
 
 modules/home/home.nix
-└── [DISABLED] ./hypr/hypr.nix  ──→  Replaced by dots-hyprland
+├── [DISABLED] ./hypr/hypr.nix  ──→  Replaced with hypr-custom.nix
+├── [DISABLED] ./waybar/waybar.nix  ──→  qs (quickshell) used instead
+└── [ADDED] ./hypr-custom.nix  ──→  dots-hyprland home-manager integration
 
-Documentation (NEW)
-├── HYPRLAND_INTEGRATION.md     (4.6K) - Comprehensive integration guide
-├── VERIFICATION_CHECKLIST.md   (3.4K) - Testing and troubleshooting guide
-└── modules/hyprland-fallback.nix (1.2K) - Optional fallback configuration
+modules/home/hypr-custom.nix (NEW)
+├── Imports dots-hyprland.homeModules.default
+├── Monitor configuration examples (multi-monitor, rotation, scaling)
+├── Customization examples (keybindings, workspaces, window rules)
+└── Environment variable override examples
+
+Documentation (UPDATED)
+├── HYPRLAND_INTEGRATION.md     - Updated integration guide
+├── VERIFICATION_CHECKLIST.md   - Updated testing guide
+└── INTEGRATION_SUMMARY.md      - This file
 ```
 
 ## Configuration Flow Diagram
@@ -48,15 +56,18 @@ Documentation (NEW)
 │  └─ dots-hyprland.url = "github:version33/dots-..."    │
 ├─────────────────────────────────────────────────────────┤
 │ System Modules:                                         │
-│  ├─ ./modules/hyprland.nix (DISABLED)                  │
-│  ├─ inputs.dots-hyprland.nixosModules.default (NEW!)   │
-│  ├─ ./modules/hyprland-fallback.nix (optional)         │
+│  ├─ ./modules/hyprland.nix (RE-ENABLED)                │
+│  │   └─ programs.hyprland.enable = true                │
+│  │   └─ System packages (pyprland, kitty, etc.)        │
 │  └─ ./modules/gnome.nix (still commented)              │
 ├─────────────────────────────────────────────────────────┤
 │ Home Manager:                                           │
 │  └─ ./modules/home/home.nix                            │
-│      └─ ./hypr/hypr.nix (DISABLED)                     │
-│      └─ [dots-hyprland may provide home config]        │
+│      ├─ ./hypr/hypr.nix (DISABLED)                     │
+│      └─ ./hypr-custom.nix (NEW!)                       │
+│          └─ imports dots-hyprland.homeModules.default  │
+│          └─ Provides customization examples            │
+│          └─ Monitor config, keybindings, etc.          │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -66,13 +77,13 @@ Documentation (NEW)
 |---------------------|---------------|-------------------|----------------------------|
 | GNOME               | Disabled      | ❌ None           | Remains commented out      |
 | X11 Server          | Not enabled   | ❌ None           | Only videoDrivers (needed) |
-| Local Hyprland Sys  | Enabled       | ⚠️ Yes            | ✅ Disabled                |
-| Local Hyprland Home | Enabled       | ⚠️ Yes            | ✅ Disabled                |
+| Local Hyprland Sys  | Enabled       | ❌ None           | ✅ Re-enabled for packages |
+| Local Hyprland Home | Enabled       | ⚠️ Yes            | ✅ Replaced with custom    |
 | Display Manager     | greetd+uwsm   | ❌ None           | ✅ Compatible              |
 | Graphics (AMD)      | Enabled       | ❌ None           | ✅ Works with Wayland      |
 | Wayland Utils       | Enabled       | ❌ None           | ✅ Compatible              |
 | dbus/dconf          | Enabled       | ❌ None           | ✅ Required by apps        |
-| Waybar (local)      | Disabled      | ✅ None           | ✓ qs (quickshell) used    |
+| Waybar (local)      | Enabled       | ⚠️ Yes            | ✅ Disabled (qs used)      |
 | Rofi (local)        | Enabled       | ⚠️ Maybe          | ⚠️ Monitor if conflicts   |
 
 Legend:
