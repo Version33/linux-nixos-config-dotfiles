@@ -9,7 +9,7 @@
     lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
     home-manager.url = "github:nix-community/home-manager";
     catppuccin.url = "github:catppuccin/nix";
-    # illogical-impulse.url = "github:version33/dots-hyprland-nixos";
+    dots-hyprland.url = "github:version33/dots-hyprland-nixos";
     audio-nix = {
       url = "github:polygon/audio.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -50,7 +50,8 @@
           ./modules/services.nix
           # ./modules/printing.nix
           # ./modules/gnome.nix
-          ./modules/hyprland.nix
+          # ./modules/hyprland.nix # Disabled in favor of dots-hyprland flake
+          inputs.dots-hyprland.nixosModules.default
           ./modules/environment-variables.nix
           ./modules/bluetooth.nix
           # ./modules/networking.nix

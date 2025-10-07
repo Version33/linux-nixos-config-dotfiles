@@ -21,7 +21,7 @@
 	      ./lazyvim/lazyvim.nix
         ./rofi.nix
         ./waybar/waybar.nix
-        ./hypr/hypr.nix
+        # ./hypr/hypr.nix # Disabled in favor of dots-hyprland flake
         ./wlogout/wlogout.nix
       ];
 
