@@ -20,6 +20,6 @@
   # };
 
   environment.systemPackages = with pkgs; [
-    bitwig-studio-latest
+    bitwig-studio
   ];
 }
