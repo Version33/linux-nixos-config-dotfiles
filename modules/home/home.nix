@@ -13,6 +13,7 @@
 
       imports = [
         inputs.catppuccin.homeModules.catppuccin
+        # inputs.illogical-impulse.homeManagerModules.default
         # inputs.illogical-impulse.homeManagerModules.audio
         # inputs.illogical-impulse.homeManagerModules.backlight
         # inputs.illogical-impulse.homeManagerModules.basic
@@ -33,9 +34,9 @@
         ./starship.nix
         ./kitty.nix
 	      ./lazyvim/lazyvim.nix
-        ./rofi.nix
-        ./waybar/waybar.nix # Disabled - qs (quickshell) is used instead
-        ./hypr/hypr.nix # Disabled - using hypr-custom.nix with dots-hyprland instead
+        # ./rofi.nix
+        # ./waybar/waybar.nix # Disabled - qs (quickshell) is used instead
+        # ./hypr/hypr.nix # Disabled - using hypr-custom.nix with dots-hyprland instead
         # ./hypr-custom.nix # dots-hyprland customization examples (monitor config, keybindings, etc.)
         ./wlogout/wlogout.nix
       ];
