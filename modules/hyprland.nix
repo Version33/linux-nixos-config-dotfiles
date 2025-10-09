@@ -24,7 +24,7 @@
 
     lxsession # need this for polkit agent to work in vscode for some reason
 
-    inputs.wezterm.packages.${pkgs.system}.default
+    # inputs.wezterm.packages.${pkgs.system}.default
     kitty
     cool-retro-term
 

@@ -4,12 +4,12 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     rust-overlay.url = "github:oxalica/rust-overlay";
-    wezterm.url = "github:wez/wezterm?dir=nix";
+    # wezterm.url = "github:wez/wezterm?dir=nix";
     radicle-tui.url = "git+https://seed.radicle.xyz/z39mP9rQAaGmERfUMPULfPUi473tY.git?rev=dcc51b96a90d6e63cd69fae7f29e896f13816a1f";
     lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
     home-manager.url = "github:nix-community/home-manager";
     catppuccin.url = "github:catppuccin/nix";
-    dots-hyprland.url = "github:version33/dots-hyprland-nixos";
+    illogical-impulse.url = "github:version33/dots-hyprland?dir=dist-nix";
     audio-nix = {
       url = "github:polygon/audio.nix";
       inputs.nixpkgs.follows = "nixpkgs";
