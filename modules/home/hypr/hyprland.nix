@@ -123,7 +123,6 @@
       # }];
 
       # Keybindings
-      bindr = "${mainMod}, ${mainMod}, exec, ${menu}";
       bind = [
         "${mainMod}, T, exec, ${terminal}"
         "${mainMod}, B, exec, ${browser}"
@@ -135,6 +134,7 @@
         "${mainMod}, F, fullscreen"
         "${mainMod}, W, togglefloating,"
         "${mainMod}, J, togglesplit,"
+        "${mainMod}, Space,exec, ${menu}"
 
         "SUPER, E, exec, jome -d | wl-copy"
 
