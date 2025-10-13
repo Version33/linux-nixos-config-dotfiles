@@ -19,10 +19,6 @@
         ./starship.nix
         ./kitty.nix
 	      ./lazyvim/lazyvim.nix
-        ./rofi.nix
-        ./waybar/waybar.nix
-        ./hypr/hypr.nix
-        ./wlogout/wlogout.nix
       ];
 
       home.packages = with pkgs; [
