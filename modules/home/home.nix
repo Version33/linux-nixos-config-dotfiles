@@ -13,12 +13,14 @@
 
       imports = [
         inputs.catppuccin.homeModules.catppuccin
+        inputs.plasma-manager.homeModules.plasma-manager
         ./vscode.nix
         ./git.nix
         ./nushell.nix
         ./starship.nix
         ./kitty.nix
 	      ./lazyvim/lazyvim.nix
+        ./plasma.nix
       ];
 
       home.packages = with pkgs; [

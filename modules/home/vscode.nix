@@ -14,8 +14,8 @@
         formulahendry.code-runner
         anthropic.claude-code
 
-        catppuccin.catppuccin-vsc
-        catppuccin.catppuccin-vsc-icons
+        # catppuccin.catppuccin-vsc
+        # catppuccin.catppuccin-vsc-icons
       ];
     };
   };
