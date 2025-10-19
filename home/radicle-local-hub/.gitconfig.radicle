@@ -1,7 +1,0 @@
-[user]
-	email = github.kelp104@passmail.net
-	name = vee
-	signingkey = ~/.radicle/keys/radicle.pub
-
-[core]
-	sshCommand = "ssh -i ~/.radicle/keys/radicle"
