@@ -32,6 +32,7 @@
         orca-slicer
         qbittorrent-enhanced
         godotPackages_4_5.godot
+        claude-code
       ];
 
       home.sessionVariables = {
