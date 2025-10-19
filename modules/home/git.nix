@@ -4,19 +4,21 @@
   programs = {
     git = {
       enable = true;
-      userName = "Version33";
-      userEmail = "vee@versionthirtythr.ee";
-      aliases = {
-        pu = "push";
-        co = "checkout";
-        cm = "commit";
-      };
-      extraConfig = {
+      settings = {
+        user = {
+          name = "Version33";
+          email = "vee@versionthirtythr.ee";
+        };
+        aliases = {
+          pu = "push";
+          co = "checkout";
+          cm = "commit";
+        };
         init.defaultBranch = "main";
         safe.directory = "/etc/nixos";
       };
-      delta.enable = true; # Syntax-highlighting pager for git
     };
+    delta.enableGitIntegration = true; # Syntax-highlighting pager for git
     gh.enable = true; # GitHub CLI tool
     bat.enable = true; # Cat(-1) clone with syntax highlighting and Git integration.
     lazygit.enable = true; # Simple terminal UI for git commands
