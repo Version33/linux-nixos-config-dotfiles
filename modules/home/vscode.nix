@@ -12,6 +12,7 @@
         jnoortheen.nix-ide
         jeff-hykin.better-nix-syntax
         formulahendry.code-runner
+        saoudrizwan.claude-dev
 
         catppuccin.catppuccin-vsc
         catppuccin.catppuccin-vsc-icons
