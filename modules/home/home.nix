@@ -22,6 +22,7 @@
         ./lazyvim/lazyvim.nix
         ./plasma.nix
         ./yabridge.nix
+        ./lsp-plugins.nix
       ];
 
       home.packages = with pkgs; [
@@ -37,11 +38,13 @@
         godotPackages_4_5.godot
         claude-code
         gemini-cli
+        lsp-plugins
       ];
 
       home.sessionVariables = {
         EDITOR = "nvim";
       };
+
 
       # no touchy
       home.stateVersion = "25.05";
