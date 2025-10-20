@@ -4,6 +4,9 @@
 # This file aggregates all NixOS configuration modules.
 # Modules are organized by category for easy management.
 #
+# Creating a new module:
+#   See modules/README.md and modules/TEMPLATE.nix
+#
 # To enable an optional module:
 #   1. Uncomment the desired module path below
 #   2. Run: just switch (or sudo nixos-rebuild switch --flake .#k0or)
