@@ -10,13 +10,25 @@
 
 { pkgs, ... }:
 
+let
+  # Fetch the Catppuccin wallpaper
+  sddmWallpaper = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/zhichaoh/catppuccin-wallpapers/main/minimalistic/romb.png";
+    sha256 = "1pdfd0gr718c5ja4apfawl6pa4vi3wga0agf4xmh3c85r4spn8xs";
+  };
+in
 {
   services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm = {
     enable = true;
     theme = "sddm-astronaut-theme";
+    wayland.enable = true;
+    settings = {
+      General = {
+        Background = "${sddmWallpaper}";
+      };
+    };
   };
-  services.displayManager.sddm.wayland.enable = true;
 
   environment.systemPackages = with pkgs; [
     # KDE
