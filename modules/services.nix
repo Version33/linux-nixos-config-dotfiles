@@ -7,7 +7,7 @@
   # ];
 
   # Enable Services
-  # programs.direnv.enable = true; # Shell extension that manages your environment.
+  programs.direnv.enable = true; # Shell extension that manages your environment.
   # services.upower.enable = true; # D-Bus service for power management.
   # programs.fish.enable = true;
   programs.dconf.enable = true;
