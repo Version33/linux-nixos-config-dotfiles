@@ -20,6 +20,7 @@
       ];
       userSettings = {
         "claude-code.useTerminal" = true;
+        "git.confirmSync" = false;
       };
     };
   };
