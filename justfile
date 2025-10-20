@@ -35,7 +35,7 @@ update-input INPUT:
 
 # Format all nix files
 fmt:
-    nixpkgs-fmt .
+    nixfmt .
 
 # Check for issues with statix
 check:

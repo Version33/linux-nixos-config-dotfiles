@@ -101,7 +101,7 @@ direnv allow
 
 **Tools available in dev environment:**
 - `nixd` - Nix LSP server
-- `nixpkgs-fmt` - Nix code formatter
+- `nixfmt` - Nix code formatter (RFC 166 style, configurable)
 - `statix` - Nix linter
 - `deadnix` - Find unused code
 - `nix-tree` - Visualize dependencies
@@ -157,6 +157,16 @@ just commit "message"  # Git commit all changes
 ```
 
 ## Customization
+
+### Formatter Configuration
+
+The project uses `nixfmt-rfc-style` which respects `.editorconfig` settings:
+
+- **Line width:** Edit `max_line_length` under `[*.nix]` in `.editorconfig` (default: 100)
+- **Indentation:** Already set to 2 spaces in `.editorconfig`
+- **Format command:** `just fmt` or `nixfmt .`
+
+To use a different formatter (e.g., `alejandra` or `nixpkgs-fmt`), edit `flake-parts/dev-shell.nix` and uncomment the alternative.
 
 ### User Configuration
 
