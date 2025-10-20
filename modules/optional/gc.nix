@@ -1,4 +1,4 @@
-{ ... }:
+_:
 
 {
   # Optimize storage and automatic scheduled GC running

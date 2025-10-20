@@ -8,7 +8,7 @@
 #   - LACT for GPU monitoring and configuration
 ##############################################################################
 
-{ ... }:
+_:
 
 {
   # Load AMD GPU driver for Xorg and Wayland

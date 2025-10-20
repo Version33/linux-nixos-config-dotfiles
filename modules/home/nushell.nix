@@ -1,7 +1,16 @@
-{ ... }:
+_:
 
 {
-  home.shell.enableNushellIntegration = true;
+  programs.direnv = {
+    enable = true;
+    enableNushellIntegration = true;
+    nix-direnv.enable = true;  # Better integration with nix
+
+    config = {
+      global.hide_env_diff = true;  # Hide the long export list
+    };
+  };
+
   programs.nushell = {
     enable = true;
     shellAliases = {

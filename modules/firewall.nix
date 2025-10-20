@@ -8,7 +8,7 @@
 # Usage: Uncomment allowedTCPPorts/allowedUDPPorts to open specific ports
 ##############################################################################
 
-{ ... }:
+_:
 
 {
   # Open ports in the firewall.

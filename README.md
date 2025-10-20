@@ -28,6 +28,10 @@ just update
 ├── configuration.nix         # System state version
 ├── hardware-configuration.nix # Hardware-specific settings
 ├── justfile                  # Common commands and workflows
+├── flake-parts/             # Modular flake configuration (using flake-parts)
+│   ├── nixos-systems.nix   # System configurations
+│   ├── dev-shell.nix       # Development environment
+│   └── README.md           # Flake-parts documentation
 ├── modules/
 │   ├── default.nix          # Module imports and organization
 │   ├── home/                # Home-manager configurations
@@ -202,9 +206,20 @@ direnv status
 direnv reload
 ```
 
+## Flake Architecture
+
+This configuration uses [flake-parts](https://flake.parts/) for modular organization.
+
+The flake is split into focused modules in `flake-parts/`:
+- `nixos-systems.nix` - System configurations
+- `dev-shell.nix` - Development environment
+
+See `flake-parts/README.md` for details on adding systems or outputs.
+
 ## Flake Inputs
 
 - `nixpkgs` - nixos-unstable channel
+- `flake-parts` - Modular flake architecture
 - `home-manager` - User environment management
 - `lanzaboote` - Secure Boot support
 - `catppuccin` - Catppuccin theme

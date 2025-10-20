@@ -1,4 +1,4 @@
-{ ... }:
+_:
 
 {
   # open source antivirus https://www.clamav.net/
