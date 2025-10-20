@@ -17,6 +17,9 @@
         # catppuccin.catppuccin-vsc
         # catppuccin.catppuccin-vsc-icons
       ];
+      userSettings = {
+        "claude-code.useTerminal" = true;
+      };
     };
   };
 }

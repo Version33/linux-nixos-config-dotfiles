@@ -70,6 +70,7 @@
           ./modules/terminal-utils.nix
           # ./modules/llm.nix
           ./modules/audio.nix
+          ./modules/windows-vst.nix
           ./modules/kde.nix
           ./modules/home/home.nix
         ];

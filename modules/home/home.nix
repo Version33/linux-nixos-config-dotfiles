@@ -19,8 +19,9 @@
         ./nushell.nix
         ./starship.nix
         ./kitty.nix
-	      ./lazyvim/lazyvim.nix
+        ./lazyvim/lazyvim.nix
         ./plasma.nix
+        ./yabridge.nix
       ];
 
       home.packages = with pkgs; [
