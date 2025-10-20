@@ -35,7 +35,7 @@ update-input INPUT:
 
 # Format all nix files
 fmt:
-    nixfmt .
+    @find . -name '*.nix' -type f -exec nixfmt {} +
 
 # Check for issues with statix
 check:

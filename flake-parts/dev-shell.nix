@@ -19,8 +19,7 @@
         packages = with pkgs; [
           # Nix development tools
           nixd # Nix language server
-          nixfmt-rfc-style # Nix code formatter (RFC 166 style, more options)
-          # nixpkgs-fmt     # Alternative formatter (less configurable)
+          nixfmt-rfc-style # Nix formatter (RFC 166 style)
           statix # Lints and suggestions for Nix code
           deadnix # Find and remove unused code
           nix-tree # Visualize dependency tree
@@ -46,7 +45,7 @@
           echo "  - nom: Better nix build output (nix-output-monitor)"
           echo "  - direnv: Automatic environment activation"
           echo ""
-          echo "Try: nixfmt . to format all files"
+          echo "Try: just fmt to format all files"
           echo "Try: statix check . to check for issues"
           echo "Try: nom build instead of nix build for better output"
           echo ""
