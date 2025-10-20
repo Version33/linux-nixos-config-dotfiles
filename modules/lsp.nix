@@ -27,7 +27,7 @@
     # marksman
     markdown-oxide
     nixd # nil
-    nixfmt
+    # nixfmt
     # zls
     # gopls
     # delve
