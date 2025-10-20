@@ -19,7 +19,7 @@ let
     SYSTEM_REFS=$(${pkgs.nix}/bin/nix-store -qR /run/current-system/sw 2>/dev/null || echo "")
 
     # Filter for plugin packages (exclude bundle and other non-VST packages)
-    PLUGIN_PATHS=$(echo "$SYSTEM_REFS" | ${pkgs.gnugrep}/bin/grep -E "(serum2-|vst-)" | ${pkgs.gnugrep}/bin/grep -v "windows-plugin-bundle" | ${pkgs.gnugrep}/bin/grep -v "vamp-plugin" | ${pkgs.gnugrep}/bin/grep -v "thunar" || echo "")
+    PLUGIN_PATHS=$(echo "$SYSTEM_REFS" | ${pkgs.gnugrep}/bin/grep -E "(serum2-|shaperbox3-|vst-)" | ${pkgs.gnugrep}/bin/grep -v "windows-plugin-bundle" | ${pkgs.gnugrep}/bin/grep -v "vamp-plugin" | ${pkgs.gnugrep}/bin/grep -v "thunar" || echo "")
 
     # Get current yabridge paths
     CURRENT_PATHS=$(${pkgs.yabridgectl}/bin/yabridgectl list 2>/dev/null || echo "")
