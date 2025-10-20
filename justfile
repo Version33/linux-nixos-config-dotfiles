@@ -4,12 +4,20 @@
 default:
     @just --list
 
-# Build and switch to the new configuration
+# Build and switch to the new configuration (with nom for better output)
 switch:
+    sudo nom build '.#nixosConfigurations.k0or.config.system.build.toplevel' && sudo nixos-rebuild switch --flake .#k0or
+
+# Build and switch (plain output, fallback option)
+switch-plain:
     sudo nixos-rebuild switch --flake .#k0or
 
-# Build without switching (test configuration)
+# Build without switching (with nom for better output)
 build:
+    nom build '.#nixosConfigurations.k0or.config.system.build.toplevel'
+
+# Build (plain output, fallback option)
+build-plain:
     nixos-rebuild build --flake .#k0or
 
 # Build and test in a VM
@@ -37,8 +45,12 @@ check:
 deadcode:
     deadnix .
 
-# Check flake and show any errors
+# Check flake and show any errors (with nom for better output)
 flake-check:
+    nom flake check
+
+# Check flake (plain output, fallback option)
+flake-check-plain:
     nix flake check
 
 # Show flake metadata
@@ -90,3 +102,18 @@ search PACKAGE:
 # Enter development shell
 dev:
     nix develop
+
+# Setup direnv hooks for automatic environment loading
+setup-direnv:
+    @echo "Setting up direnv hooks..."
+    @if ! grep -q 'eval "$(direnv hook' ~/.bashrc ~/.zshrc ~/.config/fish/config.fish 2>/dev/null; then \
+        echo "Add one of these to your shell config:"; \
+        echo "  Bash: echo 'eval \"\$(direnv hook bash)\"' >> ~/.bashrc"; \
+        echo "  Zsh:  echo 'eval \"\$(direnv hook zsh)\"' >> ~/.zshrc"; \
+        echo "  Fish: echo 'direnv hook fish | source' >> ~/.config/fish/config.fish"; \
+        echo "  Nushell: see https://direnv.net/docs/hook.html#nushell"; \
+    else \
+        echo "direnv hooks already configured!"; \
+    fi
+    @echo ""
+    @echo "After setting up hooks, run: direnv allow"

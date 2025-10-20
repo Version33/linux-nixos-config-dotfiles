@@ -21,6 +21,11 @@
         statix            # Lints and suggestions for Nix code
         deadnix           # Find and remove unused code
         nix-tree          # Visualize dependency tree
+        nix-output-monitor # Better build output (alias: nom)
+
+        # Development environment tools
+        direnv            # Automatic environment activation
+        nix-direnv        # Fast direnv integration for Nix
 
         # Useful utilities
         git
@@ -35,9 +40,14 @@
         echo "  - statix: Lint nix code"
         echo "  - deadnix: Find unused code"
         echo "  - nix-tree: Visualize dependencies"
+        echo "  - nom: Better nix build output (nix-output-monitor)"
+        echo "  - direnv: Automatic environment activation"
         echo ""
         echo "Try: nixpkgs-fmt . to format all files"
         echo "Try: statix check . to check for issues"
+        echo "Try: nom build instead of nix build for better output"
+        echo ""
+        echo "Setup direnv: Run 'just setup-direnv' to configure direnv hooks"
       '';
     };
   };

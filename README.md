@@ -84,13 +84,17 @@ Optional modules are stored in `modules/optional/`. To enable one:
 
 ## Development Environment
 
-This project uses direnv for automatic environment loading.
+This project uses direnv + nix-direnv for automatic environment loading with better performance.
 
 **First-time setup:**
 ```bash
-just switch        # Enable direnv in your system
-cd /home/vee/nixos # Re-enter directory
-direnv allow       # Grant permission (one-time)
+# 1. Setup direnv hooks in your shell
+just setup-direnv  # Follow the instructions shown
+
+# 2. Reload your shell, then allow the directory
+direnv allow
+
+# 3. The dev environment will now load automatically when you cd into this directory
 ```
 
 **Tools available in dev environment:**
@@ -99,7 +103,15 @@ direnv allow       # Grant permission (one-time)
 - `statix` - Nix linter
 - `deadnix` - Find unused code
 - `nix-tree` - Visualize dependencies
+- `nom` - Better Nix build output (nix-output-monitor)
+- `direnv` + `nix-direnv` - Automatic environment activation
 - `just` - Command runner
+
+**Why nix-direnv?**
+- Prevents garbage collection of your dev environment
+- Much faster than regular `nix develop`
+- Works seamlessly with editors and IDEs
+- Persists environments across shell sessions
 
 ## Common Commands
 
@@ -112,8 +124,10 @@ just check        # Check for issues with statix
 just deadcode     # Find unused code
 
 # System Management
-just switch       # Build and apply configuration
-just build        # Build without applying
+just switch       # Build and apply configuration (uses nom by default)
+just switch-plain # Build and apply (plain output, fallback)
+just build        # Build without applying (uses nom by default)
+just build-plain  # Build (plain output, fallback)
 just dry-run      # Show what would change
 just diff         # Show configuration diff
 
@@ -159,15 +173,23 @@ Edit `modules/users.nix` to modify user accounts.
 ### Build Failures
 
 ```bash
-# Check flake for errors
-nix flake check
+# Check flake for errors (uses nom by default)
+just flake-check
+
+# Or use plain output
+just flake-check-plain
 
 # Show detailed build log
 nixos-rebuild build --flake .#k0or --show-trace
 
+# Build with better error formatting
+nom build '.#nixosConfigurations.k0or.config.system.build.toplevel'
+
 # Verify syntax
 statix check .
 ```
+
+**Tip:** Use `nom` (nix-output-monitor) instead of regular nix commands for much more readable output, especially when errors occur. The meaningful parts of Nix errors are often buried in the middle - `nom` highlights them better.
 
 ### System Won't Boot
 
