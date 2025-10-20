@@ -1,3 +1,18 @@
+##############################################################################
+# Module Organization
+#
+# This file aggregates all NixOS configuration modules.
+# Modules are organized by category for easy management.
+#
+# To enable an optional module:
+#   1. Uncomment the desired module path below
+#   2. Run: just switch (or sudo nixos-rebuild switch --flake .#k0or)
+#
+# To disable an active module:
+#   1. Comment out the module path
+#   2. Run: just switch
+##############################################################################
+
 { ... }:
 
 {

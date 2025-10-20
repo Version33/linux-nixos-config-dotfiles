@@ -1,3 +1,13 @@
+##############################################################################
+# Firewall Configuration
+#
+# Purpose: Basic firewall configuration using nftables
+# Features:
+#   - Firewall enabled by default
+#   - No ports open by default (secure default)
+# Usage: Uncomment allowedTCPPorts/allowedUDPPorts to open specific ports
+##############################################################################
+
 { ... }:
 
 {

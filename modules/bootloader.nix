@@ -1,3 +1,14 @@
+##############################################################################
+# Bootloader Configuration
+#
+# Purpose: Configure systemd-boot bootloader with Plymouth boot splash
+# Features:
+#   - systemd-boot for UEFI systems
+#   - Plymouth splash screen
+#   - Reduced boot verbosity for clean boot experience
+#   - 2-second boot menu timeout
+##############################################################################
+
 { pkgs, ... }:
 
 {

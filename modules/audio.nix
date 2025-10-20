@@ -1,3 +1,15 @@
+##############################################################################
+# Audio Production Configuration
+#
+# Purpose: Configure system for professional audio production
+# Features:
+#   - Bitwig Studio DAW
+#   - Realtime audio priorities (PAM limits)
+#   - Unlimited memory locking for yabridge
+#   - Low-latency audio support
+# Note: Users must be in the 'audio' group for realtime privileges
+##############################################################################
+
 { pkgs, inputs, ... }:
 
 {

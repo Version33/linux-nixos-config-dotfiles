@@ -1,3 +1,15 @@
+##############################################################################
+# Terminal Utilities
+#
+# Purpose: Modern CLI tools and terminal enhancements
+# Features:
+#   - Modern replacements: ripgrep, fd, dust, procs, bat
+#   - File management: yazi, ouch, zoxide
+#   - System monitoring: gping, duf, ncdu, macchina
+#   - Productivity: tealdeer, tokei, hexyl, pandoc
+#   - Fun: cmatrix, pipes-rs, cava
+##############################################################################
+
 { pkgs, ... }:
 
 {

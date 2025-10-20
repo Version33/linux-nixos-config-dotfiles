@@ -1,3 +1,14 @@
+##############################################################################
+# Language Server Protocol (LSP) Tools
+#
+# Purpose: System-wide language servers for code editing
+# Features:
+#   - nixd: Nix language server
+#   - nixfmt: Nix code formatter
+#   - markdown-oxide: Markdown language server
+# Note: Additional LSP servers are commented out and can be enabled as needed
+##############################################################################
+
 { pkgs, ... }:
 
 {

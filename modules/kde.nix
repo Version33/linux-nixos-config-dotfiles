@@ -1,3 +1,13 @@
+##############################################################################
+# KDE Plasma Desktop Environment
+#
+# Purpose: Configure KDE Plasma 6 desktop with SDDM display manager
+# Features:
+#   - Plasma 6 desktop environment
+#   - SDDM login manager with Wayland support
+#   - Essential KDE applications and utilities
+##############################################################################
+
 { pkgs, ... }:
 
 {

@@ -1,3 +1,14 @@
+##############################################################################
+# Development Utilities
+#
+# Purpose: System-level development tools and compilers
+# Features:
+#   - C/C++ toolchain (gcc, clang, mold linker)
+#   - LLVM debugger (lldb)
+#   - SurrealDB database and migration tools
+#   - Rust web tooling (trunk)
+##############################################################################
+
 { pkgs, ... }:
 
 {

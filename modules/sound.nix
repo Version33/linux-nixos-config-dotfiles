@@ -1,3 +1,15 @@
+##############################################################################
+# Sound Configuration
+#
+# Purpose: Configure PipeWire audio server
+# Features:
+#   - PipeWire audio server (replaces PulseAudio)
+#   - ALSA, PulseAudio, and JACK compatibility
+#   - 32-bit audio support
+#   - Realtime kit for low-latency audio
+#   - Audio control utilities (pamixer, pavucontrol)
+##############################################################################
+
 { pkgs, ... }:
 
 {

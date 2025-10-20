@@ -1,3 +1,13 @@
+##############################################################################
+# AMD GPU Configuration
+#
+# Purpose: Configure AMD GPU drivers and overclocking tools
+# Features:
+#   - amdgpu driver for Xorg and Wayland
+#   - GPU overdrive support (overclocking)
+#   - LACT for GPU monitoring and configuration
+##############################################################################
+
 { ... }:
 
 {

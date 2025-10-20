@@ -1,7 +1,18 @@
+##############################################################################
+# User Configuration
+#
+# Purpose: Define system users and user-level applications
+# Features:
+#   - User 'vee' with nushell as default shell
+#   - Member of audio, video, wheel, and realtime groups
+#   - Firefox and Steam enabled
+#   - 8GB runtime directory size for large tmpfs operations
+##############################################################################
+
 { pkgs, ... }:
 
 {
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Define a user account. Don't forget to set a password with 'passwd'.
   users.users.vee = {
     isNormalUser = true;
     description = "vee";

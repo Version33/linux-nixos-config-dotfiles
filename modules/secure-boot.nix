@@ -1,3 +1,14 @@
+##############################################################################
+# Secure Boot Configuration
+#
+# Purpose: Enable UEFI Secure Boot using Lanzaboote
+# Features:
+#   - Lanzaboote bootloader with Secure Boot support
+#   - sbctl for managing Secure Boot keys
+#   - Automatic kernel signing
+# Note: Requires initial setup with sbctl to create and enroll keys
+##############################################################################
+
 { pkgs, lib, inputs, ... }:
 
 {
