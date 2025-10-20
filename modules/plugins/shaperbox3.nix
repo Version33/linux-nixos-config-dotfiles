@@ -1,4 +1,9 @@
-{ stdenvNoCC, lib, pkgs, requireFile }:
+{
+  stdenvNoCC,
+  lib,
+  pkgs,
+  requireFile,
+}:
 
 let
   _version = "3.6";

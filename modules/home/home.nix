@@ -4,49 +4,47 @@
     inputs.home-manager.nixosModules.home-manager
     inputs.catppuccin.nixosModules.catppuccin
   ];
-  
-  home-manager.users.vee =
-    {
-      home.username = "vee";
-      home.homeDirectory = "/home/vee";
-      nixpkgs.config.allowUnfree = true;
 
-      imports = [
-        inputs.catppuccin.homeModules.catppuccin
-        inputs.plasma-manager.homeModules.plasma-manager
-        ./vscode.nix
-        ./git.nix
-        ./nushell.nix
-        ./starship.nix
-        ./kitty.nix
-        ./lazyvim/lazyvim.nix
-        ./plasma.nix
-        ./yabridge.nix
-        ./lsp-plugins.nix
-      ];
+  home-manager.users.vee = {
+    home.username = "vee";
+    home.homeDirectory = "/home/vee";
+    nixpkgs.config.allowUnfree = true;
 
-      home.packages = with pkgs; [
-        osu-lazer-bin
-        tidal-hifi
-        proton-pass
-        #discord
-        vesktop
-        kdePackages.filelight
-        qimgv
-        orca-slicer
-        qbittorrent-enhanced
-        godotPackages_4_5.godot
-        claude-code
-        # gemini-cli
-        lsp-plugins
-      ];
+    imports = [
+      inputs.catppuccin.homeModules.catppuccin
+      inputs.plasma-manager.homeModules.plasma-manager
+      ./vscode.nix
+      ./git.nix
+      ./nushell.nix
+      ./starship.nix
+      ./kitty.nix
+      ./lazyvim/lazyvim.nix
+      ./plasma.nix
+      ./yabridge.nix
+      ./lsp-plugins.nix
+    ];
 
-      home.sessionVariables = {
-        EDITOR = "nvim";
-      };
+    home.packages = with pkgs; [
+      osu-lazer-bin
+      tidal-hifi
+      proton-pass
+      #discord
+      vesktop
+      kdePackages.filelight
+      qimgv
+      orca-slicer
+      qbittorrent-enhanced
+      godotPackages_4_5.godot
+      claude-code
+      # gemini-cli
+      lsp-plugins
+    ];
 
-
-      # no touchy
-      home.stateVersion = "25.05";
+    home.sessionVariables = {
+      EDITOR = "nvim";
     };
+
+    # no touchy
+    home.stateVersion = "25.05";
+  };
 }

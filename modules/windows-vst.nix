@@ -21,14 +21,12 @@ let
   pluginsDir = ./plugins;
 
   # Auto-discover all .nix files in the plugins directory
-  pluginFiles = builtins.filter
-    (name: lib.hasSuffix ".nix" name)
-    (builtins.attrNames (builtins.readDir pluginsDir));
+  pluginFiles = builtins.filter (name: lib.hasSuffix ".nix" name) (
+    builtins.attrNames (builtins.readDir pluginsDir)
+  );
 
   # Import each plugin as a package
-  windowsPlugins = map
-    (file: pkgs.callPackage (pluginsDir + "/${file}") { })
-    pluginFiles;
+  windowsPlugins = map (file: pkgs.callPackage (pluginsDir + "/${file}") { }) pluginFiles;
 
   # Create a bundle that symlinks all plugins together
   windowsPluginBundle = pkgs.runCommand "windows-plugin-bundle" { } ''
@@ -41,18 +39,21 @@ let
 in
 {
   # Install required tools for Windows VST bridging
-  environment.systemPackages = with pkgs; [
-    # Wine for running Windows applications
-    wine-staging
-    winetricks
+  environment.systemPackages =
+    with pkgs;
+    [
+      # Wine for running Windows applications
+      wine-staging
+      winetricks
 
-    # Yabridge for bridging Windows VSTs to Linux DAWs
-    yabridge
-    yabridgectl
+      # Yabridge for bridging Windows VSTs to Linux DAWs
+      yabridge
+      yabridgectl
 
-    # The plugin bundle containing all discovered Windows VSTs
-    windowsPluginBundle
-  ] ++ windowsPlugins; # Also include individual plugins
+      # The plugin bundle containing all discovered Windows VSTs
+      windowsPluginBundle
+    ]
+    ++ windowsPlugins; # Also include individual plugins
 
   # Optional: Print discovered plugins during build
   # This helps verify that plugins are being discovered correctly

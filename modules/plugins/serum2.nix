@@ -1,4 +1,9 @@
-{ stdenvNoCC, lib, pkgs, requireFile }:
+{
+  stdenvNoCC,
+  lib,
+  pkgs,
+  requireFile,
+}:
 
 let
   _version = "2.0.23";

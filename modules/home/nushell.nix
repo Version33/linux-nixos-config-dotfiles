@@ -4,10 +4,10 @@ _:
   programs.direnv = {
     enable = true;
     enableNushellIntegration = true;
-    nix-direnv.enable = true;  # Better integration with nix
+    nix-direnv.enable = true; # Better integration with nix
 
     config = {
-      global.hide_env_diff = true;  # Hide the long export list
+      global.hide_env_diff = true; # Hide the long export list
     };
   };
 
@@ -25,7 +25,7 @@ _:
       ngc7 = "sudo nix-collect-garbage --delete-older-than 7d";
       ngc14 = "sudo nix-collect-garbage --delete-older-than 14d";
       format-nix = "ls *.nix | each { |f| sudo nixfmt $f.name }";
-      };
+    };
     settings = {
       show_banner = false;
     };

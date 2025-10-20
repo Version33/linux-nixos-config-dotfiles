@@ -9,7 +9,12 @@
 # Note: Requires initial setup with sbctl to create and enroll keys
 ##############################################################################
 
-{ pkgs, lib, inputs, ... }:
+{
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 
 {
   imports = [

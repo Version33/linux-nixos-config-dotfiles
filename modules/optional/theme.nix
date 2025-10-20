@@ -4,7 +4,7 @@
   inports = [
     inputs.catppuccin.nixosModules.catppuccin
   ];
-  
+
   catppuccin = {
     enable = true;
     flavor = "mocha";
@@ -56,18 +56,18 @@
   # };
 
   # environment.systemPackages = with pkgs; [
-    # catppuccin
+  # catppuccin
 
-    # numix-icon-theme-circle
-    # colloid-icon-theme
-    # catppuccin-gtk
-    # catppuccin-kvantum
-    # catppuccin-cursors.macchiatoTeal
+  # numix-icon-theme-circle
+  # colloid-icon-theme
+  # catppuccin-gtk
+  # catppuccin-kvantum
+  # catppuccin-cursors.macchiatoTeal
 
-    # gnome.gnome-tweaks
-    # gnome.gnome-shell
-    # gnome.gnome-shell-extensions
-    # xsettingsd
-    # themechanger
+  # gnome.gnome-tweaks
+  # gnome.gnome-shell
+  # gnome.gnome-shell-extensions
+  # xsettingsd
+  # themechanger
   # ];
 }

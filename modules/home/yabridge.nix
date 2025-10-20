@@ -4,7 +4,12 @@
 # from the windows-vst module. It runs yabridgectl add and sync automatically
 # whenever the home configuration is activated.
 
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   # Find the windows-plugin-bundle in the system packages
@@ -60,7 +65,7 @@ let
 in
 {
   # Run yabridge setup when home configuration is activated
-  home.activation.yabridgeSetup = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  home.activation.yabridgeSetup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     $DRY_RUN_CMD ${yabridgeSetup}
   '';
 
