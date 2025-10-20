@@ -25,54 +25,7 @@
         modules = [
           ./configuration.nix
           ./hardware-configuration.nix
-          ./modules/linux-kernel.nix
-
-          ./modules/secure-boot.nix
-          ./modules/amdgpu.nix
-          ./modules/graphics.nix
-          ./modules/sound.nix
-          ./modules/usb.nix
-          ./modules/udev.nix
-          ./modules/time.nix
-          ./modules/bootloader.nix
-          ./modules/nix-settings.nix
-          ./modules/nixpkgs.nix
-          ./modules/internationalisation.nix
-
-          ./modules/services.nix
-          ./modules/fonts.nix
-          ./modules/bluetooth.nix
-
-
-          # ./modules/clamav-scanner.nix
-          # ./modules/yubikey.nix
-          # ./modules/gc.nix
-          # ./modules/auto-upgrade.nix
-          # ./modules/location.nix
-          # ./modules/display-manager.nix
-          # ./modules/theme.nix
-          # ./modules/security-services.nix
-          # ./modules/printing.nix
-          # ./modules/gnome.nix
-          ./modules/environment-variables.nix
-          # ./modules/networking.nix
-          # ./modules/open-ssh.nix
-          ./modules/firewall.nix
-          # ./modules/dns.nix
-          # ./modules/vpn.nix
-          ./modules/users.nix
-          # ./modules/virtualisation.nix
-          # ./modules/programming-languages.nix
-          ./modules/lsp.nix
-          # ./modules/rust.nix
-          ./modules/info-fetchers.nix
-          ./modules/utils.nix
-          ./modules/terminal-utils.nix
-          # ./modules/llm.nix
-          ./modules/audio.nix
-          ./modules/windows-vst.nix
-          ./modules/kde.nix
-          ./modules/home/home.nix
+          ./modules
         ];
       };
     };
