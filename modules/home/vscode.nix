@@ -13,6 +13,7 @@
         jeff-hykin.better-nix-syntax
         formulahendry.code-runner
         anthropic.claude-code
+        Google.gemini-cli-vscode-ide-companion
 
         # catppuccin.catppuccin-vsc
         # catppuccin.catppuccin-vsc-icons
