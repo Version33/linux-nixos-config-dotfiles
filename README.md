@@ -7,18 +7,20 @@ A declarative NixOS configuration featuring KDE Plasma, development tools, and a
 ## Quick Start
 
 ```bash
-# Build and switch to configuration
+# Build and switch to configuration (uses nom for better output)
 just switch
 
-# Or manually
+# Or manually (plain output)
 sudo nixos-rebuild switch --flake .#k0or
 
-# Test build without applying
+# Test build without applying (uses nom for better output)
 just build
 
 # Update all inputs
 just update
 ```
+
+**Note:** All build commands use `nom` (nix-output-monitor) by default for much more readable output, especially when errors occur. Plain versions available with `-plain` suffix if needed.
 
 ## Project Structure
 
@@ -119,29 +121,39 @@ Run `just` to see all available commands. Most useful:
 
 ```bash
 # Development
-just fmt          # Format all nix files
-just check        # Check for issues with statix
-just deadcode     # Find unused code
+just fmt               # Format all nix files
+just check             # Check for issues with statix
+just deadcode          # Find unused code
+just flake-check       # Check flake for errors (uses nom)
+just tree              # Visualize dependency tree
+just search PACKAGE    # Search for a package in nixpkgs
 
 # System Management
-just switch       # Build and apply configuration (uses nom by default)
-just switch-plain # Build and apply (plain output, fallback)
-just build        # Build without applying (uses nom by default)
-just build-plain  # Build (plain output, fallback)
-just dry-run      # Show what would change
-just diff         # Show configuration diff
+just switch            # Build and apply configuration (uses nom by default)
+just switch-plain      # Build and apply (plain output, fallback)
+just build             # Build without applying (uses nom by default)
+just build-plain       # Build (plain output, fallback)
+just dry-run           # Show what would be built/downloaded
+just diff              # Show configuration diff
 
 # Updates & Maintenance
-just update       # Update all flake inputs
-just clean        # Clean old generations (30+ days)
-just generations  # List all system generations
-just optimize     # Optimize nix store
+just update            # Update all flake inputs
+just update-input NAME # Update specific input (e.g., nixpkgs)
+just clean             # Clean old generations (30+ days)
+just generations       # List all system generations
+just optimize          # Optimize nix store
+just disk-usage        # Show disk usage of nix store
+
+# Development Environment
+just setup-direnv      # Setup direnv hooks for your shell
+just dev               # Manually enter development shell
 
 # Testing
-just vm           # Test configuration in VM
+just vm                # Test configuration in VM
 
 # Quick Workflows
-just quick "message"  # Commit and switch in one command
+just quick "message"   # Commit and switch in one command
+just commit "message"  # Git commit all changes
 ```
 
 ## Customization
@@ -189,7 +201,7 @@ nom build '.#nixosConfigurations.k0or.config.system.build.toplevel'
 statix check .
 ```
 
-**Tip:** Use `nom` (nix-output-monitor) instead of regular nix commands for much more readable output, especially when errors occur. The meaningful parts of Nix errors are often buried in the middle - `nom` highlights them better.
+**Tip:** `nom` (nix-output-monitor) is now the default for all build commands in this project. It provides much more readable output, especially when errors occur - the meaningful parts of Nix errors are often buried in the middle, and `nom` highlights them better. Use the `-plain` suffix commands if you need standard Nix output for scripting or debugging.
 
 ### System Won't Boot
 
