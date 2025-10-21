@@ -8,4 +8,9 @@
     # nerd-font-patcher
     noto-fonts-monochrome-emoji
   ];
+
+  # Set default fonts
+  fonts.fontconfig.defaultFonts = {
+    monospace = [ "JetBrains Mono" ];
+  };
 }

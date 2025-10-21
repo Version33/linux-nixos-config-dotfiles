@@ -36,6 +36,14 @@ update:
 update-input INPUT:
     nix flake lock --update-input {{INPUT}}
 
+# Build and test the new configuration without making it default (with nom for better output)
+test:
+    sudo nom build '.#nixosConfigurations.k0or.config.system.build.toplevel' && sudo nixos-rebuild test --flake .#k0or
+
+# Build and test (plain output, fallback option)
+test-plain:
+    sudo nixos-rebuild test --flake .#k0or
+
 # Format all nix files
 fmt:
     @find . -name '*.nix' -type f -exec nixfmt {} +
