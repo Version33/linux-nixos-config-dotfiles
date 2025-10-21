@@ -39,6 +39,7 @@
     ./nixpkgs.nix
     ./internationalisation.nix
     ./environment-variables.nix
+    ./vm.nix
 
     # Network & Security
     ./firewall.nix

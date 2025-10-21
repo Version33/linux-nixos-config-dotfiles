@@ -3,3 +3,4 @@
 .claude*
 .direnv/
 result
+nixos.qcow2

@@ -6,6 +6,6 @@
     jetbrains-mono
     nerd-fonts._0xproto
     # nerd-font-patcher
-    # noto-fonts-color-emoji
+    noto-fonts-color-emoji
   ];
 }

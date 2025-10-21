@@ -16,6 +16,7 @@
   users.users.vee = {
     isNormalUser = true;
     description = "vee";
+    initialPassword = "";
     extraGroups = [
       "networkmanager"
       "input"
