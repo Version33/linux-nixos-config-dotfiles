@@ -26,6 +26,9 @@
     # virtualisation.useEFIBoot = true;
 
     # Optional: enable graphics acceleration in VM
-    virtualisation.qemu.options = [ "-vga virtio" "-display gtk,gl=on" ];
+    virtualisation.qemu.options = [
+      "-vga virtio"
+      "-display gtk,gl=on"
+    ];
   };
 }

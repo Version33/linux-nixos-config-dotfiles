@@ -43,6 +43,7 @@
 
     # Network & Security
     ./firewall.nix
+    ./optional/dns.nix
 
     # System Services
     ./services.nix
@@ -71,7 +72,6 @@
     # To enable, uncomment the desired module below:
     # ./optional/networking.nix
     # ./optional/open-ssh.nix
-    # ./optional/dns.nix
     # ./optional/vpn.nix
     # ./optional/auto-upgrade.nix
     # ./optional/gc.nix
