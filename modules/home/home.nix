@@ -33,6 +33,7 @@
       kdePackages.filelight
       qimgv
       orca-slicer
+      # bambu-studio
       qbittorrent-enhanced
       godotPackages_4_5.godot
       claude-code

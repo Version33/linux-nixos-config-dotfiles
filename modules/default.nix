@@ -63,7 +63,7 @@
 
     # Audio Production
     ./audio.nix
-    ./windows-vst.nix
+    # ./windows-vst.nix
 
     # Home Manager
     ./home/home.nix
