@@ -18,7 +18,7 @@ See `TEMPLATE.nix` for a complete example.
 
 1. Copy the template:
    ```bash
-   cp modules/TEMPLATE.nix modules/my-new-module.nix
+   cp modules/TEMPLATE.nix modules/category/my-new-module.nix
    ```
 
 2. Edit the header to describe your module:
@@ -39,7 +39,7 @@ See `TEMPLATE.nix` for a complete example.
    ```nix
    imports = [
      # ... other modules
-     ./my-new-module.nix
+     ./category/my-new-module.nix
    ];
    ```
 
@@ -51,32 +51,32 @@ See `TEMPLATE.nix` for a complete example.
 
 ## Module Organization
 
-Modules are organized into categories in `default.nix`:
+Modules are organized into category directories:
 
-- **Boot & Kernel** - Low-level system boot configuration
-- **Hardware Support** - Drivers and hardware-specific settings
-- **System Settings** - Core system configuration
-- **Network & Security** - Networking and firewall
-- **System Services** - Background services and daemons
-- **User Configuration** - User accounts and permissions
-- **Desktop Environment** - GUI desktop settings
-- **Development Tools** - Programming and development utilities
-- **Audio Production** - Audio-specific configuration
-- **Home Manager** - User-level configuration
+- **boot/** - Bootloader, kernel, and secure boot configuration
+- **hardware/** - GPU, graphics, sound, bluetooth, USB, and other hardware
+- **system/** - Core system settings (time, nix, i18n, environment, VM)
+- **network/** - Networking, firewall, DNS, SSH, and VPN
+- **desktop/** - KDE, GNOME, display manager, and theme configuration
+- **development/** - LSP, programming languages, tools, and utilities
+- **audio/** - Audio production tools, VST plugins, and bridges
+- **users/** - User accounts and configuration
+- **services/** - System services, fonts, printing, and security
+- **home/** - Home Manager user-level configurations
 
-Place your new module in the appropriate category.
+Place your new module file in the appropriate category directory.
 
 ## Optional Modules
 
-Modules in the `optional/` directory are available but not active.
+Optional modules are available within their respective category directories but commented out in `default.nix`.
 
 To enable an optional module:
 1. Edit `default.nix`
-2. Uncomment the module path (e.g., `# ./optional/rust.nix` → `./optional/rust.nix`)
+2. Uncomment the module path (e.g., `# ./development/rust.nix` → `./development/rust.nix`)
 3. Rebuild: `just switch`
 
 To disable an active module:
-1. Move it to `optional/` or comment it out in `default.nix`
+1. Comment it out in `default.nix`
 2. Rebuild: `just switch`
 
 ## Best Practices

@@ -1,10 +1,10 @@
 # Windows VST Plugin Management Module
 #
 # This module automatically discovers and integrates Windows VST plugins
-# from the modules/plugins/ directory.
+# from the modules/audio/plugins/ directory.
 #
 # To add a new plugin:
-# 1. Create a new .nix file in modules/plugins/ (e.g., my-plugin.nix)
+# 1. Create a new .nix file in modules/audio/plugins/ (e.g., my-plugin.nix)
 # 2. Follow the pattern used in serum2.nix:
 #    - Use stdenvNoCC.mkDerivation
 #    - Install the VST using wine and xvfb-run

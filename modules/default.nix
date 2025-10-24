@@ -21,71 +21,77 @@
 {
   imports = [
     # Boot & Kernel
-    ./linux-kernel.nix
-    ./secure-boot.nix
-    ./bootloader.nix
+    ./boot/linux-kernel.nix
+    ./boot/secure-boot.nix
+    ./boot/bootloader.nix
 
     # Hardware Support
-    ./amdgpu.nix
-    ./graphics.nix
-    ./sound.nix
-    ./bluetooth.nix
-    ./usb.nix
-    ./udev.nix
+    ./hardware/amdgpu.nix
+    ./hardware/graphics.nix
+    ./hardware/sound.nix
+    ./hardware/bluetooth.nix
+    ./hardware/usb.nix
+    ./hardware/udev.nix
 
     # System Settings
-    ./time.nix
-    ./nix-settings.nix
-    ./nixpkgs.nix
-    ./internationalisation.nix
-    ./environment-variables.nix
-    ./vm.nix
+    ./system/time.nix
+    ./system/nix-settings.nix
+    ./system/nixpkgs.nix
+    ./system/internationalisation.nix
+    ./system/environment-variables.nix
+    ./system/vm.nix
 
     # Network & Security
-    ./firewall.nix
-    ./optional/dns.nix
-
-    # System Services
-    ./services.nix
-    ./fonts.nix
-
-    # User Configuration
-    ./users.nix
+    ./network/firewall.nix
+    ./network/dns.nix
 
     # Desktop Environment
-    ./kde.nix
+    ./desktop/kde.nix
 
     # Development Tools
-    ./lsp.nix
-    ./info-fetchers.nix
-    ./utils.nix
-    ./terminal-utils.nix
+    ./development/lsp.nix
+    ./development/info-fetchers.nix
+    ./development/utils.nix
+    ./development/terminal-utils.nix
 
     # Audio Production
-    ./audio.nix
-    # ./windows-vst.nix
+    ./audio/audio.nix
+    # ./audio/windows-vst.nix
+
+    # Users
+    ./users/users.nix
+
+    # Services
+    ./services/services.nix
+    ./services/fonts.nix
 
     # Home Manager
     ./home/home.nix
 
-    # Optional modules available in ./optional/
-    # To enable, uncomment the desired module below:
-    # ./optional/networking.nix
-    # ./optional/open-ssh.nix
-    # ./optional/vpn.nix
-    # ./optional/auto-upgrade.nix
-    # ./optional/gc.nix
-    # ./optional/printing.nix
-    # ./optional/clamav-scanner.nix
-    # ./optional/security-services.nix
-    # ./optional/yubikey.nix
-    # ./optional/gnome.nix
-    # ./optional/display-manager.nix
-    # ./optional/theme.nix
-    # ./optional/programming-languages.nix
-    # ./optional/rust.nix
-    # ./optional/llm.nix
-    # ./optional/virtualisation.nix
-    # ./optional/location.nix
+    # Optional modules - uncomment to enable:
+    # Network
+    # ./network/networking.nix
+    # ./network/open-ssh.nix
+    # ./network/vpn.nix
+
+    # Desktop
+    # ./desktop/gnome.nix
+    # ./desktop/display-manager.nix
+    # ./desktop/theme.nix
+
+    # Development
+    # ./development/programming-languages.nix
+    # ./development/rust.nix
+    # ./development/llm.nix
+    # ./development/virtualisation.nix
+
+    # Services
+    # ./services/auto-upgrade.nix
+    # ./services/gc.nix
+    # ./services/printing.nix
+    # ./services/clamav-scanner.nix
+    # ./services/security-services.nix
+    # ./services/yubikey.nix
+    # ./services/location.nix
   ];
 }
