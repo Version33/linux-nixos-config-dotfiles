@@ -46,7 +46,7 @@ test-plain:
 
 # Format all nix files
 fmt:
-    @find . -name '*.nix' -type f -exec nixfmt {} +
+    @find . -name '*.nix' -not -name 'hardware-configuration.nix' -type f -exec nixfmt {} +
 
 # Check for issues with statix
 check:
