@@ -1,9 +1,9 @@
 { pkgs, config, ... }:
 
 {
-
+  # Core service: Ollama with ROCm GPU acceleration for AMD GPUs
   services.ollama = {
-    enable = true;
+    enable = false;
     loadModels = [
       "llama3.2:3b"
       "phi4-reasoning:14b"
@@ -14,55 +14,57 @@
       "qwen3:14b"
       "qwen3-coder:30b"
       "nomic-embed-text"
+      "deepseek-r1:32b"
     ];
-    acceleration = "cuda";
+    acceleration = "rocm";
+    # Specify which AMD GPU to use (RX 9070 XT = gfx1201 = RDNA 4)
+    rocmOverrideGfx = "12.0.1";
   };
 
-  services.searx = {
-    enable = true;
-    settings = {
-      server = {
-        port = 7777;
-        bind_address = "127.0.0.1";
-        secret_key = "@SEARX_SECRET_KEY@"; # FIXME: Set up this key in the .env file described below, name of variable `SEARX_SECRET_KEY`
-      };
-      search = {
-        formats = [
-          "html"
-          "json"
-        ];
-      };
-    };
-    environmentFile = "${config.users.users.vee.home}/.config/.env.searxng"; # FIXME: The location of the `.env` file where you need to set up the key
-  };
+  # Optional services - uncomment if needed:
+  # services.searx = {
+  #   enable = true;
+  #   settings = {
+  #     server = {
+  #       port = 7777;
+  #       bind_address = "127.0.0.1";
+  #       secret_key = "@SEARX_SECRET_KEY@";
+  #     };
+  #     search = {
+  #       formats = [
+  #         "html"
+  #         "json"
+  #       ];
+  #     };
+  #   };
+  #   environmentFile = "${config.users.users.vee.home}/.config/.env.searxng";
+  # };
 
-  services.n8n = {
-    enable = true;
-  };
+  # services.n8n = {
+  #   enable = true;
+  # };
 
-  services.open-webui = {
-    enable = true;
-    port = 8888;
-    host = "127.0.0.1";
-  };
+  # services.open-webui = {
+  #   enable = true;
+  #   port = 8888;
+  #   host = "127.0.0.1";
+  # };
 
   environment.systemPackages = with pkgs; [
+    # Essential: Terminal interface for Ollama
     oterm
-    alpaca
 
-    aichat
-    fabric-ai
+    # Essential: ROCm monitoring and utilities to verify GPU usage
+    rocmPackages.rocm-smi
+    rocmPackages.rocminfo
 
-    aider-chat
-    opencode
-    codex
-
-    # tgpt
-    # smartcat
-    # nextjs-ollama-llm-ui
-    # open-webui
-
-    chromium
-    playwright
+    # Optional: Uncomment additional tools as needed
+    # alpaca  # GUI for Ollama (currently broken in nixpkgs)
+    # gpt4all  # Alternative GUI with AMD/ROCm support
+    # aichat
+    # fabric-ai
+    # aider-chat
+    # opencode
+    # codex
   ];
 }
