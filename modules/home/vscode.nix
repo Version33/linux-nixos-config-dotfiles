@@ -19,7 +19,7 @@
         # catppuccin.catppuccin-vsc-icons
       ];
       userSettings = {
-        "claude-code.useTerminal" = true;
+        "claudeCode.useTerminal" = true;
         "git.confirmSync" = false;
       };
     };
