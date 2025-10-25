@@ -4,4 +4,3 @@
 .direnv/
 result
 nixos.qcow2
-hardware-configuration.nix
