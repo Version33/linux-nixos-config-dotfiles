@@ -44,6 +44,7 @@
     # Network & Security
     ./network/firewall.nix
     ./network/dns.nix
+    ./network/local-services.nix
 
     # Desktop Environment
     ./desktop/kde.nix
