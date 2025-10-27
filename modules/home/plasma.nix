@@ -50,16 +50,17 @@ in
       # Set wallpapers per monitor (wallpaper array is ordered by monitor priority, not screen number)
       # To re-enable right monitor: add "wallpaper2" to array below and uncomment HDMI-A-1 priority line
       wallpaper = [
-        wallpaper0 # Priority 1
-        wallpaper1 # Priority 2
+        wallpaper1 # Priority 1
+        wallpaper0 # Priority 2
         # wallpaper2  # Priority 3
       ];
     };
 
     # Configure panel with 24-hour clock
     panels = [
-      {        location = "bottom";
-        screen = 1;
+      {
+        location = "bottom";
+        screen = 0;
         widgets = [
           "org.kde.plasma.kickoff"
           "org.kde.plasma.icontasks"
@@ -89,8 +90,8 @@ in
         useDetailed = true;
       };
 
-      "kscreenrc"."DP-3"."priority" = 1; # Primary/center monitor
-      "kscreenrc"."DP-2"."priority" = 2;
+      "kscreenrc"."DP-3"."priority" = 2; # Primary/center monitor
+      "kscreenrc"."DP-2"."priority" = 1;
       # "kscreenrc"."HDMI-A-1"."priority" = 3;  # Uncomment when right monitor is replaced
     };
   };
