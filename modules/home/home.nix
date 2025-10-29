@@ -22,6 +22,7 @@
       ./plasma.nix
       ./yabridge.nix
       ./lsp-plugins.nix
+      ./ssh.nix
     ];
 
     home.packages = with pkgs; [
