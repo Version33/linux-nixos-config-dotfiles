@@ -12,7 +12,8 @@
         jnoortheen.nix-ide
         jeff-hykin.better-nix-syntax
         formulahendry.code-runner
-        anthropic.claude-code
+        # sst-dev.opencode # does not exist yet
+        # anthropic.claude-code
         # Google.gemini-cli-vscode-ide-companion
 
         # catppuccin.catppuccin-vsc
