@@ -65,6 +65,7 @@
     # Services
     ./services/services.nix
     ./services/fonts.nix
+    ./services/fido2.nix
 
     # Home Manager
     ./home/home.nix
@@ -92,7 +93,6 @@
     # ./services/printing.nix
     # ./services/clamav-scanner.nix
     # ./services/security-services.nix
-    # ./services/yubikey.nix
     # ./services/location.nix
   ];
 }
