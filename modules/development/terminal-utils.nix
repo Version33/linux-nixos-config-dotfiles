@@ -29,6 +29,7 @@
     # process-compose # Simple and flexible scheduler and orchestrator to manage non-containerized applications
     # mcfly # terminal history
     # zellij # Terminal workspace with batteries included.
+    tmux # Terminal multiplexer
     progress # Tool that shows the progress of coreutils programs
     # noti # Monitor a process and trigger a notification.
     # topgrade # Upgrade all the things.
