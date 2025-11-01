@@ -52,7 +52,7 @@
     ouch # Command-line utility for easily compressing and decompressing files and directories
     duf # Disk Usage/Free Utility
     ncdu # Disk usage analyzer with an ncurses interface
-    du-dust # du, but more intuitive.
+    dust # du, but more intuitive.
     fd # Simple, fast and user-friendly alternative to find
     # jq # Lightweight and flexible command-line JSON processor
     # trash-cli # Command line interface to the freedesktop.org trashcan
