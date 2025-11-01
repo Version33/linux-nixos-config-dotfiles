@@ -10,15 +10,13 @@
 # Note: Users must be in the 'audio' group for realtime privileges
 ##############################################################################
 
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
-  nixpkgs.overlays = [
-    inputs.audio-nix.overlays.default
-  ];
 
   environment.systemPackages = with pkgs; [
-    bitwig-studio-latest
+    # bitwig-studio-latest
+    (pkgs.callPackage ./bitwig-studio6.nix { })
   ];
 
   # Realtime audio configuration for professional audio work

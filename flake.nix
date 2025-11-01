@@ -7,10 +7,6 @@
     lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
     home-manager.url = "github:nix-community/home-manager";
     catppuccin.url = "github:catppuccin/nix";
-    audio-nix = {
-      url = "github:polygon/audio.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";

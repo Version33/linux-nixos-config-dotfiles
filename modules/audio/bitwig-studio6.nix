@@ -1,0 +1,143 @@
+##############################################################################
+# Bitwig Studio 6 Beta
+#
+# Purpose: Custom package for Bitwig Studio 6 Beta
+# Based on: polygon/audio.nix bitwig-studio-6.0-beta.nix
+# Fix: Updated wrapGAppsHook -> wrapGAppsHook3 for nixos-unstable compatibility
+##############################################################################
+
+{ stdenv, fetchurl, alsa-lib, atk, cairo, dpkg, ffmpeg, freetype, gdk-pixbuf
+, glib, gtk3, harfbuzz, lcms, lib, libglvnd, libjack2, libjpeg, libxkbcommon
+, makeWrapper, pango, pipewire, pulseaudio, wrapGAppsHook3, xdg-utils, xorg, zlib
+, webkitgtk, curl, fftwFloat, jack2, vulkan-loader, bubblewrap, mktemp, writeShellScript }:
+
+let
+  unwrapped = stdenv.mkDerivation rec {
+    pname = "bitwig-studio";
+    version = "6.0-beta-5";
+
+    src = fetchurl {
+      url = "https://downloads-secure.bitwig.com/6.0%20Beta%205/bitwig-studio-6.0-beta-5.deb?source_url=/dl/Bitwig%20Studio/6.0%20Beta%205/installer_linux";
+      sha256 = "sha256-v0ONhknzBrBlK99JeJ5DZuHvG19I0iaw04iM/mO7j+8=";
+    };
+
+    nativeBuildInputs = [ dpkg makeWrapper wrapGAppsHook3 ];
+
+    unpackCmd = ''
+      mkdir -p root
+      dpkg-deb -x $curSrc root
+    '';
+
+    dontBuild = true;
+    dontWrapGApps = true;
+
+    buildInputs = with xorg; [
+      alsa-lib
+      atk
+      cairo
+      freetype
+      gdk-pixbuf
+      glib
+      gtk3
+      harfbuzz
+      lcms
+      libglvnd
+      libjack2
+      libjpeg
+      libxcb
+      libXcursor
+      libX11
+      libXtst
+      libxkbcommon
+      pango
+      pipewire
+      pulseaudio
+      stdenv.cc.cc.lib
+      vulkan-loader
+      xcbutil
+      xcbutilwm
+      zlib
+    ];
+
+    installPhase = ''
+      runHook preInstall
+
+      mkdir -p $out/bin
+      cp -r opt/bitwig-studio $out/libexec
+      ln -s $out/libexec/bitwig-studio $out/bin/bitwig-studio
+      cp -r usr/share $out/share
+      substitute usr/share/applications/com.bitwig.BitwigStudio.desktop \
+        $out/share/applications/com.bitwig.BitwigStudio.desktop \
+        --replace /usr/bin/bitwig-studio $out/bin/bitwig-studio
+
+      runHook postInstall
+    '';
+
+    postFixup = ''
+      find $out -type f -executable \
+        -not -name '*.so.*' \
+        -not -name '*.so' \
+        -not -name '*.jar' \
+        -not -name 'jspawnhelper' \
+        -not -path '*/resources/*' | \
+      while IFS= read -r f ; do
+        patchelf --set-interpreter "${stdenv.cc.bintools.dynamicLinker}" $f
+        wrapProgram $f \
+          "''${gappsWrapperArgs[@]}" \
+          --prefix PATH : "${lib.makeBinPath [ ffmpeg ]}" \
+          --suffix PATH : "${lib.makeBinPath [ xdg-utils ]}" \
+          --suffix LD_LIBRARY_PATH : "${lib.strings.makeLibraryPath buildInputs}"
+      done
+
+      find $out -type f -executable -name 'jspawnhelper' | \
+      while IFS= read -r f ; do
+        patchelf --set-interpreter "${stdenv.cc.bintools.dynamicLinker}" $f
+      done
+    '';
+
+    meta = with lib; {
+      description = "A digital audio workstation";
+      longDescription = ''
+        Bitwig Studio is a multi-platform music-creation system for
+        production, performance and DJing, with a focus on flexible
+        editing tools and a super-fast workflow.
+      '';
+      homepage = "https://www.bitwig.com/";
+      platforms = [ "x86_64-linux" ];
+      maintainers = with maintainers; [ bfortz michalrus mrVanDalo ];
+    };
+  };
+
+  wrapped = stdenv.mkDerivation {
+    inherit (unwrapped) pname version;
+
+    dontUnpack = true;
+    dontConfigure = true;
+    dontBuild = true;
+    dontPatchELF = true;
+    dontStrip = true;
+
+    installPhase = let
+      wrapper = writeShellScript "bitwig-studio" ''
+        echo "Creating temporary directory"
+        TMPDIR=$(${mktemp}/bin/mktemp --directory)
+        echo "Temporary directory: $TMPDIR"
+        echo "Copying default Vamp Plugin settings"
+        cp -r ${unwrapped}/libexec/resources/VampTransforms $TMPDIR
+        echo "Changing permissions to be writable"
+        chmod -R u+w $TMPDIR/VampTransforms
+
+        echo "Starting Bitwig Studio in Bubblewrap Environment"
+        ${bubblewrap}/bin/bwrap --dev-bind / / --bind $TMPDIR/VampTransforms ${unwrapped}/libexec/resources/VampTransforms ${unwrapped}/bin/bitwig-studio
+
+        echo "Bitwig exited, removing temporary directory"
+        rm -rf $TMPDIR
+      '';
+    in ''
+      mkdir -p $out/bin
+      cp ${wrapper} $out/bin/bitwig-studio
+      ln -s ${unwrapped}/bin/bitwig-studio $out/bin/bitwig-studio-unwrapped
+      cp -r ${unwrapped}/share $out
+    '';
+  };
+in wrapped
