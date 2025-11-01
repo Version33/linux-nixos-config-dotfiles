@@ -22,6 +22,12 @@
     "video4linux"
     "acpi_rev_override=5"
   ];
+
+  powerManagement.enable = false;
+
+  boot.extraModprobeConfig = ''
+    options mt7921e disable_aspm=Y
+  '';
   # boot.kernelPatches = [ {
   #      name = "selinux-config";
   #      patch = null;
