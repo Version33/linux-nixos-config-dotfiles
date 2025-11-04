@@ -20,14 +20,6 @@ build:
 build-plain:
     nixos-rebuild build --flake .#k0or
 
-# Build and test in a VM (with nom for better output)
-vm:
-    nom build '.#nixosConfigurations.k0or.config.system.build.vm' && ./result/bin/run-nixos-vm
-
-# Build and test in a VM (plain output, fallback option)
-vm-plain:
-    nixos-rebuild build-vm --flake .#k0or && ./result/bin/run-nixos-vm
-
 # Update flake inputs
 update:
     nix flake update
