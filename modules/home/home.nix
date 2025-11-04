@@ -33,8 +33,8 @@
       vesktop
       kdePackages.filelight
       qimgv
-      orca-slicer
-      # bambu-studio
+      orca-slicer  # Custom build with H2D support (see modules/development/orca-slicer-h2d.nix)
+      # bambu-studio  # Login broken on NixOS, use Orca Slicer instead
       qbittorrent-enhanced
       godotPackages_4_5.godot
       claude-code
