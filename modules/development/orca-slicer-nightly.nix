@@ -1,31 +1,77 @@
 ##############################################################################
-# Orca Slicer Nightly Build Support
+# Orca Slicer Nightly Build
 #
-# This module enables running OrcaSlicer nightly builds via AppImage.
-# Nightly builds include the latest features like H2D/H2S printer support.
+# This module provides OrcaSlicer nightly builds with H2D/H2S printer support
+# by fetching and wrapping the official AppImage release.
 #
-# Usage:
-#   1. Download the latest nightly AppImage from:
-#      https://github.com/SoftFever/OrcaSlicer/releases/tag/nightly-builds
-#   2. Run with: appimage-run ~/Downloads/OrcaSlicer*.AppImage
-#   3. Or make it executable and run directly (binfmt enabled)
+# The AppImage is fetched from GitHub releases and wrapped into a proper
+# Nix package that can be launched like any other application.
 #
 # For H2D printer support:
 #   - Enable both LAN mode AND developer mode on your H2D printer
 #   - Turn off "Use legacy network plugin" in Orca's preferences
+#   - Delete ~/.config/OrcaSlicer/system/ before first launch
 ##############################################################################
 
 { pkgs, ... }:
 
 {
-  # Enable AppImage support system-wide
-  programs.appimage = {
-    enable = true;
-    binfmt = true;  # Allows running AppImages directly
-  };
+  nixpkgs.overlays = [
+    (final: prev:
+      let
+        pname = "orca-slicer-nightly";
+        version = "2.2.0-nightly";
+        src = pkgs.fetchurl {
+          url = "https://github.com/SoftFever/OrcaSlicer/releases/download/nightly-builds/OrcaSlicer_Linux_AppImage_Ubuntu2404_nightly.AppImage";
+          hash = "sha256-zt4PUgj9eciN2xHVHIzNn11Q4h5mTrb0zO9n4ky0Jzs=";
+        };
+        appimageContents = pkgs.appimageTools.extract { inherit pname version src; };
+      in
+      {
+        orca-slicer-nightly = pkgs.appimageTools.wrapType2 {
+          inherit pname version src;
 
-  # Install appimage-run for manual AppImage execution
-  environment.systemPackages = with pkgs; [
-    appimage-run
+          extraPkgs = pkgs: with pkgs; [
+            # Additional libraries that might be needed
+            webkitgtk_4_1
+            glib-networking
+            # GStreamer plugins for H.264 video streaming from printer
+            gst_all_1.gstreamer
+            gst_all_1.gst-plugins-base
+            gst_all_1.gst-plugins-good
+            gst_all_1.gst-plugins-bad
+            gst_all_1.gst-plugins-ugly
+            gst_all_1.gst-libav
+            gst_all_1.gst-vaapi  # Hardware-accelerated video decoding for AMD/Intel
+            # Hardware video acceleration libraries
+            libva
+            mesa.drivers
+          ];
+
+          extraInstallCommands = ''
+            # Install desktop file
+            install -Dm444 ${appimageContents}/OrcaSlicer.desktop \
+              $out/share/applications/orca-slicer-nightly.desktop
+
+            substituteInPlace $out/share/applications/orca-slicer-nightly.desktop \
+              --replace 'Exec=AppRun' 'Exec=orca-slicer-nightly' \
+              --replace 'Name=OrcaSlicer' 'Name=OrcaSlicer Nightly' \
+              --replace 'Icon=OrcaSlicer' 'Icon=orca-slicer-nightly'
+
+            # Install icon
+            install -Dm444 ${appimageContents}/OrcaSlicer.png \
+              $out/share/pixmaps/orca-slicer-nightly.png
+          '';
+
+          meta = with pkgs.lib; {
+            description = "OrcaSlicer nightly build with H2D/H2S support";
+            homepage = "https://github.com/SoftFever/OrcaSlicer";
+            license = licenses.agpl3Only;
+            platforms = platforms.linux;
+            mainProgram = "orca-slicer-nightly";
+          };
+        };
+      }
+    )
   ];
 }

@@ -26,5 +26,6 @@
     surrealist # Visual management of your SurrealDB database
     trunk # Build, bundle & ship your Rust WASM application to the web
     gparted
+    ntfs3g # NTFS filesystem support for reading/writing NTFS drives
   ];
 }

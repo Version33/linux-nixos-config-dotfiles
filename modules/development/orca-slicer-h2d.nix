@@ -35,6 +35,13 @@
           then (pkgs.lib.cmakeFeature "LIBNOISE_LIBRARY_RELEASE" "${pkgs.libnoise}/lib/libnoise-static.a")
           else flag
         ) oldAttrs.cmakeFlags;
+
+        # Add missing dependencies for newer commits
+        buildInputs = oldAttrs.buildInputs or [ ] ++ (with pkgs; [
+          opencv # Required for SkipPartCanvas.cpp imread function
+        ] ++ (with gst_all_1; [
+          gst-plugins-ugly # For additional H.264 codec support
+        ]));
       });
     })
   ];

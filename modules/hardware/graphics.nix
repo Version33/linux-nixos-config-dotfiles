@@ -16,6 +16,10 @@
     enable = true;
     enable32Bit = true;
     extraPackages = with pkgs; [
+      # VA-API implementation for AMD (includes radeonsi driver)
+      mesa.drivers
+      # Video acceleration libraries
+      libva
       libvdpau-va-gl
       mesa
     ];

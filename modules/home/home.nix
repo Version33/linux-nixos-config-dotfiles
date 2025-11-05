@@ -33,11 +33,12 @@
       vesktop
       kdePackages.filelight
       qimgv
-      orca-slicer  # Custom build with H2D support (see modules/development/orca-slicer-h2d.nix)
+      orca-slicer-nightly  # Nightly build with H2D support + GStreamer codecs (see modules/development/orca-slicer-nightly.nix)
       # bambu-studio  # Login broken on NixOS, use Orca Slicer instead
       qbittorrent-enhanced
       godotPackages_4_5.godot
       claude-code
+      # Using opencode 1.0.24 via overlay (see modules/system/nixpkgs.nix)
       opencode
       # inputs.claude-desktop.packages.${pkgs.system}.claude-desktop-with-fhs
       # gemini-cli

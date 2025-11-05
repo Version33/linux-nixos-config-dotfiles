@@ -54,7 +54,7 @@
     ./development/info-fetchers.nix
     ./development/utils.nix
     ./development/terminal-utils.nix
-    ./development/orca-slicer-h2d.nix
+    ./development/orca-slicer-nightly.nix
 
     # Audio Production
     ./audio/audio.nix
