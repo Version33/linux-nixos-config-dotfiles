@@ -45,7 +45,7 @@
             gst_all_1.gst-vaapi  # Hardware-accelerated video decoding for AMD/Intel
             # Hardware video acceleration libraries
             libva
-            mesa.drivers
+            mesa
           ];
 
           extraInstallCommands = ''
