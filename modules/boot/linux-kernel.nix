@@ -23,8 +23,7 @@
     "acpi_rev_override=5"
   ];
 
-  powerManagement.enable = false;
-
+  # Disable wifi card something to fix sleeping?
   boot.extraModprobeConfig = ''
     options mt7921e disable_aspm=Y
   '';

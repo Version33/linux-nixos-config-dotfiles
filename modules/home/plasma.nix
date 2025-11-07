@@ -93,6 +93,33 @@ in
       "kscreenrc"."DP-3"."priority" = 2; # Primary/center monitor
       "kscreenrc"."DP-2"."priority" = 1;
       # "kscreenrc"."HDMI-A-1"."priority" = 3;  # Uncomment when right monitor is replaced
+
+      # KWin compositor performance optimizations
+      "kwinrc"."Compositing" = {
+        Backend = "OpenGL"; # Use OpenGL backend
+        Enabled = true; # Enable compositing
+        GLCore = true; # Use OpenGL core profile for better performance
+        GLPreferBufferSwap = "a"; # Automatic buffer swap (best for most systems)
+        GLTextureFilter = 1; # Bilinear filtering (faster than trilinear)
+        HiddenPreviews = 5; # Limit hidden window previews for alt-tab
+        MaxFPS = 144; # Match your monitor refresh rate (adjust if different)
+        RefreshRate = 0; # Auto-detect refresh rate
+        VSync = false; # Disable VSync for lower latency (tearing prevention handled by compositor)
+        WindowsBlockCompositing = true; # Allow fullscreen apps to bypass compositor
+      };
+
+      # Disable resource-intensive effects
+      "kwinrc"."Effect-PresentWindows" = {
+        BorderActivateAll = 9; # Disable all screen borders for present windows
+      };
+
+      # Optimize window switching animations
+      "kwinrc"."Plugins" = {
+        blurEnabled = false; # Disable blur effect for better performance
+        contrastEnabled = false; # Disable background contrast
+        kwin4_effect_fadingpopupsEnabled = true; # Keep minimal animations
+        slideEnabled = false; # Disable slide animation
+      };
     };
   };
 }
