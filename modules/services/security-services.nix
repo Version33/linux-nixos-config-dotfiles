@@ -10,47 +10,52 @@
   # };
 
   # Enable Security Services
-  security.sudo-rs = {
-    enable = true;
-    execWheelOnly = true;
+  security = {
+    sudo-rs = {
+      enable = true;
+      execWheelOnly = true;
+    };
+    sudo.enable = false;
+    tpm2 = {
+      enable = true;
+      pkcs11.enable = true;
+      tctiEnvironment.enable = true;
+    };
+    apparmor = {
+      enable = true;
+      killUnconfinedConfinables = true;
+      packages = with pkgs; [
+        apparmor-utils
+        apparmor-profiles
+      ];
+    };
+    pam.services = {
+      login.enableAppArmor = true;
+      sshd.enableAppArmor = true;
+      sudo-rs.enableAppArmor = true;
+      su.enableAppArmor = true;
+      greetd.enableAppArmor = true;
+      u2f.enableAppArmor = true;
+    };
+    polkit.enable = true;
   };
-  security.sudo.enable = false;
+
   users.users.root.hashedPassword = "!";
-  security.tpm2 = {
-    enable = true;
-    pkcs11.enable = true;
-    tctiEnvironment.enable = true;
-  };
-  security.apparmor = {
-    enable = true;
-    killUnconfinedConfinables = true;
-    packages = with pkgs; [
-      apparmor-utils
-      apparmor-profiles
-    ];
+
+  services = {
+    dbus.apparmor = "enabled";
+    fail2ban.enable = true;
+    clamav = {
+      daemon.enable = true;
+      fangfrisch.enable = true;
+      fangfrisch.interval = "daily";
+      updater.enable = true;
+      updater.interval = "daily"; # man systemd.time
+      updater.frequency = 12;
+    };
   };
 
-  security.pam.services = {
-    login.enableAppArmor = true;
-    sshd.enableAppArmor = true;
-    sudo-rs.enableAppArmor = true;
-    su.enableAppArmor = true;
-    greetd.enableAppArmor = true;
-    u2f.enableAppArmor = true;
-  };
-
-  services.dbus.apparmor = "enabled";
-  services.fail2ban.enable = true;
-  security.polkit.enable = true;
   programs.browserpass.enable = true;
-  services.clamav = {
-    daemon.enable = true;
-    fangfrisch.enable = true;
-    fangfrisch.interval = "daily";
-    updater.enable = true;
-    updater.interval = "daily"; # man systemd.time
-    updater.frequency = 12;
-  };
   programs.firejail = {
     enable = true;
     wrappedBinaries = {
