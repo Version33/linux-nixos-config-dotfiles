@@ -63,7 +63,17 @@ in
         screen = 0;
         widgets = [
           "org.kde.plasma.kickoff"
-          "org.kde.plasma.icontasks"
+          {
+            iconTasks = {
+              launchers = [
+                "preferred://browser"
+                "applications:codium.desktop"
+                "applications:vesktop.desktop"
+                "applications:org.kde.dolphin.desktop"
+                "applications:kitty.desktop"
+              ];
+            };
+          }
           "org.kde.plasma.marginsseparator"
           "org.kde.plasma.systemtray"
           {

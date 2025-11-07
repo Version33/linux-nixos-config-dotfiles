@@ -7,8 +7,6 @@ _:
       "127.0.0.1"
       "[::1]"
     ];
-    # If using dhcpcd:
-    dhcpcd.enable = true; # disable, because enabled by default
     dhcpcd.extraConfig = "nohook resolv.conf";
 
     # If using NetworkManager:
@@ -16,7 +14,7 @@ _:
 
     # If using resolvconf:
     resolvconf = {
-      enable = true; # FIXME remember to delete /etc/resolv.conf if you disable `resolvconf`
+      enable = true; # remember to delete /etc/resolv.conf if you disable `resolvconf`
       useLocalResolver = true;
     };
 
