@@ -33,7 +33,7 @@
     defaultNetwork.settings.dns_enabled = true;
   };
   environment.variables.DBX_CONTAINER_MANAGER = "podman";
-  users.extraGroups.podman.members = [ "xnm" ];
+  users.extraGroups.podman.members = [ "vee" ];
 
   environment.systemPackages = with pkgs; [
     docker # Open source project to pack, ship and run any application as a lightweight container

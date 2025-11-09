@@ -42,6 +42,7 @@
     ./system/vm.nix
 
     # Network & Security
+    ./network/networking.nix
     ./network/firewall.nix
     ./network/dns.nix
     # ./network/local-services.nix

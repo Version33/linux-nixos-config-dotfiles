@@ -7,25 +7,31 @@
   # ];
 
   # Enable Services
-  programs.direnv.enable = true; # Shell extension that manages your environment.
-  # services.upower.enable = true; # D-Bus service for power management.
-  # programs.fish.enable = true;
-  programs.dconf.enable = true;
-  services.dbus = {
-    enable = true;
-    implementation = "broker";
-    packages = with pkgs; [
-      xfce.xfconf
-      gnome2.GConf
-    ];
+  programs = {
+    direnv.enable = true; # Shell extension that manages your environment.
+    # fish.enable = true;
+    dconf.enable = true;
+    xfconf.enable = true; # Xfce configuration storage system
   };
-  services.mpd.enable = true; # Flexible, powerful daemon for playing music.
-  programs.xfconf.enable = true; # Xfce configuration storage system
-  services.tumbler.enable = true; # D-Bus thumbnailer service
-  services.fwupd.enable = true; # DBus service that allows applications to update firmware.
-  # services.auto-cpufreq.enable = true;
-  # services.gnome.core-shell.enable = true;
-  # services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+
+  services = {
+    # upower.enable = true; # D-Bus service for power management.
+    dbus = {
+      enable = true;
+      implementation = "broker";
+      packages = with pkgs; [
+        xfce.xfconf
+        gnome2.GConf
+      ];
+    };
+    mpd.enable = true; # Flexible, powerful daemon for playing music.
+    tumbler.enable = true; # D-Bus thumbnailer service
+    fwupd.enable = true; # DBus service that allows applications to update firmware.
+    # auto-cpufreq.enable = true;
+    # gnome.core-shell.enable = true;
+    # udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+  };
+
   hardware.opentabletdriver.enable = true;
 
   environment.systemPackages = with pkgs; [
