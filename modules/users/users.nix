@@ -32,8 +32,9 @@
   programs.firefox.enable = true;
   programs.steam.enable = true;
 
-  # Change runtime directory size
+  # Change runtime directory size and power button behavior
   services.logind.settings.Login = {
     RuntimeDirectorySize = "8G";
+    HandlePowerKey = "suspend";
   };
 }
