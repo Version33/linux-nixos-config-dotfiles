@@ -33,8 +33,6 @@
       vesktop
       kdePackages.filelight
       qimgv
-      orca-slicer-nightly  # Nightly build with H2D support + GStreamer codecs (see modules/development/orca-slicer-nightly.nix)
-      # bambu-studio  # Login broken on NixOS, use Orca Slicer instead
       qbittorrent-enhanced
       godotPackages_4_5.godot
       claude-code

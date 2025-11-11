@@ -32,6 +32,7 @@
     ./hardware/bluetooth.nix
     ./hardware/usb.nix
     ./hardware/udev.nix
+    ./hardware/rgb.nix
 
     # System Settings
     ./system/time.nix
@@ -40,6 +41,7 @@
     ./system/internationalisation.nix
     ./system/environment-variables.nix
     ./system/vm.nix
+    ./system/power-management.nix
 
     # Network & Security
     ./network/networking.nix
