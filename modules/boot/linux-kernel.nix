@@ -22,7 +22,6 @@
     "acpi_rev_override=5"
     # AMD GPU power management for better suspend/resume
     "amdgpu.gpu_recovery=1"
-    "amdgpu.ppfeaturemask=0xffffffff"
   ];
 
   # Disable wifi card something to fix sleeping?
