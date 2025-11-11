@@ -36,7 +36,6 @@
       qbittorrent-enhanced
       godotPackages_4_5.godot
       claude-code
-      # Using opencode 1.0.24 via overlay (see modules/system/nixpkgs.nix)
       opencode
       # inputs.claude-desktop.packages.${pkgs.system}.claude-desktop-with-fhs
       # gemini-cli
