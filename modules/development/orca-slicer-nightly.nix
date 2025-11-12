@@ -20,10 +20,10 @@
     (final: prev:
       let
         pname = "orca-slicer-nightly";
-        version = "2.2.0-nightly";
+        version = "nightly-2025-11-11";
         src = pkgs.fetchurl {
           url = "https://github.com/SoftFever/OrcaSlicer/releases/download/nightly-builds/OrcaSlicer_Linux_AppImage_Ubuntu2404_nightly.AppImage";
-          hash = "sha256-zt4PUgj9eciN2xHVHIzNn11Q4h5mTrb0zO9n4ky0Jzs=";
+          hash = "sha256-CRZNKQqB7854vfwdmwA+QHEwhOic0FR+BfnFnKoMQHY=";
         };
         appimageContents = pkgs.appimageTools.extract { inherit pname version src; };
       in

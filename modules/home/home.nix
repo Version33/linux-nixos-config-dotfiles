@@ -41,6 +41,7 @@
       # gemini-cli
       lsp-plugins
       prismlauncher
+      orca-slicer-nightly # Nightly build with H2D/H2S printer support
     ];
 
     home.sessionVariables = {
