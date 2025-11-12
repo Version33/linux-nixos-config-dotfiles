@@ -25,11 +25,16 @@ _:
       ngc7 = "sudo nix-collect-garbage --delete-older-than 7d";
       ngc14 = "sudo nix-collect-garbage --delete-older-than 14d";
       format-nix = "ls *.nix | each { |f| sudo nixfmt $f.name }";
-      reboot-to-windows = "sudo efibootmgr --bootnext 0000; systemctl reboot";
     };
     settings = {
       show_banner = false;
     };
+    extraConfig = ''
+      def reboot-to-windows [] {
+        sudo efibootmgr --bootnext 0000
+        sudo systemctl reboot
+      }
+    '';
     # configFile.text = "fastfetch";
   };
 }
