@@ -27,5 +27,11 @@
     trunk # Build, bundle & ship your Rust WASM application to the web
     gparted
     ntfs3g # NTFS filesystem support for reading/writing NTFS drives
+    efibootmgr # Tool to modify UEFI boot entries
   ];
+
+  # Shell alias for easy rebooting to Windows
+  environment.shellAliases = {
+    reboot-to-windows = "sudo efibootmgr --bootnext 0000 && systemctl reboot";
+  };
 }
