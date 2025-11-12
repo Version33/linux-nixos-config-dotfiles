@@ -25,6 +25,7 @@
       "realtime"
       "audio"
       "tss"
+      "plugdev"
     ];
     shell = pkgs.nushell;
   };
