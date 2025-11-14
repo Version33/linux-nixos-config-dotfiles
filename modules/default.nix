@@ -75,7 +75,6 @@
 
     # Optional modules - uncomment to enable:
     # Network
-    # ./network/networking.nix
     # ./network/open-ssh.nix
     # ./network/vpn.nix
 

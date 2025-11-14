@@ -2,14 +2,12 @@
 # Bitwig Studio 6 Beta
 #
 # Purpose: Custom package for Bitwig Studio 6 Beta
-# Based on: polygon/audio.nix bitwig-studio-6.0-beta.nix
-# Fix: Updated wrapGAppsHook -> wrapGAppsHook3 for nixos-unstable compatibility
 ##############################################################################
 
 { stdenv, fetchurl, alsa-lib, atk, cairo, dpkg, ffmpeg, freetype, gdk-pixbuf
 , glib, gtk3, harfbuzz, lcms, lib, libglvnd, libjack2, libjpeg, libxkbcommon
 , makeWrapper, pango, pipewire, pulseaudio, wrapGAppsHook3, xdg-utils, xorg, zlib
-, webkitgtk, curl, fftwFloat, jack2, vulkan-loader, bubblewrap, mktemp, writeShellScript }:
+, vulkan-loader, bubblewrap, writeShellScript }:
 
 let
   unwrapped = stdenv.mkDerivation rec {
@@ -103,6 +101,7 @@ let
         editing tools and a super-fast workflow.
       '';
       homepage = "https://www.bitwig.com/";
+      license = licenses.unfree;
       platforms = [ "x86_64-linux" ];
       maintainers = with maintainers; [ bfortz michalrus mrVanDalo ];
     };
@@ -119,25 +118,28 @@ let
 
     installPhase = let
       wrapper = writeShellScript "bitwig-studio" ''
-        echo "Creating temporary directory"
-        TMPDIR=$(${mktemp}/bin/mktemp --directory)
-        echo "Temporary directory: $TMPDIR"
-        echo "Copying default Vamp Plugin settings"
-        cp -r ${unwrapped}/libexec/resources/VampTransforms $TMPDIR
-        echo "Changing permissions to be writable"
-        chmod -R u+w $TMPDIR/VampTransforms
+        set -euo pipefail
 
-        echo "Starting Bitwig Studio in Bubblewrap Environment"
-        ${bubblewrap}/bin/bwrap --dev-bind / / --bind $TMPDIR/VampTransforms ${unwrapped}/libexec/resources/VampTransforms ${unwrapped}/bin/bitwig-studio
+        # Create temporary directory with automatic cleanup
+        TMPDIR=$(mktemp --directory --tmpdir bitwig-XXXXXX)
+        trap 'rm -rf "$TMPDIR"' EXIT INT TERM
 
-        echo "Bitwig exited, removing temporary directory"
-        rm -rf $TMPDIR
+        # Copy and prepare Vamp Plugin settings
+        cp -r ${unwrapped}/libexec/resources/VampTransforms "$TMPDIR"
+        chmod -R u+w "$TMPDIR/VampTransforms"
+
+        # Launch Bitwig in sandboxed environment
+        # Note: --dev-bind / / provides full filesystem access for VST plugin compatibility
+        exec ${bubblewrap}/bin/bwrap \
+          --dev-bind / / \
+          --bind "$TMPDIR/VampTransforms" ${unwrapped}/libexec/resources/VampTransforms \
+          ${unwrapped}/bin/bitwig-studio "$@"
       '';
     in ''
       mkdir -p $out/bin
       cp ${wrapper} $out/bin/bitwig-studio
       ln -s ${unwrapped}/bin/bitwig-studio $out/bin/bitwig-studio-unwrapped
-      cp -r ${unwrapped}/share $out
+      ln -s ${unwrapped}/share $out/share
     '';
   };
 in wrapped
