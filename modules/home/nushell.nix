@@ -30,6 +30,8 @@ _:
       show_banner = false;
     };
     extraConfig = ''
+      $env.EDITOR = "nvim"
+      
       def reboot-to-windows [] {
         sudo efibootmgr --bootnext 0000
         sudo systemctl reboot
