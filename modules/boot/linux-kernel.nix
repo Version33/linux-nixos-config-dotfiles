@@ -20,14 +20,8 @@
     "usbcore.autosuspend=-1"
     "video4linux"
     "acpi_rev_override=5"
-    # AMD GPU power management for better suspend/resume
-    "amdgpu.gpu_recovery=1"
   ];
 
-  # Disable wifi card something to fix sleeping?
-  boot.extraModprobeConfig = ''
-    options mt7921e disable_aspm=Y
-  '';
   # boot.kernelPatches = [ {
   #      name = "selinux-config";
   #      patch = null;
