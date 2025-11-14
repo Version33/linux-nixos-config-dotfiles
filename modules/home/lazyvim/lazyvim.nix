@@ -7,12 +7,23 @@
 {
   programs.neovim = {
     enable = true;
+    viAlias = true;
+    vimAlias = true;
     extraPackages = with pkgs; [
-      # LazyVim
+      # LazyVim essentials
       lua-language-server
       stylua
-      # Telescope
+      # Telescope dependencies
       ripgrep
+      fd
+      # Language servers (add more as needed)
+      nixd # Nix LSP
+      nil # Alternative Nix LSP
+      # Formatters
+      nixfmt-rfc-style
+      # General utilities
+      tree-sitter
+      gcc # For treesitter compilation
     ];
 
     plugins = with pkgs.vimPlugins; [
@@ -144,8 +155,25 @@
         paths =
           (pkgs.vimPlugins.nvim-treesitter.withPlugins (
             plugins: with plugins; [
+              bash
               c
+              cpp
+              css
+              html
+              javascript
+              json
               lua
+              markdown
+              markdown_inline
+              nix
+              python
+              regex
+              rust
+              toml
+              typescript
+              vim
+              vimdoc
+              yaml
             ]
           )).dependencies;
       };
