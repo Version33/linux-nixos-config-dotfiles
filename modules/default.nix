@@ -41,7 +41,6 @@
     ./system/internationalisation.nix
     ./system/environment-variables.nix
     ./system/vm.nix
-    ./system/power-management.nix
 
     # Network & Security
     ./network/networking.nix
