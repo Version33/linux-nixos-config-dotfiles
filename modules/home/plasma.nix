@@ -71,6 +71,7 @@ in
                 "applications:vesktop.desktop"
                 "applications:org.kde.dolphin.desktop"
                 "applications:kitty.desktop"
+                "applications:steam.desktop"
               ];
             };
           }
