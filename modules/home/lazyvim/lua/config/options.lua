@@ -40,3 +40,6 @@ opt.splitbelow = true
 
 -- Swapfile
 opt.swapfile = false
+
+-- Enable Nerd Font icons
+vim.g.have_nerd_font = true

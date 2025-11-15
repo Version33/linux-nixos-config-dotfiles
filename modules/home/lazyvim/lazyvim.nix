@@ -33,47 +33,62 @@
     extraLuaConfig =
       let
         plugins = with pkgs.vimPlugins; [
-          # LazyVim
+          # LazyVim core
           LazyVim
+          
+          # UI
           bufferline-nvim
+          dashboard-nvim
+          dressing-nvim
+          indent-blankline-nvim
+          lualine-nvim
+          noice-nvim
+          nui-nvim
+          nvim-notify
+          nvim-web-devicons
+          snacks-nvim
+          which-key-nvim
+          
+          # Editor
+          flash-nvim
+          gitsigns-nvim
+          neo-tree-nvim
+          nvim-spectre
+          persistence-nvim
+          telescope-fzf-native-nvim
+          telescope-nvim
+          todo-comments-nvim
+          trouble-nvim
+          vim-illuminate
+          
+          # Coding
           cmp-buffer
           cmp-nvim-lsp
           cmp-path
           cmp_luasnip
           conform-nvim
-          dashboard-nvim
-          dressing-nvim
-          flash-nvim
           friendly-snippets
-          gitsigns-nvim
-          indent-blankline-nvim
-          lualine-nvim
-          neo-tree-nvim
-          neoconf-nvim
-          neodev-nvim
-          noice-nvim
-          nui-nvim
+          lazydev-nvim
           nvim-cmp
           nvim-lint
           nvim-lspconfig
-          nvim-notify
-          nvim-spectre
+          nvim-snippets
+          
+          # Treesitter
           nvim-treesitter
           nvim-treesitter-context
           nvim-treesitter-textobjects
           nvim-ts-autotag
           nvim-ts-context-commentstring
-          nvim-web-devicons
-          persistence-nvim
-          plenary-nvim
-          telescope-fzf-native-nvim
-          telescope-nvim
-          todo-comments-nvim
+          
+          # Colorschemes
           tokyonight-nvim
-          trouble-nvim
-          vim-illuminate
+          
+          # Utilities
+          plenary-nvim
           vim-startuptime
-          which-key-nvim
+          
+          # Named plugins
           {
             name = "LuaSnip";
             path = luasnip;
@@ -129,6 +144,12 @@
             patterns = { "" },
             -- fallback to download
             fallback = true,
+          },
+          performance = {
+            reset_packpath = false,
+            rtp = {
+              reset = false,
+            },
           },
           spec = {
             { "LazyVim/LazyVim", import = "lazyvim.plugins" },

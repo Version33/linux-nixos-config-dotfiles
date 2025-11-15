@@ -5,6 +5,7 @@
   fonts.packages = with pkgs; [
     jetbrains-mono
     nerd-fonts._0xproto
+    nerd-fonts.jetbrains-mono
     # nerd-font-patcher
     noto-fonts-monochrome-emoji
   ];
