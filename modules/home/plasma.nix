@@ -22,22 +22,36 @@ in
 {
   # Configure Plasma using plasma-manager
 
-  # Enable Catppuccin theme for Plasma
+  # Enable Catppuccin theme for applications
   catppuccin.enable = true;
   catppuccin.flavor = "mocha";
+  catppuccin.kvantum.enable = true;
+
+  # Configure Qt to use Kvantum
+  qt.enable = true;
+  qt.platformTheme.name = "kvantum";
+  qt.style.name = "kvantum";
 
   home.packages = with pkgs; [
-    catppuccin-kde
     catppuccin-cursors.mochaDark
     catppuccin-papirus-folders
+    (catppuccin-kde.override {
+      flavour = ["mocha"];
+      accents = ["blue"];
+    })
+    libsForQt5.qtstyleplugin-kvantum
+    kdePackages.qtstyleplugin-kvantum
   ];
 
   programs.plasma = {
     enable = true;
 
     workspace = {
-      # Set to Catppuccin Mocha theme
-      colorScheme = "CatppuccinMocha";
+      # Set to Catppuccin Mocha Global look-and-feel theme
+      lookAndFeel = "Catppuccin-Mocha-Blue";
+      
+      # Set Catppuccin Mocha color scheme
+      colorScheme = "CatppuccinMochaBlue";
 
       # Use Papirus Dark icons
       iconTheme = "Papirus-Dark";
@@ -134,6 +148,12 @@ in
         contrastEnabled = false; # Disable background contrast
         kwin4_effect_fadingpopupsEnabled = true; # Keep minimal animations
         slideEnabled = false; # Disable slide animation
+      };
+
+      # Override window decorations to use Breeze instead of Catppuccin
+      "kwinrc"."org.kde.kdecoration2" = {
+        library = "org.kde.breeze";
+        theme = "Breeze";
       };
     };
   };
