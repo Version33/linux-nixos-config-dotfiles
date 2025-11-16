@@ -105,6 +105,10 @@ in
       "kscreenrc"."DP-2"."priority" = 1;
       # "kscreenrc"."HDMI-A-1"."priority" = 3;  # Uncomment when right monitor is replaced
 
+      # Set lockscreen wallpaper
+      "kscreenlockerrc"."Greeter"."WallpaperPlugin" = "org.kde.image";
+      "kscreenlockerrc"."Greeter/Wallpaper/org.kde.image/General"."Image" = "${wallpaper1}";
+
       # KWin compositor performance optimizations
       "kwinrc"."Compositing" = {
         Backend = "OpenGL"; # Use OpenGL backend
