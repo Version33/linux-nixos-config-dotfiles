@@ -81,7 +81,6 @@
 
     # Desktop
     # ./desktop/gnome.nix
-    # ./desktop/display-manager.nix
     # ./desktop/theme.nix
 
     # Development
