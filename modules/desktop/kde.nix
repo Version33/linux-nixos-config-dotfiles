@@ -30,6 +30,10 @@ in
     };
   };
 
+  # Disable KDE Powerdevil to prevent conflicts with systemd-logind
+  systemd.user.services.plasma-powerdevil.enable = false;
+
+  # Configure systemd-logind to handle all power events directly
   services.logind.settings = {
     Login = {
       HandlePowerKey = "suspend";
