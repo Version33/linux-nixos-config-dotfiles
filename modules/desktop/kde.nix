@@ -28,6 +28,11 @@ in
     };
   };
 
+  # Disable Konsole in favor of Kitty
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    konsole
+  ];
+
   # Disable KDE Powerdevil to prevent conflicts with systemd-logind
   systemd.user.services.plasma-powerdevil.enable = false;
 

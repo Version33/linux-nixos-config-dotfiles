@@ -119,6 +119,10 @@ in
       "kscreenrc"."DP-2"."priority" = 1;
       # "kscreenrc"."HDMI-A-1"."priority" = 3;  # Uncomment when right monitor is replaced
 
+      # Set default terminal to Kitty
+      "kdeglobals"."General"."TerminalApplication" = "kitty";
+      "kdeglobals"."General"."TerminalService" = "kitty.desktop";
+
       # Set lockscreen wallpaper
       "kscreenlockerrc"."Greeter"."WallpaperPlugin" = "org.kde.image";
       "kscreenlockerrc"."Greeter/Wallpaper/org.kde.image/General"."Image" = "${wallpaper1}";
