@@ -21,8 +21,6 @@ in
   services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm = {
     enable = true;
-    theme = "sddm-astronaut-theme";
-    wayland.enable = true;
     settings = {
       General = {
         Background = "${sddmWallpaper}";
