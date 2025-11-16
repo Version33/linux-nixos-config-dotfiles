@@ -33,7 +33,6 @@
     ./hardware/usb.nix
     ./hardware/udev.nix
     ./hardware/rgb.nix
-    ./hardware/wifi.nix
 
     # System Settings
     ./system/time.nix

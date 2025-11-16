@@ -30,6 +30,16 @@ in
     };
   };
 
+  services.logind.settings = {
+    Login = {
+      HandlePowerKey = "suspend";
+      HandlePowerKeyLongPress = "poweroff";
+      HandleLidSwitch = "suspend";
+      HandleLidSwitchExternalPower = "suspend";
+      IdleAction = "ignore";
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     # KDE
     # kdePackages.discover # Optional: Install if you use Flatpak or fwupd firmware update sevice
