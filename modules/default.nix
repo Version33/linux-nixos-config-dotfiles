@@ -46,6 +46,7 @@
     ./network/networking.nix
     ./network/firewall.nix
     ./network/dns.nix
+    ./network/tailscale.nix
     # ./network/local-services.nix
 
     # Desktop Environment
