@@ -33,6 +33,7 @@
     ./hardware/usb.nix
     ./hardware/udev.nix
     ./hardware/rgb.nix
+    ./hardware/wifi.nix
 
     # System Settings
     ./system/time.nix
@@ -57,6 +58,7 @@
     ./development/utils.nix
     ./development/terminal-utils.nix
     ./development/orca-slicer-nightly.nix
+    ./development/affinity.nix
 
     # Audio Production
     ./audio/audio.nix
