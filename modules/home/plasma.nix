@@ -72,9 +72,44 @@ in
 
     # Configure panel with 24-hour clock
     panels = [
+      # Main monitor panel (DP-3, priority 2)
       {
         location = "bottom";
         screen = 0;
+        widgets = [
+          "org.kde.plasma.kickoff"
+          {
+            iconTasks = {
+              launchers = [
+                "preferred://browser"
+                "applications:codium.desktop"
+                "applications:vesktop.desktop"
+                "applications:org.kde.dolphin.desktop"
+                "applications:kitty.desktop"
+                "applications:steam.desktop"
+              ];
+            };
+          }
+          "org.kde.plasma.marginsseparator"
+          "org.kde.plasma.systemtray"
+          {
+            digitalClock = {
+              time = {
+                format = "24h";
+                showSeconds = "onlyInTooltip";
+              };
+              date = {
+                enable = true;
+                format = "isoDate";
+              };
+            };
+          }
+        ];
+      }
+      # Secondary monitor panel (DP-2, priority 1)
+      {
+        location = "bottom";
+        screen = 1;
         widgets = [
           "org.kde.plasma.kickoff"
           {
@@ -158,6 +193,16 @@ in
       "kwinrc"."org.kde.kdecoration2" = {
         library = "org.kde.breeze";
         theme = "Breeze";
+      };
+
+      # Window focus settings - allow apps to come to foreground
+      "kwinrc"."Windows" = {
+        FocusPolicy = "FocusFollowsMouse"; # Or "ClickToFocus" if you prefer
+        FocusStealingPreventionLevel = 0; # 0 = None (allow focus stealing), 1 = Low, 2 = Medium, 3 = High, 4 = Extreme
+        AutoRaise = false; # Don't auto-raise windows on focus
+        AutoRaiseInterval = 750;
+        DelayFocusInterval = 300;
+        SeparateScreenFocus = false; # Focus follows across screens
       };
     };
   };
