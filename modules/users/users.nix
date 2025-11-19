@@ -33,6 +33,22 @@
   programs.firefox.enable = true;
   programs.steam.enable = true;
 
+  # GameMode for optimizing gaming performance
+  programs.gamemode = {
+    enable = true;
+    settings = {
+      general = {
+        renice = 10;
+      };
+      # Custom scripts can be added here
+      # gpu = {
+      #   apply_gpu_optimisations = "accept-responsibility";
+      #   gpu_device = 0;
+      #   amd_performance_level = "high";
+      # };
+    };
+  };
+
   # Change runtime directory size and power button behavior
   services.logind.settings.Login = {
     RuntimeDirectorySize = "8G";
