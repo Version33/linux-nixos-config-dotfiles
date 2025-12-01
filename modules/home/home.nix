@@ -23,6 +23,7 @@
       ./yabridge.nix
       ./lsp-plugins.nix
       ./ssh.nix
+      ./opencode.nix
     ];
 
     home.packages = with pkgs; [
@@ -36,7 +37,6 @@
       qbittorrent-enhanced
       godotPackages_4_5.godot
       claude-code
-      opencode
       # inputs.claude-desktop.packages.${pkgs.system}.claude-desktop-with-fhs
       # gemini-cli
       lsp-plugins
