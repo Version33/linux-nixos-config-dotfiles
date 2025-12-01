@@ -17,7 +17,8 @@
 
 {
   nixpkgs.overlays = [
-    (final: prev:
+    (
+      final: prev:
       let
         pname = "orca-slicer-nightly";
         version = "nightly-2025-11-19";
@@ -31,22 +32,23 @@
         orca-slicer-nightly = pkgs.appimageTools.wrapType2 {
           inherit pname version src;
 
-          extraPkgs = pkgs: with pkgs; [
-            # Additional libraries that might be needed
-            webkitgtk_4_1
-            glib-networking
-            # GStreamer plugins for H.264 video streaming from printer
-            gst_all_1.gstreamer
-            gst_all_1.gst-plugins-base
-            gst_all_1.gst-plugins-good
-            gst_all_1.gst-plugins-bad
-            gst_all_1.gst-plugins-ugly
-            gst_all_1.gst-libav
-            gst_all_1.gst-vaapi  # Hardware-accelerated video decoding for AMD/Intel
-            # Hardware video acceleration libraries
-            libva
-            mesa
-          ];
+          extraPkgs =
+            pkgs: with pkgs; [
+              # Additional libraries that might be needed
+              webkitgtk_4_1
+              glib-networking
+              # GStreamer plugins for H.264 video streaming from printer
+              gst_all_1.gstreamer
+              gst_all_1.gst-plugins-base
+              gst_all_1.gst-plugins-good
+              gst_all_1.gst-plugins-bad
+              gst_all_1.gst-plugins-ugly
+              gst_all_1.gst-libav
+              gst_all_1.gst-vaapi # Hardware-accelerated video decoding for AMD/Intel
+              # Hardware video acceleration libraries
+              libva
+              mesa
+            ];
 
           extraInstallCommands = ''
             # Install desktop file

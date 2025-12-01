@@ -4,10 +4,37 @@
 # Purpose: Custom package for Bitwig Studio 6 Beta
 ##############################################################################
 
-{ stdenv, fetchurl, alsa-lib, atk, cairo, dpkg, ffmpeg, freetype, gdk-pixbuf
-, glib, gtk3, harfbuzz, lcms, lib, libglvnd, libjack2, libjpeg, libxkbcommon
-, makeWrapper, pango, pipewire, pulseaudio, wrapGAppsHook3, xdg-utils, xorg, zlib
-, vulkan-loader, bubblewrap, writeShellScript }:
+{
+  stdenv,
+  fetchurl,
+  alsa-lib,
+  atk,
+  cairo,
+  dpkg,
+  ffmpeg,
+  freetype,
+  gdk-pixbuf,
+  glib,
+  gtk3,
+  harfbuzz,
+  lcms,
+  lib,
+  libglvnd,
+  libjack2,
+  libjpeg,
+  libxkbcommon,
+  makeWrapper,
+  pango,
+  pipewire,
+  pulseaudio,
+  wrapGAppsHook3,
+  xdg-utils,
+  xorg,
+  zlib,
+  vulkan-loader,
+  bubblewrap,
+  writeShellScript,
+}:
 
 let
   unwrapped = stdenv.mkDerivation rec {
@@ -19,7 +46,11 @@ let
       sha256 = "sha256-ZZRvYD7u07vOKscCfHIikSVMG7Mc4w2B+s5SSy+9M98=";
     };
 
-    nativeBuildInputs = [ dpkg makeWrapper wrapGAppsHook3 ];
+    nativeBuildInputs = [
+      dpkg
+      makeWrapper
+      wrapGAppsHook3
+    ];
 
     unpackCmd = ''
       mkdir -p root
@@ -103,7 +134,11 @@ let
       homepage = "https://www.bitwig.com/";
       license = licenses.unfree;
       platforms = [ "x86_64-linux" ];
-      maintainers = with maintainers; [ bfortz michalrus mrVanDalo ];
+      maintainers = with maintainers; [
+        bfortz
+        michalrus
+        mrVanDalo
+      ];
     };
   };
 
@@ -116,30 +151,33 @@ let
     dontPatchELF = true;
     dontStrip = true;
 
-    installPhase = let
-      wrapper = writeShellScript "bitwig-studio" ''
-        set -euo pipefail
+    installPhase =
+      let
+        wrapper = writeShellScript "bitwig-studio" ''
+          set -euo pipefail
 
-        # Create temporary directory with automatic cleanup
-        TMPDIR=$(mktemp --directory --tmpdir bitwig-XXXXXX)
-        trap 'rm -rf "$TMPDIR"' EXIT INT TERM
+          # Create temporary directory with automatic cleanup
+          TMPDIR=$(mktemp --directory --tmpdir bitwig-XXXXXX)
+          trap 'rm -rf "$TMPDIR"' EXIT INT TERM
 
-        # Copy and prepare Vamp Plugin settings
-        cp -r ${unwrapped}/libexec/resources/VampTransforms "$TMPDIR"
-        chmod -R u+w "$TMPDIR/VampTransforms"
+          # Copy and prepare Vamp Plugin settings
+          cp -r ${unwrapped}/libexec/resources/VampTransforms "$TMPDIR"
+          chmod -R u+w "$TMPDIR/VampTransforms"
 
-        # Launch Bitwig in sandboxed environment
-        # Note: --dev-bind / / provides full filesystem access for VST plugin compatibility
-        exec ${bubblewrap}/bin/bwrap \
-          --dev-bind / / \
-          --bind "$TMPDIR/VampTransforms" ${unwrapped}/libexec/resources/VampTransforms \
-          ${unwrapped}/bin/bitwig-studio "$@"
+          # Launch Bitwig in sandboxed environment
+          # Note: --dev-bind / / provides full filesystem access for VST plugin compatibility
+          exec ${bubblewrap}/bin/bwrap \
+            --dev-bind / / \
+            --bind "$TMPDIR/VampTransforms" ${unwrapped}/libexec/resources/VampTransforms \
+            ${unwrapped}/bin/bitwig-studio "$@"
+        '';
+      in
+      ''
+        mkdir -p $out/bin
+        cp ${wrapper} $out/bin/bitwig-studio
+        ln -s ${unwrapped}/bin/bitwig-studio $out/bin/bitwig-studio-unwrapped
+        ln -s ${unwrapped}/share $out/share
       '';
-    in ''
-      mkdir -p $out/bin
-      cp ${wrapper} $out/bin/bitwig-studio
-      ln -s ${unwrapped}/bin/bitwig-studio $out/bin/bitwig-studio-unwrapped
-      ln -s ${unwrapped}/share $out/share
-    '';
   };
-in wrapped
+in
+wrapped

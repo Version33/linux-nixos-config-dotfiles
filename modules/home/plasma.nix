@@ -36,8 +36,8 @@ in
     catppuccin-cursors.mochaDark
     catppuccin-papirus-folders
     (catppuccin-kde.override {
-      flavour = ["mocha"];
-      accents = ["blue"];
+      flavour = [ "mocha" ];
+      accents = [ "blue" ];
     })
     libsForQt5.qtstyleplugin-kvantum
     kdePackages.qtstyleplugin-kvantum
@@ -49,7 +49,7 @@ in
     workspace = {
       # Set to Catppuccin Mocha Global look-and-feel theme
       lookAndFeel = "Catppuccin-Mocha-Blue";
-      
+
       # Set Catppuccin Mocha color scheme
       colorScheme = "CatppuccinMochaBlue";
 
@@ -196,14 +196,14 @@ in
       };
 
       # Window focus settings - allow apps to come to foreground
-      "kwinrc"."Windows" = {
-        FocusPolicy = "FocusFollowsMouse"; # Or "ClickToFocus" if you prefer
-        FocusStealingPreventionLevel = 0; # 0 = None (allow focus stealing), 1 = Low, 2 = Medium, 3 = High, 4 = Extreme
-        AutoRaise = false; # Don't auto-raise windows on focus
-        AutoRaiseInterval = 750;
-        DelayFocusInterval = 300;
-        SeparateScreenFocus = false; # Focus follows across screens
-      };
+      # "kwinrc"."Windows" = {
+      #   FocusPolicy = "ClickToFocus";
+      #   FocusStealingPreventionLevel = 1; # 0 = None (allow focus stealing), 1 = Low, 2 = Medium, 3 = High, 4 = Extreme
+      #   AutoRaise = true;
+      #   AutoRaiseInterval = 750;
+      #   DelayFocusInterval = 300;
+      #   SeparateScreenFocus = false; # Focus follows across screens
+      # };
     };
   };
 }

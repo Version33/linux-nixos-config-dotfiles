@@ -35,7 +35,7 @@
         plugins = with pkgs.vimPlugins; [
           # LazyVim core
           LazyVim
-          
+
           # UI
           bufferline-nvim
           dashboard-nvim
@@ -48,7 +48,7 @@
           nvim-web-devicons
           snacks-nvim
           which-key-nvim
-          
+
           # Editor
           flash-nvim
           gitsigns-nvim
@@ -60,7 +60,7 @@
           todo-comments-nvim
           trouble-nvim
           vim-illuminate
-          
+
           # Coding
           cmp-buffer
           cmp-nvim-lsp
@@ -73,21 +73,21 @@
           nvim-lint
           nvim-lspconfig
           nvim-snippets
-          
+
           # Treesitter
           nvim-treesitter
           nvim-treesitter-context
           nvim-treesitter-textobjects
           nvim-ts-autotag
           nvim-ts-context-commentstring
-          
+
           # Colorschemes
           tokyonight-nvim
-          
+
           # Utilities
           plenary-nvim
           vim-startuptime
-          
+
           # Named plugins
           {
             name = "LuaSnip";
