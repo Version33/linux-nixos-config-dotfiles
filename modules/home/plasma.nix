@@ -43,6 +43,13 @@ in
     kdePackages.qtstyleplugin-kvantum
   ];
 
+  # Autostart applications
+  xdg.configFile = {
+    "autostart/steam.desktop".source = "${pkgs.steam}/share/applications/steam.desktop";
+    "autostart/vesktop.desktop".source = "${pkgs.vesktop}/share/applications/vesktop.desktop";
+    "autostart/tidal-hifi.desktop".source = "${pkgs.tidal-hifi}/share/applications/tidal-hifi.desktop";
+  };
+
   programs.plasma = {
     enable = true;
 
@@ -161,6 +168,9 @@ in
       # Set lockscreen wallpaper
       "kscreenlockerrc"."Greeter"."WallpaperPlugin" = "org.kde.image";
       "kscreenlockerrc"."Greeter/Wallpaper/org.kde.image/General"."Image" = "${wallpaper1}";
+
+      # Start with an empty session (prevents apps like Prism Launcher from stuck reopening)
+      "ksmserverrc"."General"."loginMode" = "emptySession";
 
       # KWin compositor performance optimizations
       "kwinrc"."Compositing" = {
