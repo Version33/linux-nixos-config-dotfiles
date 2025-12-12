@@ -16,6 +16,6 @@
 
 {
   environment.systemPackages = [
-    inputs.affinity.packages.${pkgs.system}.v3
+    inputs.affinity.packages.${pkgs.stdenv.hostPlatform.system}.v3
   ];
 }
