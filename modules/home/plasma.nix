@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   # Fetch the Catppuccin wallpaper for left monitor
@@ -200,7 +200,7 @@ in
       };
 
       # Override window decorations to use Breeze instead of Catppuccin
-      "kwinrc"."org.kde.kdecoration2" = {
+      "kwinrc"."org.kde.kdecoration2" = lib.mkForce {
         library = "org.kde.breeze";
         theme = "Breeze";
       };
