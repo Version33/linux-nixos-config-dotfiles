@@ -6,7 +6,7 @@
     # Pinned nixpkgs with working opencode 0.15.29 (before broken 1.0.x releases)
     nixpkgs-opencode.url = "github:NixOS/nixpkgs/876df71365b3c0ab2d363cd6af36a80199879430";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
+    lanzaboote.url = "github:nix-community/lanzaboote/v1.0.0";
     home-manager.url = "github:nix-community/home-manager";
     catppuccin.url = "github:catppuccin/nix";
     plasma-manager = {
