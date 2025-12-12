@@ -1,2 +1,0 @@
--- LazyVim is bootstrapped by Nix configuration in lazyvim.nix
--- This file is intentionally empty as the setup is handled by home-manager
