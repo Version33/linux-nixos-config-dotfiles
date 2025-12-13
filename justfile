@@ -13,11 +13,11 @@ switch-plain:
     sudo nixos-rebuild switch --flake .#k0or
 
 # Build without switching (with nom for better output)
-build:
-    nom build '.#nixosConfigurations.k0or.config.system.build.toplevel'
+# build:
+# nom build '.#nixosConfigurations.k0or.config.system.build.toplevel'
 
 # Build (plain output, fallback option)
-build-plain:
+build:
     nixos-rebuild build --flake .#k0or
 
 # Update flake inputs
