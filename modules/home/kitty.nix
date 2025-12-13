@@ -9,5 +9,10 @@ _:
       name = "JetBrainsMono Nerd Font Mono";
       size = 13;
     };
+    settings = {
+      # Enable remote control for opencode.nvim integration
+      allow_remote_control = "yes";
+      listen_on = "unix:@mykitty";
+    };
   };
 }
