@@ -33,6 +33,7 @@
     ./hardware/usb.nix
     ./hardware/udev.nix
     ./hardware/rgb.nix
+    ./hardware/gaming.nix
 
     # System Settings
     ./system/time.nix
