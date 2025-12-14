@@ -5,6 +5,8 @@
     inputs.catppuccin.nixosModules.catppuccin
   ];
 
+  home-manager.extraSpecialArgs = { inherit inputs; };
+
   home-manager.users.vee = {
     home.username = "vee";
     home.homeDirectory = "/home/vee";
@@ -18,7 +20,7 @@
       ./nushell.nix
       ./starship.nix
       ./kitty.nix
-      ./lazyvim/lazyvim.nix
+      ./lazyvim.nix
       ./plasma.nix
       ./yabridge.nix
       ./lsp-plugins.nix

@@ -14,7 +14,8 @@ trim_trailing_whitespace = true
 [*.nix]
 indent_style = space
 indent_size = 2
-max_line_length = 100  # nixfmt respects this for line wrapping
+# nixfmt respects this for line wrapping
+max_line_length = 100
 
 # Markdown files
 [*.md]
