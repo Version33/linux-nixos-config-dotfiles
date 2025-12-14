@@ -26,6 +26,10 @@
       url = "github:pfassina/lazyvim-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    opencode-nvim = {
+      url = "github:NickvanDyke/opencode.nvim";
+      flake = false;
+    };
   };
 
   outputs =

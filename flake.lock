@@ -287,11 +287,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1765606130,
-        "narHash": "sha256-KOP4QnkiRwiD5KEOr6ceF67rfTP1OqPmCCft6xDC3k4=",
+        "lastModified": 1765682243,
+        "narHash": "sha256-yeCxFV/905Wr91yKt5zrVvK6O2CVXWRMSrxqlAZnLp0=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "d787ec69c3216ea33be1c0424fe65cb23aa8fb31",
+        "rev": "58bf3ecb2d0bba7bdf363fc8a6c4d49b4d509d03",
         "type": "github"
       },
       "original": {
@@ -517,6 +517,22 @@
         "type": "github"
       }
     },
+    "opencode-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1765572088,
+        "narHash": "sha256-JBzw4KWNDGINLwzZldUYJIFp8UfKtgZapeR0yeGlXXc=",
+        "owner": "NickvanDyke",
+        "repo": "opencode.nvim",
+        "rev": "b985ecf18a9830c7c6107fd51360180e1fae59d8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NickvanDyke",
+        "repo": "opencode.nvim",
+        "type": "github"
+      }
+    },
     "plasma-manager": {
       "inputs": {
         "home-manager": [
@@ -586,6 +602,7 @@
         "lazyvim": "lazyvim",
         "nixpkgs": "nixpkgs_6",
         "nixpkgs-opencode": "nixpkgs-opencode",
+        "opencode-nvim": "opencode-nvim",
         "plasma-manager": "plasma-manager"
       }
     },
