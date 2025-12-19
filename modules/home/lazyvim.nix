@@ -3,14 +3,11 @@
   imports = [
     inputs.lazyvim.homeManagerModules.default
   ];
-
   programs.lazyvim = {
     enable = true;
-    
     extras = {
       coding.yanky.enable = true;
       editor.fzf.enable = true;
-      
       lang.git.enable = true;
       lang.json.enable = true;
       lang.markdown = {
@@ -33,8 +30,30 @@
         installDependencies = true;
         installRuntimeDependencies = true;
       };
+      # Kernel development languages
+      lang.clangd = {
+        enable = true;
+        installDependencies = true;
+        installRuntimeDependencies = true;
+      };
+      lang.rust = {
+        enable = true;
+        installDependencies = true;
+        installRuntimeDependencies = true;
+      };
+      lang.cmake = {
+        enable = true;
+        installDependencies = true;
+        installRuntimeDependencies = true;
+      };
+      lang.toml = {
+        enable = true;
+        installDependencies = true;
+        installRuntimeDependencies = true;
+      };
+      # Useful extras for kernel dev
+      dap.core.enable = true;  # Debugging support
     };
-
     plugins = {
       "opencode" = ''
         return {
@@ -66,4 +85,13 @@
       '';
     };
   };
+  home.packages = with pkgs; [
+    tree-sitter
+    statix
+    nixpkgs-fmt
+    # Additional kernel dev tools
+    bear          # Generate compile_commands.json
+    cscope        # Code navigation (kernel classic)
+    ctags         # Tag generation
+  ];
 }
