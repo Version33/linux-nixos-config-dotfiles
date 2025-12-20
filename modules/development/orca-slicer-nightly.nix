@@ -21,10 +21,10 @@
       final: prev:
       let
         pname = "orca-slicer-nightly";
-        version = "nightly-2025-12-11";
+        version = "nightly-2025-12-19";
         src = pkgs.fetchurl {
-          url = "https://github.com/SoftFever/OrcaSlicer/releases/download/nightly-builds/OrcaSlicer_Linux_AppImage_Ubuntu2404_nightly.AppImage";
-          hash = "sha256-d5hql0cIRbUzxO+pUu86G+GnnKNgBK44dWgRNg4+5UY=";
+          url = "https://github.com/OrcaSlicer/OrcaSlicer/releases/download/nightly-builds/OrcaSlicer_Linux_AppImage_Ubuntu2404_nightly.AppImage";
+          hash = "sha256-Trxe4lLy6u61Zm4X3mj0v0UnAdOaUfiwlCA/usO8C0s=";
         };
         appimageContents = pkgs.appimageTools.extract { inherit pname version src; };
       in
@@ -67,7 +67,7 @@
 
           meta = with pkgs.lib; {
             description = "OrcaSlicer nightly build with H2D/H2S support";
-            homepage = "https://github.com/SoftFever/OrcaSlicer";
+            homepage = "https://github.com/OrcaSlicer/OrcaSlicer";
             license = licenses.agpl3Only;
             platforms = platforms.linux;
             mainProgram = "orca-slicer-nightly";
