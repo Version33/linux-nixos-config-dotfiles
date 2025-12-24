@@ -68,6 +68,12 @@ in
         theme = "catppuccin-mocha-dark-cursors";
       };
 
+      # Override window decorations to use Breeze (overrides look-and-feel theme)
+      windowDecorations = {
+        library = "org.kde.breeze";
+        theme = "Breeze";
+      };
+
       # Set wallpapers per monitor (wallpaper array is ordered by monitor priority, not screen number)
       # To re-enable right monitor: add "wallpaper2" to array below and uncomment HDMI-A-1 priority line
       wallpaper = [
@@ -199,11 +205,7 @@ in
         slideEnabled = false; # Disable slide animation
       };
 
-      # Override window decorations to use Breeze instead of Catppuccin
-      "kwinrc"."org.kde.kdecoration2" = lib.mkForce {
-        library = "org.kde.breeze";
-        theme = "Breeze";
-      };
+
 
       # Window focus settings - allow apps to come to foreground
       # "kwinrc"."Windows" = {

@@ -1,16 +1,17 @@
 ##############################################################################
-# Orca Slicer Nightly Build
+# Bambu Studio Latest Release
 #
-# This module provides OrcaSlicer nightly builds with H2D/H2S printer support
+# This module provides the latest Bambu Studio release with H2C printer support
 # by fetching and wrapping the official AppImage release.
 #
 # The AppImage is fetched from GitHub releases and wrapped into a proper
 # Nix package that can be launched like any other application.
 #
-# For H2D printer support:
-#   - Enable both LAN mode AND developer mode on your H2D printer
-#   - Turn off "Use legacy network plugin" in Orca's preferences
-#   - Delete ~/.config/OrcaSlicer/system/ before first launch
+# Features:
+#   - H2C printer support (multi-nozzle system)
+#   - Hybrid Mode slicing with high-flow and standard nozzles
+#   - Purge mode options (Standard and Purge Saving)
+#   - Nozzle mapping for specific filaments
 ##############################################################################
 
 { pkgs, ... }:
@@ -20,16 +21,16 @@
     (
       final: prev:
       let
-        pname = "orca-slicer-nightly";
-        version = "nightly-2025-12-24";
+        pname = "bambu-studio-latest";
+        version = "2.4.0";
         src = pkgs.fetchurl {
-          url = "https://github.com/OrcaSlicer/OrcaSlicer/releases/download/nightly-builds/OrcaSlicer_Linux_AppImage_Ubuntu2404_nightly.AppImage";
-          hash = "sha256-9ugR9DzZp/pG5AuQqGq2qYzpd8M37L83QhnICfluaRg=";
+          url = "https://github.com/bambulab/BambuStudio/releases/download/v02.04.00.70/Bambu_Studio_ubuntu-22.04_PR-8834.AppImage";
+          hash = "sha256-/xcVD3YPuAr8mNmEGxNMC62kiX1qrzaAi1F6S+0sEbA=";
         };
         appimageContents = pkgs.appimageTools.extract { inherit pname version src; };
       in
       {
-        orca-slicer-nightly = pkgs.appimageTools.wrapType2 {
+        bambu-studio-latest = pkgs.appimageTools.wrapType2 {
           inherit pname version src;
 
           extraPkgs =
@@ -52,28 +53,31 @@
 
           extraInstallCommands = ''
             # Install desktop file
-            install -Dm444 ${appimageContents}/OrcaSlicer.desktop \
-              $out/share/applications/orca-slicer-nightly.desktop
+            install -Dm444 ${appimageContents}/BambuStudio.desktop \
+              $out/share/applications/bambu-studio-latest.desktop
 
-            substituteInPlace $out/share/applications/orca-slicer-nightly.desktop \
-              --replace 'Exec=AppRun' 'Exec=orca-slicer-nightly' \
-              --replace 'Name=OrcaSlicer' 'Name=OrcaSlicer Nightly' \
-              --replace 'Icon=OrcaSlicer' 'Icon=orca-slicer-nightly'
+            substituteInPlace $out/share/applications/bambu-studio-latest.desktop \
+              --replace 'Exec=AppRun' 'Exec=bambu-studio-latest' \
+              --replace 'Name=Bambu Studio' 'Name=Bambu Studio (Latest)' \
+              --replace 'Icon=BambuStudio' 'Icon=bambu-studio-latest'
 
             # Install icon
-            install -Dm444 ${appimageContents}/OrcaSlicer.png \
-              $out/share/pixmaps/orca-slicer-nightly.png
+            install -Dm444 ${appimageContents}/BambuStudio.png \
+              $out/share/pixmaps/bambu-studio-latest.png
           '';
 
           meta = with pkgs.lib; {
-            description = "OrcaSlicer nightly build with H2D/H2S support";
-            homepage = "https://github.com/OrcaSlicer/OrcaSlicer";
+            description = "Bambu Studio latest release with H2C support";
+            homepage = "https://github.com/bambulab/BambuStudio";
             license = licenses.agpl3Only;
             platforms = platforms.linux;
-            mainProgram = "orca-slicer-nightly";
+            mainProgram = "bambu-studio-latest";
           };
         };
       }
     )
   ];
+
+  # Install the package
+  environment.systemPackages = with pkgs; [ bambu-studio-latest ];
 }
