@@ -59,7 +59,6 @@
     ./development/utils.nix
     ./development/terminal-utils.nix
     ./development/orca-slicer-nightly.nix
-    ./development/bambu-studio-latest.nix
     ./development/affinity.nix
 
     # Audio Production

@@ -28,7 +28,7 @@
     gparted
     ntfs3g # NTFS filesystem support for reading/writing NTFS drives
     efibootmgr # Tool to modify UEFI boot entries
-    # bambu-studio # Replaced with bambu-studio-latest (v2.4.0 with H2C support)
+    bambu-studio # PC Software for BambuLab's 3D printers
   ];
 
   # Shell alias for easy rebooting to Windows
