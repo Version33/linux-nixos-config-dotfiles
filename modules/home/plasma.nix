@@ -205,8 +205,6 @@ in
         slideEnabled = false; # Disable slide animation
       };
 
-
-
       # Window focus settings - allow apps to come to foreground
       # "kwinrc"."Windows" = {
       #   FocusPolicy = "ClickToFocus";
