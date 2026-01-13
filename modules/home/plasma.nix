@@ -54,8 +54,8 @@ in
     enable = true;
 
     workspace = {
-      # Set to Catppuccin Mocha Global look-and-feel theme
-      lookAndFeel = "Catppuccin-Mocha-Blue";
+      # Note: Not using lookAndFeel to avoid conflicts with manual windowDecorations override
+      # Instead, setting individual theme components that would be part of Catppuccin-Mocha-Blue
 
       # Set Catppuccin Mocha color scheme
       colorScheme = "CatppuccinMochaBlue";
@@ -68,7 +68,7 @@ in
         theme = "catppuccin-mocha-dark-cursors";
       };
 
-      # Override window decorations to use Breeze (overrides look-and-feel theme)
+      # Override window decorations to use Breeze (instead of Catppuccin theme default)
       windowDecorations = {
         library = "org.kde.breeze";
         theme = "Breeze";

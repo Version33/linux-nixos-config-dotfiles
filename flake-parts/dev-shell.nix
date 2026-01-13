@@ -15,11 +15,13 @@
   perSystem =
     { pkgs, ... }:
     {
+      formatter = pkgs.nixfmt;
+
       devShells.default = pkgs.mkShell {
         packages = with pkgs; [
           # Nix development tools
           nixd # Nix language server
-          nixfmt-rfc-style # Nix formatter (RFC 166 style)
+          nixfmt # Nix formatter (RFC 166 style)
           statix # Lints and suggestions for Nix code
           deadnix # Find and remove unused code
           nix-tree # Visualize dependency tree
