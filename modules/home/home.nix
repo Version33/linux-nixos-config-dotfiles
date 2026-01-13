@@ -38,7 +38,7 @@
       qimgv
       qbittorrent-enhanced
       godotPackages_4_5.godot
-      claude-code
+      # claude-code
       # inputs.claude-desktop.packages.${pkgs.system}.claude-desktop-with-fhs
       # gemini-cli
       lsp-plugins

@@ -20,7 +20,7 @@
       enable = true;
       implementation = "broker";
       packages = with pkgs; [
-        xfce.xfconf
+        xfconf
         gnome2.GConf
       ];
     };

@@ -17,7 +17,7 @@
     moreutils # Growing collection of the unix tools that nobody thought to write long ago when unix was young.
     file # Program that shows the type of files.
     upx # Ultimate Packer for eXecutables.
-    dotenvx # Better dotenv–from the creator of `dotenv
+    # dotenvx # Better dotenv–from the creator of `dotenv` #! broken?
     # sqlx-cli # CLI for managing databases, migrations, and enabling offline mode with sqlx::query!() and friends
     # mermaid-cli # Generation of diagrams from text in a similar manner as markdown.
     # posting # Modern API client that lives in your terminal.

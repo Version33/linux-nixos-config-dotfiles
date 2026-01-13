@@ -24,7 +24,7 @@
         version = "nightly-2025-12-24";
         src = pkgs.fetchurl {
           url = "https://github.com/OrcaSlicer/OrcaSlicer/releases/download/nightly-builds/OrcaSlicer_Linux_AppImage_Ubuntu2404_nightly.AppImage";
-          hash = "sha256-9ugR9DzZp/pG5AuQqGq2qYzpd8M37L83QhnICfluaRg=";
+          hash = "sha256-ruyS3K82Fqw4ZxrE/d4pB/EIiAx/xWb2r4CXjKMwChw=";
         };
         appimageContents = pkgs.appimageTools.extract { inherit pname version src; };
       in
