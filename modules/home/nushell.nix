@@ -24,13 +24,16 @@ _:
       ngc = "sudo nix-collect-garbage -d";
       ngc7 = "sudo nix-collect-garbage --delete-older-than 7d";
       ngc14 = "sudo nix-collect-garbage --delete-older-than 14d";
-      format-nix = "ls *.nix | each { |f| sudo nixfmt $f.name }";
     };
     settings = {
       show_banner = false;
     };
     extraConfig = ''
       $env.EDITOR = "nvim"
+
+      def format-nix [] {
+        ls *.nix | each { |f| sudo nixfmt $f.name }
+      }
 
       def reboot-to-windows [] {
         sudo efibootmgr --bootnext 0000
