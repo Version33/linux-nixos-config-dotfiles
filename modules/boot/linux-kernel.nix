@@ -2,6 +2,7 @@
 
 {
   # Linux Kernel
+  boot.kernel.sysctl."kernel.sysrq" = 1; # Enable all SysRq functions
   security.forcePageTableIsolation = true;
   # security.lockKernelModules = true;
   # security.protectKernelImage = true;
