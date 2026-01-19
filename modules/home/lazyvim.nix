@@ -8,48 +8,50 @@
     extras = {
       coding.yanky.enable = true;
       editor.fzf.enable = true;
-      lang.git.enable = true;
-      lang.json.enable = true;
-      lang.markdown = {
-        enable = true;
-        installDependencies = true;
-        installRuntimeDependencies = true;
-      };
-      lang.nix = {
-        enable = true;
-        installDependencies = true;
-        installRuntimeDependencies = true;
-      };
-      lang.python = {
-        enable = true;
-        installDependencies = true;
-        installRuntimeDependencies = true;
-      };
-      lang.yaml = {
-        enable = true;
-        installDependencies = true;
-        installRuntimeDependencies = true;
-      };
-      # Kernel development languages
-      lang.clangd = {
-        enable = true;
-        installDependencies = true;
-        installRuntimeDependencies = true;
-      };
-      lang.rust = {
-        enable = true;
-        installDependencies = true;
-        installRuntimeDependencies = true;
-      };
-      lang.cmake = {
-        enable = true;
-        installDependencies = true;
-        installRuntimeDependencies = true;
-      };
-      lang.toml = {
-        enable = true;
-        installDependencies = true;
-        installRuntimeDependencies = true;
+      lang = {
+        git.enable = true;
+        json.enable = true;
+        markdown = {
+          enable = true;
+          installDependencies = true;
+          installRuntimeDependencies = true;
+        };
+        nix = {
+          enable = true;
+          installDependencies = true;
+          installRuntimeDependencies = true;
+        };
+        python = {
+          enable = true;
+          installDependencies = true;
+          installRuntimeDependencies = true;
+        };
+        yaml = {
+          enable = true;
+          installDependencies = true;
+          installRuntimeDependencies = true;
+        };
+        # Kernel development languages
+        clangd = {
+          enable = true;
+          installDependencies = true;
+          installRuntimeDependencies = true;
+        };
+        rust = {
+          enable = true;
+          installDependencies = true;
+          installRuntimeDependencies = true;
+        };
+        cmake = {
+          enable = true;
+          installDependencies = true;
+          installRuntimeDependencies = true;
+        };
+        toml = {
+          enable = true;
+          installDependencies = true;
+          installRuntimeDependencies = true;
+        };
       };
       # Useful extras for kernel dev
       dap.core.enable = true; # Debugging support

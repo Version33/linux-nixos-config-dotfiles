@@ -8,8 +8,10 @@
   home-manager.extraSpecialArgs = { inherit inputs; };
 
   home-manager.users.vee = {
-    home.username = "vee";
-    home.homeDirectory = "/home/vee";
+    home = {
+      username = "vee";
+      homeDirectory = "/home/vee";
+    };
     nixpkgs.config.allowUnfree = true;
 
     imports = [

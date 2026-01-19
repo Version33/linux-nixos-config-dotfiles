@@ -30,22 +30,24 @@
     shell = pkgs.nushell;
   };
 
-  programs.firefox.enable = true;
-  programs.steam.enable = true;
+  programs = {
+    firefox.enable = true;
+    steam.enable = true;
 
-  # GameMode for optimizing gaming performance
-  programs.gamemode = {
-    enable = true;
-    settings = {
-      general = {
-        renice = 10;
+    # GameMode for optimizing gaming performance
+    gamemode = {
+      enable = true;
+      settings = {
+        general = {
+          renice = 10;
+        };
+        # Custom scripts can be added here
+        # gpu = {
+        #   apply_gpu_optimisations = "accept-responsibility";
+        #   gpu_device = 0;
+        #   amd_performance_level = "high";
+        # };
       };
-      # Custom scripts can be added here
-      # gpu = {
-      #   apply_gpu_optimisations = "accept-responsibility";
-      #   gpu_device = 0;
-      #   amd_performance_level = "high";
-      # };
     };
   };
 

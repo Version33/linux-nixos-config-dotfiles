@@ -47,11 +47,15 @@
     fail2ban.enable = true;
     clamav = {
       daemon.enable = true;
-      fangfrisch.enable = true;
-      fangfrisch.interval = "daily";
-      updater.enable = true;
-      updater.interval = "daily"; # man systemd.time
-      updater.frequency = 12;
+      fangfrisch = {
+        enable = true;
+        interval = "daily";
+      };
+      updater = {
+        enable = true;
+        interval = "daily"; # man systemd.time
+        frequency = 12;
+      };
     };
   };
 

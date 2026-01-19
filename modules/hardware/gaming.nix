@@ -7,7 +7,7 @@
 #   - udev rules for Steam hardware devices
 ##############################################################################
 
-{ ... }:
+_:
 
 {
   # Enable udev rules for Steam hardware (controllers, Steam Deck, etc.)

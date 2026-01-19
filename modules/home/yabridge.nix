@@ -64,13 +64,17 @@ let
 
 in
 {
-  # Run yabridge setup when home configuration is activated
-  home.activation.yabridgeSetup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    $DRY_RUN_CMD ${yabridgeSetup}
-  '';
+  home = {
+    # Run yabridge setup when home configuration is activated
+    activation.yabridgeSetup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      $DRY_RUN_CMD ${yabridgeSetup}
+    '';
 
-  # Ensure yabridge directories exist
-  home.file.".vst3/yabridge/.keep".text = "";
-  home.file.".vst/yabridge/.keep".text = "";
-  home.file.".clap/yabridge/.keep".text = "";
+    # Ensure yabridge directories exist
+    file = {
+      ".vst3/yabridge/.keep".text = "";
+      ".vst/yabridge/.keep".text = "";
+      ".clap/yabridge/.keep".text = "";
+    };
+  };
 }

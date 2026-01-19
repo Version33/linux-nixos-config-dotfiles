@@ -11,7 +11,7 @@
 #   - Uses nix-flatpak module for declarative management
 ##############################################################################
 
-{ ... }:
+_:
 
 {
   services.flatpak = {

@@ -18,12 +18,25 @@ let
   };
 in
 {
-  services.desktopManager.plasma6.enable = true;
-  services.displayManager.sddm = {
-    enable = true;
-    settings = {
-      General = {
-        Background = "${sddmWallpaper}";
+  services = {
+    desktopManager.plasma6.enable = true;
+    displayManager.sddm = {
+      enable = true;
+      settings = {
+        General = {
+          Background = "${sddmWallpaper}";
+        };
+      };
+    };
+
+    # Configure systemd-logind to handle all power events directly
+    logind.settings = {
+      Login = {
+        HandlePowerKey = "suspend";
+        HandlePowerKeyLongPress = "poweroff";
+        HandleLidSwitch = "suspend";
+        HandleLidSwitchExternalPower = "suspend";
+        IdleAction = "ignore";
       };
     };
   };
@@ -35,17 +48,6 @@ in
 
   # Disable KDE Powerdevil to prevent conflicts with systemd-logind
   systemd.user.services.plasma-powerdevil.enable = false;
-
-  # Configure systemd-logind to handle all power events directly
-  services.logind.settings = {
-    Login = {
-      HandlePowerKey = "suspend";
-      HandlePowerKeyLongPress = "poweroff";
-      HandleLidSwitch = "suspend";
-      HandleLidSwitchExternalPower = "suspend";
-      IdleAction = "ignore";
-    };
-  };
 
   environment.systemPackages = with pkgs; [
     # KDE

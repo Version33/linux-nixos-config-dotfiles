@@ -23,14 +23,18 @@ in
   # Configure Plasma using plasma-manager
 
   # Enable Catppuccin theme for applications
-  catppuccin.enable = true;
-  catppuccin.flavor = "mocha";
-  catppuccin.kvantum.enable = true;
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
+    kvantum.enable = true;
+  };
 
   # Configure Qt to use Kvantum
-  qt.enable = true;
-  qt.platformTheme.name = "kvantum";
-  qt.style.name = "kvantum";
+  qt = {
+    enable = true;
+    platformTheme.name = "kvantum";
+    style.name = "kvantum";
+  };
 
   home.packages = with pkgs; [
     catppuccin-cursors.mochaDark
