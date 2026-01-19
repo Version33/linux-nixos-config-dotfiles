@@ -72,6 +72,7 @@
     ./services/services.nix
     ./services/fonts.nix
     ./services/fido2.nix
+    ./services/gc.nix
 
     # Gaming
     ./gaming/hytale.nix

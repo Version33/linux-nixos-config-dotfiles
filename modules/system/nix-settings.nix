@@ -71,13 +71,8 @@ _:
   };
 
   # ============================================================================
-  # Automatic Garbage Collection
+  # Garbage Collection
   # ============================================================================
-  # Periodically removes old generations and unreferenced store paths
-  # Reference: https://wiki.nixos.org/wiki/Nix_Cookbook#Garbage_collection
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 30d";
-  };
+  # For automatic GC configuration, see modules/services/gc.nix (optional)
+  # That module configures nix.gc and nix.optimise settings
 }
