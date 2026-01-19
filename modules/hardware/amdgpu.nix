@@ -17,7 +17,7 @@
 
   hardware.amdgpu = {
     # https://search.nixos.org/options?channel=unstable&query=hardware.amdgpu
-    overdrive.enable = true; # overclocking
+    overdrive.enable = false; # overclocking
 
     # Enable OpenCL (for compute tasks)
     # opencl.enable = true;
