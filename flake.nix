@@ -99,7 +99,6 @@
       imports = [
         ./flake-parts/nixos-systems.nix
         ./flake-parts/dev-shell.nix
-        ./flake-parts/benchmark-shell.nix
       ];
     };
 }
