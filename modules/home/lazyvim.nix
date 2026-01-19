@@ -52,17 +52,19 @@
         installRuntimeDependencies = true;
       };
       # Useful extras for kernel dev
-      dap.core.enable = true;  # Debugging support
+      dap.core.enable = true; # Debugging support
     };
     plugins = {
       "opencode" = ''
         return {
           "NickvanDyke/opencode.nvim",
           name = "opencode.nvim",
-          dir = "${pkgs.vimUtils.buildVimPlugin {
-            name = "opencode-nvim";
-            src = inputs.opencode-nvim;
-          }}",
+          dir = "${
+            pkgs.vimUtils.buildVimPlugin {
+              name = "opencode-nvim";
+              src = inputs.opencode-nvim;
+            }
+          }",
           lazy = false,
           dependencies = { "folke/snacks.nvim" },
           keys = {
@@ -90,8 +92,8 @@
     statix
     nixpkgs-fmt
     # Additional kernel dev tools
-    bear          # Generate compile_commands.json
-    cscope        # Code navigation (kernel classic)
-    ctags         # Tag generation
+    bear # Generate compile_commands.json
+    cscope # Code navigation (kernel classic)
+    ctags # Tag generation
   ];
 }

@@ -49,9 +49,7 @@
     };
   };
 
-  # Change runtime directory size and power button behavior
-  services.logind.settings.Login = {
-    RuntimeDirectorySize = "8G";
-    HandlePowerKey = "suspend";
-  };
+  # Increase runtime directory size for large tmpfs operations (default is 10% of RAM)
+  # Note: Power button behavior is configured in desktop/kde.nix with other logind settings
+  services.logind.settings.Login.RuntimeDirectorySize = "8G";
 }

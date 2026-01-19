@@ -1,10 +1,19 @@
-{ pkgs, ... }:
+##############################################################################
+#
+#  Environment Variables - System-wide environment configuration
+#
+#  Purpose: Define global environment variables available to all users.
+#
+#  Note: Most environment variables should be set in home-manager for
+#        per-user configuration. Only truly system-wide variables belong here.
+#
+##############################################################################
+_:
 
 {
-  # Setup Env Variables
-  # environment.variables.SPOTIFY_PATH = "${pkgs.spotify}/";
-  # environment.variables.JDK_PATH = "${pkgs.jdk}/";
-  # environment.variables.SHELL = "${pkgs.nushell}/";
-  # environment.shells = [ pkgs.nushell ];
-  # environment.variables.NODEJS_PATH = "${pkgs.nodePackages_latest.nodejs}/";
+  # System-wide environment variables
+  # Uncomment and modify as needed:
+  # environment.variables = {
+  #   EDITOR = "nvim";
+  # };
 }

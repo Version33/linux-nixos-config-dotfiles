@@ -1,7 +1,7 @@
 { inputs, ... }:
 
 {
-  inports = [
+  imports = [
     inputs.catppuccin.nixosModules.catppuccin
   ];
 
