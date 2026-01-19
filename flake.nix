@@ -30,6 +30,9 @@
       url = "github:NickvanDyke/opencode.nvim";
       flake = false;
     };
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak/?ref=v0.7.0";
+    };
   };
 
   outputs =

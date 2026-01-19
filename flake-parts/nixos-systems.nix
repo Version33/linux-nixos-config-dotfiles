@@ -13,6 +13,7 @@
     k0or = inputs.nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
+        inputs.nix-flatpak.nixosModules.nix-flatpak
         ../configuration.nix
         ../hardware-configuration.nix
         ../modules

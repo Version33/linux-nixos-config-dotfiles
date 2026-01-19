@@ -73,6 +73,9 @@
     ./services/fonts.nix
     ./services/fido2.nix
 
+    # Gaming
+    ./gaming/hytale.nix
+
     # Home Manager
     ./home/home.nix
 
