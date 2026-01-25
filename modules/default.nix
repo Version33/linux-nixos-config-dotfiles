@@ -58,8 +58,8 @@
     ./development/info-fetchers.nix
     ./development/utils.nix
     ./development/terminal-utils.nix
-    ./development/orca-slicer-nightly.nix
     ./development/affinity.nix
+    ./development/orca-slicer-nightly.nix # Nightly build with H2D/H2S support
 
     # Audio Production
     ./audio/audio.nix
@@ -73,7 +73,7 @@
     ./services/fonts.nix
     ./services/fido2.nix
     ./services/gc.nix
-
+    
     # Gaming
     ./gaming/hytale.nix
 

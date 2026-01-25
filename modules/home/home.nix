@@ -45,8 +45,8 @@
       # gemini-cli
       lsp-plugins
       prismlauncher
-      orca-slicer-nightly # Nightly build with H2D/H2S printer support
-      bambu-studio # Official BambuLab slicer
+      # orca-slicer-nightly # Nightly build with H2D/H2S printer support
+      bambu-studio
     ];
 
     home.sessionVariables = {
