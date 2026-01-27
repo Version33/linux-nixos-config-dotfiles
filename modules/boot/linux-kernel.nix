@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   # Linux Kernel
@@ -19,17 +19,19 @@
       "acpi_rev_override=5"
     ];
 
-    # kernelPatches = [ {
-    #      name = "selinux-config";
-    #      patch = null;
-    #      extraConfig = ''
-    #              SECURITY_SELINUX y
-    #              SECURITY_SELINUX_BOOTPARAM n
-    #              SECURITY_SELINUX_DEVELOP y
-    #              SECURITY_SELINUX_AVC_STATS y
-    #              DEFAULT_SECURITY_SELINUX n
-    #            '';
-    # } ];
+    # Disable unnecessary GPU drivers and hardware
+    kernelPatches = [
+      {
+        name = "disable-unused-drivers";
+        patch = null;
+        structuredExtraConfig = with lib.kernel; {
+          # NVIDIA Drivers
+          DRM_NOUVEAU = lib.mkForce no; # Open-source NVIDIA driver
+          DRM_NOUVEAU_SVM = lib.mkForce (option no); # Nouveau Shared Virtual Memory
+          DRM_NOVA = lib.mkForce no; # Rust nouveau driver that fails to build
+        };
+      }
+    ];
   };
 
   security = {
