@@ -1,5 +1,10 @@
-{ pkgs, ... }:
-
+{ ... }:
 {
-  hardware.gpgSmartcards.enable = true;
+
+  flake.modules.nixos.fido2 =
+    { pkgs, ... }:
+    {
+      hardware.gpgSmartcards.enable = true;
+    };
+
 }

@@ -1,36 +1,29 @@
-##############################################################################
-# VM Configuration
-#
-# Purpose: Configure resources for VMs built with nixos-rebuild build-vm
-# Features:
-#   - Memory allocation
-#   - CPU cores
-#   - Disk size
-##############################################################################
-
-_:
-
+{ ... }:
 {
-  # VM-specific configuration (only applies when building VMs with build-vm)
-  virtualisation.vmVariant = {
-    virtualisation = {
-      # Configure available memory for the VM (in MB)
-      memorySize = 8192; # 8GB - adjust as needed
 
-      # Configure number of CPU cores for the VM
-      cores = 8; # adjust based on your system
+  flake.modules.nixos.vm = _: {
+    # VM-specific configuration (only applies when building VMs with build-vm)
+    virtualisation.vmVariant = {
+      virtualisation = {
+        # Configure available memory for the VM (in MB)
+        memorySize = 8192; # 8GB - adjust as needed
 
-      # Configure disk size for the VM (in MB)
-      diskSize = 20480; # 20GB - adjust as needed
+        # Configure number of CPU cores for the VM
+        cores = 8; # adjust based on your system
 
-      # Optional: use EFI boot in VM (recommended for testing secure boot setups)
-      # useEFIBoot = true;
+        # Configure disk size for the VM (in MB)
+        diskSize = 20480; # 20GB - adjust as needed
 
-      # Optional: enable graphics acceleration in VM
-      qemu.options = [
-        "-vga virtio"
-        "-display gtk,gl=on"
-      ];
+        # Optional: use EFI boot in VM (recommended for testing secure boot setups)
+        # useEFIBoot = true;
+
+        # Optional: enable graphics acceleration in VM
+        qemu.options = [
+          "-vga virtio"
+          "-display gtk,gl=on"
+        ];
+      };
     };
   };
+
 }

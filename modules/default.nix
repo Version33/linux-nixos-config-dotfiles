@@ -20,10 +20,10 @@
 
 {
   imports = [
-    # Boot & Kernel
-    ./boot/linux-kernel.nix
-    ./boot/secure-boot.nix
-    ./boot/bootloader.nix
+    # Boot & Kernel - Now loaded via dendritic pattern
+    # ./boot/linux-kernel.nix
+    # ./boot/secure-boot.nix
+    # ./boot/bootloader.nix
 
     # Hardware Support - Now loaded via dendritic pattern
     # ./hardware/amdgpu.nix
@@ -35,23 +35,23 @@
     # ./hardware/rgb.nix
     # ./hardware/gaming.nix
 
-    # System Settings
-    ./system/time.nix
-    ./system/nix-settings.nix
-    ./system/nixpkgs.nix
-    ./system/internationalisation.nix
-    ./system/environment-variables.nix
-    ./system/vm.nix
+    # System Settings - Now loaded via dendritic pattern
+    # ./system/time.nix
+    # ./system/nix-settings.nix
+    # ./system/nixpkgs.nix
+    # ./system/internationalisation.nix
+    # ./system/environment-variables.nix
+    # ./system/vm.nix
 
-    # Network & Security
-    ./network/networking.nix
-    ./network/firewall.nix
-    ./network/dns.nix
-    ./network/tailscale.nix
+    # Network & Security - Now loaded via dendritic pattern
+    # ./network/networking.nix
+    # ./network/firewall.nix
+    # ./network/dns.nix
+    # ./network/tailscale.nix
     # ./network/local-services.nix
 
-    # Desktop Environment
-    ./desktop/kde.nix
+    # Desktop Environment - Now loaded via dendritic pattern
+    # ./desktop/kde.nix
 
     # Development Tools - Now loaded via dendritic pattern
     # ./development/lsp.nix
@@ -61,24 +61,24 @@
     # ./development/affinity.nix
     # ./development/orca-slicer-nightly.nix
 
-    # Audio Production
-    ./audio/audio.nix
+    # Audio Production - Now loaded via dendritic pattern
+    # ./audio/audio.nix
     # ./audio/windows-vst.nix
 
-    # Users
-    ./users/users.nix
+    # Users - Now loaded via dendritic pattern
+    # ./users/users.nix
 
-    # Services
-    ./services/services.nix
-    ./services/fonts.nix
-    ./services/fido2.nix
-    ./services/gc.nix
+    # Services - Now loaded via dendritic pattern
+    # ./services/services.nix
+    # ./services/fonts.nix
+    # ./services/fido2.nix
+    # ./services/gc.nix
 
-    # Gaming
-    # ./gaming/hytale.nix  # Now loaded via dendritic pattern
+    # Gaming - Now loaded via dendritic pattern
+    # ./gaming/hytale.nix
 
-    # Home Manager
-    ./home/home.nix
+    # Home Manager - Now loaded via dendritic pattern
+    # ./home/home.nix
 
     # Optional modules - uncomment to enable:
     # Network

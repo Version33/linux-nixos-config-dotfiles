@@ -139,6 +139,38 @@
         ./modules/home/opencode.nix
         ./modules/home/lsp-plugins.nix
         ./modules/home/lazyvim.nix
+        ./modules/home/home.nix
+        ./modules/boot/bootloader.nix
+        ./modules/boot/linux-kernel.nix
+        ./modules/boot/secure-boot.nix
+        ./modules/system/time.nix
+        ./modules/system/nix-settings.nix
+        ./modules/system/nixpkgs.nix
+        ./modules/system/internationalisation.nix
+        ./modules/system/environment-variables.nix
+        ./modules/system/vm.nix
+        ./modules/network/networking.nix
+        ./modules/network/firewall.nix
+        ./modules/network/dns.nix
+        ./modules/network/tailscale.nix
+        ./modules/desktop/kde.nix
+        ./modules/audio/audio.nix
+        ./modules/users/users.nix
+        ./modules/services/services.nix
+        ./modules/services/fonts.nix
+        ./modules/services/fido2.nix
+        ./modules/services/gc.nix
+        ./modules/services/auto-upgrade.nix
+        ./modules/services/clamav-scanner.nix
+        ./modules/services/location.nix
+        ./modules/services/printing.nix
+        ./modules/services/security-services.nix
+        ./modules/audio/windows-vst.nix
+        ./modules/desktop/gnome.nix
+        ./modules/desktop/theme.nix
+        ./modules/network/local-services.nix
+        ./modules/network/open-ssh.nix
+        ./modules/network/vpn.nix
       ];
       # ++ dendriticImports.imports;
     };

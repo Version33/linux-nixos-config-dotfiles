@@ -1,20 +1,8 @@
+{ inputs, ... }:
 {
-  pkgs,
-  inputs,
-  self,
-  ...
-}:
-{
-  imports = [
-    inputs.home-manager.nixosModules.home-manager
-    inputs.catppuccin.nixosModules.catppuccin
-  ];
 
-  home-manager.extraSpecialArgs = { inherit inputs; };
-  home-manager.sharedModules = builtins.attrValues (self.modules.homeManager or { });
-
-  home-manager.users.vee =
-    { config, ... }:
+  flake.modules.homeManager.vee =
+    { pkgs, config, ... }:
     {
       home = {
         username = "vee";
@@ -25,7 +13,6 @@
       imports = [
         inputs.catppuccin.homeModules.catppuccin
         inputs.plasma-manager.homeModules.plasma-manager
-        # Dendritic home modules loaded below via home-manager.sharedModules
       ];
 
       home.packages = with pkgs; [
@@ -54,4 +41,5 @@
       # no touchy
       home.stateVersion = "25.05";
     };
+
 }
