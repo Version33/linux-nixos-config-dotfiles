@@ -92,16 +92,25 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Dendritic pattern support
+    import-tree.url = "github:vic/import-tree";
   };
 
   outputs =
-    inputs@{ flake-parts, ... }:
+    inputs@{ flake-parts, import-tree, ... }:
+    # let
+    #   dendriticImports = import-tree ./modules;
+    # in
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
 
       imports = [
-        ./flake-parts/nixos-systems.nix
-        ./flake-parts/dev-shell.nix
+        inputs.flake-parts.flakeModules.modules
+        ./flake-modules/nixos-systems.nix
+        ./flake-modules/dev-shell.nix
+        ./modules/development/lsp.nix
       ];
+      # ++ dendriticImports.imports;
     };
 }

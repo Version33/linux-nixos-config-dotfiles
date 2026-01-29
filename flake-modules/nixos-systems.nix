@@ -6,7 +6,7 @@
 #   - k0or: Main desktop system
 ##############################################################################
 
-{ inputs, ... }:
+{ inputs, self, ... }:
 
 {
   flake.nixosConfigurations = {
@@ -17,7 +17,8 @@
         ../configuration.nix
         ../hardware-configuration.nix
         ../modules
-      ];
+      ]
+      ++ (builtins.attrValues self.modules.nixos);
     };
   };
 }

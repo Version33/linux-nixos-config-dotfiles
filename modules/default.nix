@@ -54,7 +54,7 @@
     ./desktop/kde.nix
 
     # Development Tools
-    ./development/lsp.nix
+    # ./development/lsp.nix  # Now loaded via dendritic pattern
     ./development/info-fetchers.nix
     ./development/utils.nix
     ./development/terminal-utils.nix
@@ -73,7 +73,7 @@
     ./services/fonts.nix
     ./services/fido2.nix
     ./services/gc.nix
-    
+
     # Gaming
     ./gaming/hytale.nix
 
