@@ -128,6 +128,17 @@
         ./modules/hardware/udev.nix
         ./modules/hardware/usb.nix
         ./modules/hardware/sound.nix
+        ./modules/home/starship.nix
+        ./modules/home/git.nix
+        ./modules/home/ssh.nix
+        ./modules/home/kitty.nix
+        ./modules/home/nushell.nix
+        ./modules/home/vscode.nix
+        ./modules/home/plasma.nix
+        ./modules/home/yabridge.nix
+        ./modules/home/opencode.nix
+        ./modules/home/lsp-plugins.nix
+        ./modules/home/lazyvim.nix
       ];
       # ++ dendriticImports.imports;
     };

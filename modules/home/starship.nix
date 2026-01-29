@@ -1,8 +1,11 @@
-_:
-
+{ ... }:
 {
-  programs.starship = {
-    enable = true;
-    enableNushellIntegration = true;
+
+  flake.modules.homeManager.starship = _: {
+    programs.starship = {
+      enable = true;
+      enableNushellIntegration = true;
+    };
   };
+
 }

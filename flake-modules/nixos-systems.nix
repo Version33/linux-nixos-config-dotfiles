@@ -11,7 +11,9 @@
 {
   flake.nixosConfigurations = {
     k0or = inputs.nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
+      specialArgs = {
+        inherit inputs self;
+      };
       modules = [
         ../configuration.nix
         ../hardware-configuration.nix
