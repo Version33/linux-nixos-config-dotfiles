@@ -25,12 +25,6 @@
     # Core nixpkgs
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # OpenCode CLI with latest patches
-    opencode = {
-      url = "github:anomalyco/opencode";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Flake architecture
     flake-parts.url = "github:hercules-ci/flake-parts";
 
