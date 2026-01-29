@@ -1,5 +1,6 @@
 { ... }:
 {
+
   flake.modules.nixos.lsp =
     { pkgs, ... }:
     {
@@ -34,4 +35,5 @@
         # helix-gpt
       ];
     };
+
 }

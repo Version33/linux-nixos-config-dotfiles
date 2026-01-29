@@ -110,6 +110,7 @@
         ./flake-modules/nixos-systems.nix
         ./flake-modules/dev-shell.nix
         ./modules/development/lsp.nix
+        ./modules/development/rust.nix
       ];
       # ++ dendriticImports.imports;
     };
