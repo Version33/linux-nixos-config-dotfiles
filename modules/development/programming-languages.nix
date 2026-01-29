@@ -1,21 +1,26 @@
-{ pkgs, ... }:
-# TODO: add langs I actually use
+{ ... }:
 {
-  environment.systemPackages = with pkgs; [
-    # go
-    # (python313.withPackages (
-    #   ps: with ps; [
-    #     pygobject3
-    #     gobject-introspection
-    #     pyqt6-sip
-    #   ]
-    # ))
-    # uv
-    # nodePackages_latest.nodejs
-    # nodePackages_latest.pnpm
-    # bun
-    # lua
-    # zig
-    # numbat
-  ];
+
+  flake.modules.nixos.programming-languages =
+    { pkgs, ... }:
+    {
+      environment.systemPackages = with pkgs; [
+        # go
+        # (python313.withPackages (
+        #   ps: with ps; [
+        #     pygobject3
+        #     gobject-introspection
+        #     pyqt6-sip
+        #   ]
+        # ))
+        # uv
+        # nodePackages_latest.nodejs
+        # nodePackages_latest.pnpm
+        # bun
+        # lua
+        # zig
+        # numbat
+      ];
+    };
+
 }

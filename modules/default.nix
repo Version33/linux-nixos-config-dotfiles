@@ -53,13 +53,13 @@
     # Desktop Environment
     ./desktop/kde.nix
 
-    # Development Tools
-    # ./development/lsp.nix  # Now loaded via dendritic pattern
-    ./development/info-fetchers.nix
-    ./development/utils.nix
-    ./development/terminal-utils.nix
-    ./development/affinity.nix
-    ./development/orca-slicer-nightly.nix # Nightly build with H2D/H2S support
+    # Development Tools - Now loaded via dendritic pattern
+    # ./development/lsp.nix
+    # ./development/info-fetchers.nix
+    # ./development/utils.nix
+    # ./development/terminal-utils.nix
+    # ./development/affinity.nix
+    # ./development/orca-slicer-nightly.nix
 
     # Audio Production
     ./audio/audio.nix

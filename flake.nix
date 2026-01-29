@@ -111,6 +111,14 @@
         ./flake-modules/dev-shell.nix
         ./modules/development/lsp.nix
         ./modules/development/rust.nix
+        ./modules/development/info-fetchers.nix
+        ./modules/development/utils.nix
+        ./modules/development/terminal-utils.nix
+        ./modules/development/programming-languages.nix
+        ./modules/development/affinity.nix
+        ./modules/development/llm.nix
+        ./modules/development/orca-slicer-nightly.nix
+        ./modules/development/virtualisation.nix
         ./modules/gaming/hytale.nix
       ];
       # ++ dendriticImports.imports;
