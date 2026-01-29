@@ -12,16 +12,16 @@
 #   - Plugins auto-install to ~/.cache/opencode/node_modules on first run
 ##############################################################################
 
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   # ========================================================================
   # Configuration
   # ========================================================================
 
-  # Install OpenCode from pinned nixpkgs
-  home.packages = with pkgs; [
-    opencode
+  # Install OpenCode from the official flake
+  home.packages = [
+    inputs.opencode.packages.${pkgs.system}.default
   ];
 
   # Declarative OpenCode configuration

@@ -25,8 +25,11 @@
     # Core nixpkgs
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # Pinned nixpkgs with working opencode 0.15.29 (before broken 1.0.x releases)
-    nixpkgs-opencode.url = "github:NixOS/nixpkgs/876df71365b3c0ab2d363cd6af36a80199879430";
+    # OpenCode CLI with latest patches
+    opencode = {
+      url = "github:anomalyco/opencode";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Flake architecture
     flake-parts.url = "github:hercules-ci/flake-parts";
