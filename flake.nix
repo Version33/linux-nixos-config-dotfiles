@@ -111,6 +111,7 @@
         ./flake-modules/dev-shell.nix
         ./modules/development/lsp.nix
         ./modules/development/rust.nix
+        ./modules/gaming/hytale.nix
       ];
       # ++ dendriticImports.imports;
     };

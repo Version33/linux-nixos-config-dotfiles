@@ -75,7 +75,7 @@
     ./services/gc.nix
 
     # Gaming
-    ./gaming/hytale.nix
+    # ./gaming/hytale.nix  # Now loaded via dendritic pattern
 
     # Home Manager
     ./home/home.nix
