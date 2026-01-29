@@ -42,9 +42,9 @@ just update
 │   │   ├── git.nix         # Git, delta, lazygit
 │   │   ├── plasma.nix      # KDE Plasma settings
 │   │   └── ...
-│   ├── plugins/             # Custom package definitions
-│   │   ├── serum2.nix      # Audio plugin packages
-│   │   └── shaperbox3.nix
+│   ├── plugins/             # Custom package definitions (prefixed with _ to exclude from import-tree)
+│   │   ├── _serum2.nix      # Audio plugin packages
+│   │   └── _shaperbox3.nix
 │   └── optional/            # Disabled modules (available to enable)
 │       ├── networking.nix
 │       ├── virtualisation.nix

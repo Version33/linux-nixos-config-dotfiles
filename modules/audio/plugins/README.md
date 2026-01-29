@@ -6,7 +6,7 @@ This directory contains Windows VST plugin definitions that are automatically di
 
 1. **Create a new `.nix` file** in this directory (e.g., `my-plugin.nix`)
 
-2. **Follow the pattern** used in `serum2.nix`:
+2. **Follow the pattern** used in `_serum2.nix` (note: package derivations start with underscore to prevent import-tree from loading them as modules):
 
 ```nix
 { stdenvNoCC, lib, pkgs, requireFile }:

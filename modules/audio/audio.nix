@@ -7,7 +7,7 @@
 
       environment.systemPackages = with pkgs; [
         # bitwig-studio-latest
-        (pkgs.callPackage ./bitwig-studio6.nix { })
+        (pkgs.callPackage ./_bitwig-studio6.nix { })
       ];
 
       # Realtime audio configuration for professional audio work

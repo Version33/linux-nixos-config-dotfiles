@@ -7,8 +7,8 @@
       # Directory containing plugin definitions
       pluginsDir = ./plugins;
 
-      # Auto-discover all .nix files in the plugins directory
-      pluginFiles = builtins.filter (name: lib.hasSuffix ".nix" name) (
+      # Auto-discover all .nix files in the plugins directory (excluding files starting with _)
+      pluginFiles = builtins.filter (name: lib.hasSuffix ".nix" name && !(lib.hasPrefix "_" name)) (
         builtins.attrNames (builtins.readDir pluginsDir)
       );
 
