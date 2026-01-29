@@ -25,15 +25,15 @@
     ./boot/secure-boot.nix
     ./boot/bootloader.nix
 
-    # Hardware Support
-    ./hardware/amdgpu.nix
-    ./hardware/graphics.nix
-    ./hardware/sound.nix
-    ./hardware/bluetooth.nix
-    ./hardware/usb.nix
-    ./hardware/udev.nix
-    ./hardware/rgb.nix
-    ./hardware/gaming.nix
+    # Hardware Support - Now loaded via dendritic pattern
+    # ./hardware/amdgpu.nix
+    # ./hardware/graphics.nix
+    # ./hardware/sound.nix
+    # ./hardware/bluetooth.nix
+    # ./hardware/usb.nix
+    # ./hardware/udev.nix
+    # ./hardware/rgb.nix
+    # ./hardware/gaming.nix
 
     # System Settings
     ./system/time.nix

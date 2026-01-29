@@ -120,6 +120,14 @@
         ./modules/development/orca-slicer-nightly.nix
         ./modules/development/virtualisation.nix
         ./modules/gaming/hytale.nix
+        ./modules/hardware/amdgpu.nix
+        ./modules/hardware/rgb.nix
+        ./modules/hardware/bluetooth.nix
+        ./modules/hardware/gaming.nix
+        ./modules/hardware/graphics.nix
+        ./modules/hardware/udev.nix
+        ./modules/hardware/usb.nix
+        ./modules/hardware/sound.nix
       ];
       # ++ dendriticImports.imports;
     };

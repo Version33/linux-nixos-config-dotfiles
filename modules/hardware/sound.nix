@@ -1,50 +1,42 @@
-##############################################################################
-# Sound Configuration
-#
-# Purpose: Configure PipeWire audio server
-# Features:
-#   - PipeWire audio server (replaces PulseAudio)
-#   - ALSA, PulseAudio, and JACK compatibility
-#   - 32-bit audio support
-#   - Realtime kit for low-latency audio
-#   - Low-latency settings optimized for gaming
-#   - Audio control utilities (pamixer, pavucontrol)
-##############################################################################
-
-{ pkgs, ... }:
-
+{ ... }:
 {
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    wireplumber.enable = true;
-    # If you want to use JACK applications, uncomment this
-    jack.enable = true;
 
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    # media-session.enable = true;
+  flake.modules.nixos.sound =
+    { pkgs, ... }:
+    {
+      # Enable sound with pipewire.
+      services.pulseaudio.enable = false;
+      security.rtkit.enable = true;
+      services.pipewire = {
+        enable = true;
+        alsa.enable = true;
+        alsa.support32Bit = true;
+        pulse.enable = true;
+        wireplumber.enable = true;
+        # If you want to use JACK applications, uncomment this
+        jack.enable = true;
 
-    # Low-latency configuration for gaming
-    # This reduces audio stuttering in games like CS2
-    # With a high-end CPU, we can use very low buffer sizes
-    extraConfig.pipewire."92-low-latency" = {
-      "context.properties" = {
-        "default.clock.rate" = 48000;
-        "default.clock.quantum" = 128; # Very low buffer for high-end CPU (was 1024)
-        "default.clock.min-quantum" = 128;
-        "default.clock.max-quantum" = 256;
+        # use the example session manager (no others are packaged yet so this is enabled by default,
+        # no need to redefine it in your config for now)
+        # media-session.enable = true;
+
+        # Low-latency configuration for gaming
+        # This reduces audio stuttering in games like CS2
+        # With a high-end CPU, we can use very low buffer sizes
+        extraConfig.pipewire."92-low-latency" = {
+          "context.properties" = {
+            "default.clock.rate" = 48000;
+            "default.clock.quantum" = 128; # Very low buffer for high-end CPU (was 1024)
+            "default.clock.min-quantum" = 128;
+            "default.clock.max-quantum" = 256;
+          };
+        };
       };
-    };
-  };
 
-  environment.systemPackages = with pkgs; [
-    pamixer
-    pavucontrol
-  ];
+      environment.systemPackages = with pkgs; [
+        pamixer
+        pavucontrol
+      ];
+    };
+
 }
