@@ -2,8 +2,6 @@
 
 A NixOS configuration.
 
-> Originally forked from [XNM1's config](https://github.com/XNM1/linux-nixos-hyprland-config-dotfiles), heavily modified.
-
 ```bash
 # Build and switch to configuration (uses nom for better output)
 just switch
