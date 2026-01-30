@@ -1,5 +1,8 @@
 { inputs, ... }:
 {
+  # Declarative Flatpak management
+  # Note: nix-flatpak doesn't expose a nixpkgs input, so no follows needed
+  flake-file.inputs.nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.7.0";
 
   flake.modules.nixos.hytale = _: {
     imports = [

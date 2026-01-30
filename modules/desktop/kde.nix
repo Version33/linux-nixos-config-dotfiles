@@ -1,5 +1,13 @@
-{ ... }:
+{ inputs, ... }:
 {
+  # KDE Plasma configuration
+  flake-file.inputs.plasma-manager = {
+    url = "github:nix-community/plasma-manager";
+    inputs.home-manager.follows = "home-manager";
+  };
+  # Define catppuccin here since _theme.nix is disabled but kde.nix uses the package
+  # System-wide theming
+  flake-file.inputs.catppuccin.url = "github:catppuccin/nix";
 
   flake.modules.nixos.kde =
     { pkgs, ... }:

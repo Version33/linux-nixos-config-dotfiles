@@ -1,5 +1,7 @@
 { inputs, ... }:
 {
+  # OpenCode CLI with latest patches
+  flake-file.inputs.opencode.url = "github:anomalyco/opencode";
 
   flake.modules.homeManager.opencode =
     { pkgs, ... }:

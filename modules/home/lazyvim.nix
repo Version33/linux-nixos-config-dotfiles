@@ -1,5 +1,12 @@
 { inputs, ... }:
 {
+  # LazyVim Neovim configuration
+  flake-file.inputs.lazyvim.url = "github:pfassina/lazyvim-nix";
+  # Neovim AI integration (non-flake)
+  flake-file.inputs.opencode-nvim = {
+    url = "github:NickvanDyke/opencode.nvim";
+    flake = false;
+  };
 
   flake.modules.homeManager.lazyvim =
     { pkgs, ... }:

@@ -1,5 +1,7 @@
-{ ... }:
+{ inputs, ... }:
 {
+  # Claude Desktop for Linux
+  flake-file.inputs.claude-desktop.url = "github:k3d3/claude-desktop-linux-flake";
 
   flake.modules.nixos.llm =
     { pkgs, config, ... }:
