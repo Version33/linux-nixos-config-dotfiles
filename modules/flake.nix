@@ -14,7 +14,6 @@
       };
       modules = [
         ../hardware-configuration.nix
-        ./.
 
         # Home Manager integration
         inputs.home-manager.nixosModules.home-manager

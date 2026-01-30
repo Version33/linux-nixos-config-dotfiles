@@ -37,9 +37,6 @@
       home.sessionVariables = {
         EDITOR = "nvim";
       };
-
-      # no touchy
-      home.stateVersion = "25.05";
     };
 
 }
