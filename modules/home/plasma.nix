@@ -17,10 +17,10 @@
       };
 
       # Fetch the Catppuccin wallpaper for right monitor (disabled - monitor dead, keeping for future replacement)
-    #   wallpaper2 = pkgs.fetchurl {
-    #     url = "https://raw.githubusercontent.com/zhichaoh/catppuccin-wallpapers/main/minimalistic/tetris.png";
-    #     sha256 = "16dfxxn77fymb44daadd85ck0l98zvmyq6lg9l04ip0dsirzmxkc";
-    #   };
+      #   wallpaper2 = pkgs.fetchurl {
+      #     url = "https://raw.githubusercontent.com/zhichaoh/catppuccin-wallpapers/main/minimalistic/tetris.png";
+      #     sha256 = "16dfxxn77fymb44daadd85ck0l98zvmyq6lg9l04ip0dsirzmxkc";
+      #   };
     in
     {
       # Configure Plasma using plasma-manager
