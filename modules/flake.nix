@@ -17,6 +17,9 @@
     flake-parts.url = "github:hercules-ci/flake-parts"; # Module system for flakes
     import-tree.url = "github:vic/import-tree"; # Automatic module discovery
 
+    # Audio production tools
+    audio-nix.url = "github:polygon/audio.nix"; # Bitwig and other audio packages
+
     # Boilerplate reduction tools
     flake-file.url = "github:vic/flake-file"; # Generates flake.nix from modules
     nix-auto-follow.url = "github:fzakaria/nix-auto-follow"; # Fixes input version duplications

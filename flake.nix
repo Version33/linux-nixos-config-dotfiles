@@ -6,8 +6,8 @@
 
   inputs = {
     affinity.url = "github:mrshmllow/affinity-nix";
+    audio-nix.url = "github:polygon/audio.nix";
     catppuccin.url = "github:catppuccin/nix";
-    claude-desktop.url = "github:k3d3/claude-desktop-linux-flake";
     flake-file.url = "github:vic/flake-file";
     flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager.url = "github:nix-community/home-manager";

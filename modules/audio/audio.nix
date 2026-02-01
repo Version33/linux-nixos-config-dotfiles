@@ -4,12 +4,6 @@
   flake.modules.nixos.audio =
     { pkgs, ... }:
     {
-
-      environment.systemPackages = with pkgs; [
-        # bitwig-studio-latest
-        (pkgs.callPackage ./_bitwig-studio6.nix { })
-      ];
-
       # Realtime audio configuration for professional audio work
       # This fixes yabridge memlock warnings and enables low-latency audio
       security.pam.loginLimits = [
