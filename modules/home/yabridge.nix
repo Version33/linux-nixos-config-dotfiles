@@ -3,15 +3,11 @@
 
   flake.modules.homeManager.yabridge =
     {
-      config,
       pkgs,
       lib,
       ...
     }:
     let
-      # Find the windows-plugin-bundle in the system packages
-      # This will automatically update when the bundle changes
-      pluginBundlePath = "/run/current-system/sw";
 
       # Script to configure yabridge
       yabridgeSetup = pkgs.writeShellScript "yabridge-setup" ''

@@ -2,7 +2,7 @@
 {
 
   flake.modules.nixos.udev =
-    { pkgs, ... }:
+    { ... }:
     {
       services.udev.extraRules = ''
         # Ableton Push 3

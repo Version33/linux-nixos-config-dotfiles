@@ -2,7 +2,7 @@
 {
 
   flake.modules.nixos.gnome =
-    { pkgs, ... }:
+    { ... }:
     {
       # Enable Gnome
       services.xserver = {

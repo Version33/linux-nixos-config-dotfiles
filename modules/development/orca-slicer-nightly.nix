@@ -6,7 +6,7 @@
     {
       nixpkgs.overlays = [
         (
-          final: prev:
+          _final: _prev:
           let
             pname = "orca-slicer-nightly";
             version = "nightly-2026-01-25";

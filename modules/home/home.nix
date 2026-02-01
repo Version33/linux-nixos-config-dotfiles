@@ -2,7 +2,7 @@
 {
 
   flake.modules.homeManager.vee =
-    { pkgs, config, ... }:
+    { pkgs, ... }:
     {
       home = {
         username = "vee";

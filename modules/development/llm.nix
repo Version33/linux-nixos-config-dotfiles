@@ -1,10 +1,10 @@
-{ inputs, ... }:
+{ ... }:
 {
   # Claude Desktop for Linux
   flake-file.inputs.claude-desktop.url = "github:k3d3/claude-desktop-linux-flake";
 
   flake.modules.nixos.llm =
-    { pkgs, config, ... }:
+    { pkgs, ... }:
     {
       # Core service: Ollama with ROCm GPU acceleration for AMD GPUs
       services.ollama = {
@@ -26,7 +26,7 @@
         rocmOverrideGfx = "12.0.1";
       };
 
-      # Optional services - uncomment if needed:
+      # Optional services - uncomment if needed (add 'config' parameter if using searx):
       # services.searx = {
       #   enable = true;
       #   settings = {
@@ -42,7 +42,7 @@
       #       ];
       #     };
       #   };
-      #   environmentFile = "${config.users.users.vee.home}/.config/.env.searxng";
+      #   # environmentFile = "${config.users.users.vee.home}/.config/.env.searxng";
       # };
 
       # services.n8n = {

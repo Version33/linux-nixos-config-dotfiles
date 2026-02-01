@@ -2,7 +2,7 @@
 {
 
   flake.modules.nixos.networking =
-    { pkgs, ... }:
+    { ... }:
     {
       # Enable networking
       networking.hostName = "k0or"; # Define your hostname.
