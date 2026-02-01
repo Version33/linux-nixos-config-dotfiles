@@ -17,7 +17,7 @@
           # Install Hytale launcher from local flatpak bundle
           bundle = "file:///home/vee/Downloads/hytale-launcher-latest.flatpak";
           appId = "com.hypixel.HytaleLauncher";
-          sha256 = "0h3yixfc2l4776rxyrgspgkdnmdvz3nphlxb879h9j5dmgc74n6w";
+          sha256 = "1h9414fnmqv9phdgp5h2s9qyizi2acvffk4c5q1gm841k3v0068r";
         }
       ];
 
