@@ -15,7 +15,7 @@
     lanzaboote.url = "github:nix-community/lanzaboote/v1.0.0";
     lazyvim.url = "github:pfassina/lazyvim-nix";
     nix-auto-follow.url = "github:fzakaria/nix-auto-follow";
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.7.0";
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     opencode.url = "github:anomalyco/opencode";
     opencode-nvim = {
