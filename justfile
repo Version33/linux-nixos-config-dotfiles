@@ -22,7 +22,7 @@ build:
 
 # Update flake inputs, switch to new config, and commit flake.lock
 update:
-    nix flake update && just switch && git add flake.lock && git commit -m "update"
+    nix flake update && if git diff --quiet flake.lock; then echo "No updates."; else just switch && git add flake.lock && git commit -m "update"; fi
 
 # Update specific input (e.g., just update-input nixpkgs)
 update-input INPUT:
