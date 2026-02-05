@@ -20,9 +20,9 @@ switch-plain:
 build:
     nixos-rebuild build --flake .#k0or
 
-# Update flake inputs
+# Update flake inputs, switch to new config, and commit flake.lock
 update:
-    nix flake update
+    nix flake update && just switch && git add flake.lock && git commit -m "update"
 
 # Update specific input (e.g., just update-input nixpkgs)
 update-input INPUT:
