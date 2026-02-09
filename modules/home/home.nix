@@ -32,6 +32,7 @@
         prismlauncher
         # orca-slicer-nightly # Nightly build with H2D/H2S printer support
         bambu-studio
+        solo2-cli
       ];
 
       home.sessionVariables = {
