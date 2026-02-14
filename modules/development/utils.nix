@@ -4,6 +4,7 @@
     { pkgs, ... }:
     {
       environment.systemPackages = with pkgs; [
+        comma # Run programs without installing them using `,` command
         mold # Faster drop-in replacement for existing Unix linkers (unwrapped)
         gcc # GNU Compiler Collection, version 14.3.0 (wrapper script)
         clang # C language family frontend for LLVM (wrapper script)
