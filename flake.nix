@@ -16,6 +16,7 @@
     lazyvim.url = "github:pfassina/lazyvim-nix";
     nix-auto-follow.url = "github:fzakaria/nix-auto-follow";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
+    nixmate.url = "github:daskladas/nixmate";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     opencode.url = "github:anomalyco/opencode";
     opencode-nvim = {

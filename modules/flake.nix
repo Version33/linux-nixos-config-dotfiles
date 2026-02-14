@@ -20,6 +20,9 @@
     # Audio production tools
     audio-nix.url = "github:polygon/audio.nix"; # Bitwig and other audio packages
 
+    # System management tools
+    nixmate.url = "github:daskladas/nixmate"; # Comprehensive NixOS TUI manager
+
     # Boilerplate reduction tools
     flake-file.url = "github:vic/flake-file"; # Generates flake.nix from modules
     nix-auto-follow.url = "github:fzakaria/nix-auto-follow"; # Fixes input version duplications
