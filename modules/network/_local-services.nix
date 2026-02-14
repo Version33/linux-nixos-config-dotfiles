@@ -1,8 +1,6 @@
-{ ... }:
 {
 
   flake.modules.nixos.local-services =
-    { ... }:
     {
       # networking.hosts = {
       #   "192.168.1.83" = [

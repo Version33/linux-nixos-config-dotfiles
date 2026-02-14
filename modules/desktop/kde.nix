@@ -1,4 +1,3 @@
-{ ... }:
 {
   # KDE Plasma configuration
   flake-file.inputs.plasma-manager = {

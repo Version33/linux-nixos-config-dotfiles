@@ -1,4 +1,3 @@
-{ ... }:
 {
 
   flake.modules.nixos.open-ssh = _: {

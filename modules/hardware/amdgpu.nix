@@ -1,8 +1,6 @@
-{ ... }:
 {
 
   flake.modules.nixos.amdgpu =
-    { ... }:
     {
       # Load AMD GPU driver for Xorg and Wayland
       services.xserver.videoDrivers = [ "amdgpu" ];
