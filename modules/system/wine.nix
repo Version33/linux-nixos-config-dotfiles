@@ -3,7 +3,7 @@
     { pkgs, ... }:
     {
       environment.systemPackages = with pkgs; [
-        wineWowPackages.staging
+        wineWow64Packages.staging
         winetricks
         wine64Packages.fonts
       ];
