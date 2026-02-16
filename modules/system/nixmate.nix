@@ -7,7 +7,7 @@
       # Provides unified interface for: generations, rebuilds, services,
       # error translation, storage management, package search, and more
       environment.systemPackages = [
-        inputs.nixmate.packages.${pkgs.system}.default
+        inputs.nixmate.packages.${pkgs.stdenv.hostPlatform.system}.default
       ];
     };
 }

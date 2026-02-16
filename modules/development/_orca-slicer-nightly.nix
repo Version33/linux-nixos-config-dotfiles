@@ -20,7 +20,7 @@
               inherit pname version src;
 
               extraPkgs =
-                pkgs: with pkgs; [
+                ps: with ps; [
                   # Additional libraries that might be needed
                   webkitgtk_4_1
                   glib-networking
