@@ -24,7 +24,7 @@
         kdePackages.filelight
         qimgv
         qbittorrent-enhanced
-        godotPackages_4_5.godot
+        godotPackages_4_6.godot
         # claude-code
         # inputs.claude-desktop.packages.${pkgs.system}.claude-desktop-with-fhs
         # gemini-cli
@@ -32,6 +32,7 @@
         prismlauncher
         # orca-slicer-nightly # Nightly build with H2D/H2S printer support
         bambu-studio
+        element-desktop # Feature-rich client for Matrix.org
       ];
 
       home.sessionVariables = {
