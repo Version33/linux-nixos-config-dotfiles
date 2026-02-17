@@ -5,7 +5,7 @@
   ];
 
   perSystem =
-    { pkgs, ... }:
+    { pkgs, self', ... }:
     {
       treefmt = {
         projectRootFile = "flake.nix";
@@ -28,7 +28,7 @@
           nix-direnv # Fast direnv integration for Nix
 
           # Useful utilities
-          git
+          self'.packages.git # Wrapped git with author identity baked in
           just # Command runner (for justfile)
         ];
       };
