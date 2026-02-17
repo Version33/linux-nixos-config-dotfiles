@@ -33,20 +33,34 @@
       };
     in
     {
-      packages.vscode = pkgs.writeShellApplication {
-        name = "codium";
-        runtimeInputs = [ codiumWithExtensions ];
-        text = ''
-          # Copy settings if they don't exist or are older
-          mkdir -p ~/.config/VSCodium/User
-          if [ ! -f ~/.config/VSCodium/User/settings.json ] || \
-             [ ${userSettings} -nt ~/.config/VSCodium/User/settings.json ]; then
-            cp ${userSettings} ~/.config/VSCodium/User/settings.json
-          fi
+      packages.vscode =
+        let
+          wrapper = pkgs.writeShellApplication {
+            name = "codium";
+            runtimeInputs = [ codiumWithExtensions ];
+            text = ''
+              # Copy settings if they don't exist or are older
+              mkdir -p ~/.config/VSCodium/User
+              if [ ! -f ~/.config/VSCodium/User/settings.json ] || \
+                 [ ${userSettings} -nt ~/.config/VSCodium/User/settings.json ]; then
+                cp ${userSettings} ~/.config/VSCodium/User/settings.json
+              fi
 
-          exec codium "$@"
-        '';
-      };
+              exec codium "$@"
+            '';
+          };
+        in
+        pkgs.symlinkJoin {
+          name = "codium";
+          paths = [
+            wrapper
+            codiumWithExtensions
+          ];
+          # Ensure the wrapper binary takes precedence over codiumWithExtensions
+          postBuild = ''
+            ln -sf ${wrapper}/bin/codium $out/bin/codium
+          '';
+        };
     };
 
   flake.modules.nixos.wrapped-vscode =

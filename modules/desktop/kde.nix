@@ -63,6 +63,7 @@
         kdePackages.partitionmanager # Optional: Manage the disk devices, partitions and file systems on your computer
         # Theme
         catppuccin-kde # Catppuccin theme for KDE Plasma
+        catppuccin-papirus-folders # Papirus-Dark icon theme with Catppuccin folder colors (needed system-wide for system tray icons)
         # Non-KDE graphical packages
         hardinfo2 # System information and benchmarks for Linux systems
         vlc # Cross-platform media player and streaming server
@@ -115,7 +116,6 @@
 
       home.packages = with pkgs; [
         catppuccin-cursors.mochaDark
-        catppuccin-papirus-folders
         (catppuccin-kde.override {
           flavour = [ "mocha" ];
           accents = [ "blue" ];
