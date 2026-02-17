@@ -20,7 +20,6 @@
 
         # development & creative
         godotPackages_4_6.godot
-        bambu-studio
 
         # audio
         lsp-plugins
