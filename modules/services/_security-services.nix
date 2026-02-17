@@ -1,7 +1,12 @@
 {
 
   flake.modules.nixos.security-services =
-    { pkgs, lib, ... }:
+    {
+      pkgs,
+      lib,
+      self,
+      ...
+    }:
     {
 
       # Some programs need SUID wrappers, can be configured further or are
@@ -103,7 +108,7 @@
             profile = "${pkgs.firejail}/etc/firejail/thunar.profile";
           };
           vscodium = {
-            executable = "${lib.getBin pkgs.vscodium}/bin/vscodium";
+            executable = "${lib.getBin self.packages.${pkgs.stdenv.hostPlatform.system}.vscode}/bin/codium";
             profile = "${pkgs.firejail}/etc/firejail/vscodium.profile";
           };
         };

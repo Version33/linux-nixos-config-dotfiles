@@ -22,4 +22,12 @@
         };
       };
     };
+
+  flake.modules.nixos.wrapped-opencode =
+    { self, pkgs, ... }:
+    {
+      environment.systemPackages = [
+        self.packages.${pkgs.stdenv.hostPlatform.system}.opencode
+      ];
+    };
 }

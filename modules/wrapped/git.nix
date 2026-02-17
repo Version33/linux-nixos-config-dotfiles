@@ -14,4 +14,12 @@
         };
       };
     };
+
+  flake.modules.nixos.wrapped-git =
+    { self, pkgs, ... }:
+    {
+      environment.systemPackages = [
+        self.packages.${pkgs.stdenv.hostPlatform.system}.git
+      ];
+    };
 }

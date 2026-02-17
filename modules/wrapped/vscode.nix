@@ -8,46 +8,52 @@
         builtins.toJSON {
           "claudeCode.useTerminal" = true;
           "git.confirmSync" = false;
+          "workbench.colorTheme" = "Catppuccin Mocha";
+          "workbench.iconTheme" = "catppuccin-mocha";
+          "catppuccin.accentColor" = "blue";
+          "editor.semanticHighlighting.enabled" = true;
+          "terminal.integrated.minimumContrastRatio" = 1;
+          "window.titleBarStyle" = "custom";
         }
       );
 
-      # Extensions to install
-      extensions = with pkgs.vscode-extensions; [
-        vscodevim.vim
-        visualstudioexptteam.vscodeintellicode
-        christian-kohler.path-intellisense
-        jnoortheen.nix-ide
-        jeff-hykin.better-nix-syntax
-        formulahendry.code-runner
-      ];
-
-      # Create extension directory structure
-      extensionsDir = pkgs.symlinkJoin {
-        name = "vscode-extensions";
-        paths = extensions;
+      # VSCodium with extensions baked in (generates correct extensions.json)
+      codiumWithExtensions = pkgs.vscode-with-extensions.override {
+        vscode = pkgs.vscodium;
+        vscodeExtensions = with pkgs.vscode-extensions; [
+          vscodevim.vim
+          visualstudioexptteam.vscodeintellicode
+          christian-kohler.path-intellisense
+          jnoortheen.nix-ide
+          jeff-hykin.better-nix-syntax
+          formulahendry.code-runner
+          catppuccin.catppuccin-vsc
+          catppuccin.catppuccin-vsc-icons
+        ];
       };
     in
     {
-      # Wrapped VSCodium with extensions and settings
       packages.vscode = pkgs.writeShellApplication {
         name = "codium";
-        runtimeInputs = [ pkgs.vscodium ];
+        runtimeInputs = [ codiumWithExtensions ];
         text = ''
-          # Create config directory if it doesn't exist
-          mkdir -p ~/.config/VSCodium/User
-
           # Copy settings if they don't exist or are older
+          mkdir -p ~/.config/VSCodium/User
           if [ ! -f ~/.config/VSCodium/User/settings.json ] || \
              [ ${userSettings} -nt ~/.config/VSCodium/User/settings.json ]; then
             cp ${userSettings} ~/.config/VSCodium/User/settings.json
           fi
 
-          # Launch VSCodium with extensions
-          exec ${pkgs.vscodium}/bin/codium \
-            --extensions-dir ${extensionsDir}/share/vscode/extensions \
-            "$@"
+          exec codium "$@"
         '';
       };
     };
 
+  flake.modules.nixos.wrapped-vscode =
+    { self, pkgs, ... }:
+    {
+      environment.systemPackages = [
+        self.packages.${pkgs.stdenv.hostPlatform.system}.vscode
+      ];
+    };
 }

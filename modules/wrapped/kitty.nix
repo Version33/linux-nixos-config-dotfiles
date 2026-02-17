@@ -21,7 +21,7 @@
 
       configFile = pkgs.writeText "kitty.conf" ''
         ${builtins.readFile baseConfig}
-        include ${pkgs.kitty-themes}/share/kitty-themes/Catppuccin-Mocha.conf
+        include ${pkgs.kitty-themes}/share/kitty-themes/themes/Catppuccin-Mocha.conf
       '';
     in
     {
@@ -32,6 +32,14 @@
           "-c" = toString configFile;
         };
       };
+    };
+
+  flake.modules.nixos.wrapped-kitty =
+    { self, pkgs, ... }:
+    {
+      environment.systemPackages = [
+        self.packages.${pkgs.stdenv.hostPlatform.system}.kitty
+      ];
     };
 
 }
