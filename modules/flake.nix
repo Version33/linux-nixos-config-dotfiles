@@ -13,7 +13,6 @@
   # Define core flake inputs here
   flake-file.inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; # Core system packages
-    home-manager.url = "github:nix-community/home-manager"; # User environment manager
     flake-parts.url = "github:hercules-ci/flake-parts"; # Module system for flakes
     import-tree.url = "github:vic/import-tree"; # Automatic module discovery
 
@@ -22,6 +21,10 @@
 
     # System management tools
     nixmate.url = "github:daskladas/nixmate"; # Comprehensive NixOS TUI manager
+
+    # Program wrappers (replacing home-manager)
+    wrappers.url = "github:Lassulus/wrappers"; # Simple wrapper library
+    wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules"; # Flake-parts integration for wrappers
 
     # Boilerplate reduction tools
     flake-file.url = "github:vic/flake-file"; # Generates flake.nix from modules
@@ -40,18 +43,6 @@
       };
       modules = [
         ../hardware-configuration.nix
-
-        # Home Manager integration
-        inputs.home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = {
-            inherit inputs;
-          };
-          # Load all dendritic home-manager modules
-          home-manager.sharedModules = builtins.attrValues (self.modules.homeManager or { });
-        }
       ]
       # Load all dendritic NixOS modules
       ++ (builtins.attrValues self.modules.nixos);

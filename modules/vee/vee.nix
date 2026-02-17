@@ -1,13 +1,18 @@
 {
 
-  flake.modules.nixos.users =
-    { pkgs, ... }:
+  flake.modules.nixos.vee =
+    { self, pkgs, ... }:
     {
+      environment.shells = [
+        self.packages.${pkgs.stdenv.hostPlatform.system}.nushell
+      ];
+
       # Define a user account. Don't forget to set a password with 'passwd'.
       users.users.vee = {
         isNormalUser = true;
         description = "vee";
         initialPassword = "";
+        shell = self.packages.${pkgs.stdenv.hostPlatform.system}.nushell;
         extraGroups = [
           "networkmanager"
           "input"
@@ -18,7 +23,6 @@
           "tss"
           "plugdev"
         ];
-        shell = pkgs.nushell;
       };
 
       programs = {
