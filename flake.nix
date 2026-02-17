@@ -2,7 +2,7 @@
 # Use `nix run .#write-flake` to regenerate it.
 {
 
-  outputs = inputs: import ./. inputs;
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
   inputs = {
     audio-nix.url = "github:polygon/audio.nix";
@@ -18,7 +18,6 @@
     opencode.url = "github:anomalyco/opencode";
     plasma-manager.url = "github:nix-community/plasma-manager";
     treefmt-nix.url = "github:numtide/treefmt-nix";
-    wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
     wrappers.url = "github:Lassulus/wrappers";
   };
 
