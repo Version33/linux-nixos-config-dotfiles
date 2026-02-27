@@ -1,11 +1,36 @@
 {
   # KDE Plasma configuration
+  flake-file.inputs.home-manager = {
+    url = "github:nix-community/home-manager";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
   flake-file.inputs.plasma-manager = {
     url = "github:nix-community/plasma-manager";
+    inputs.nixpkgs.follows = "nixpkgs";
+    inputs.home-manager.follows = "home-manager";
   };
   # Define catppuccin here since _theme.nix is disabled but kde.nix uses the package
   # System-wide theming
   flake-file.inputs.catppuccin.url = "github:catppuccin/nix";
+
+  # Home Manager NixOS integration — wires all flake.modules.homeManager.* into user "vee"
+  flake.modules.nixos.home-manager =
+    { inputs, self, ... }:
+    {
+      imports = [ inputs.home-manager.nixosModules.home-manager ];
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+      home-manager.sharedModules = [
+        inputs.plasma-manager.homeModules.plasma-manager
+        inputs.catppuccin.homeModules.catppuccin
+      ];
+      home-manager.users.vee =
+        { ... }:
+        {
+          imports = builtins.attrValues self.modules.homeManager;
+          home.stateVersion = "25.05";
+        };
+    };
 
   flake.modules.nixos.kde =
     { pkgs, ... }:
@@ -62,6 +87,7 @@
         kdePackages.isoimagewriter # Optional: Program to write hybrid ISO files onto USB disks
         kdePackages.partitionmanager # Optional: Manage the disk devices, partitions and file systems on your computer
         # Theme
+        catppuccin-cursors.mochaDark # Catppuccin cursor theme
         catppuccin-kde # Catppuccin theme for KDE Plasma
         catppuccin-papirus-folders # Papirus-Dark icon theme with Catppuccin folder colors (needed system-wide for system tray icons)
         # Non-KDE graphical packages
@@ -120,16 +146,8 @@
           flavour = [ "mocha" ];
           accents = [ "blue" ];
         })
-        libsForQt5.qtstyleplugin-kvantum
         kdePackages.qtstyleplugin-kvantum
       ];
-
-      # Autostart applications
-      xdg.configFile = {
-        "autostart/steam.desktop".source = "${pkgs.steam}/share/applications/steam.desktop";
-        "autostart/vesktop.desktop".source = "${pkgs.vesktop}/share/applications/vesktop.desktop";
-        "autostart/tidal-hifi.desktop".source = "${pkgs.tidal-hifi}/share/applications/tidal-hifi.desktop";
-      };
 
       programs.plasma = {
         enable = true;
@@ -144,9 +162,9 @@
           # Use Papirus Dark icons
           iconTheme = "Papirus-Dark";
 
-          # Set cursor theme
           cursor = {
             theme = "catppuccin-mocha-dark-cursors";
+            size = 24;
           };
 
           # Override window decorations to use Breeze (instead of Catppuccin theme default)
@@ -175,11 +193,11 @@
               {
                 iconTasks = {
                   launchers = [
+                    "applications:kitty.desktop"
+                    "applications:org.kde.dolphin.desktop"
+                    "applications:vesktop.desktop"
                     "preferred://browser"
                     "applications:codium.desktop"
-                    "applications:vesktop.desktop"
-                    "applications:org.kde.dolphin.desktop"
-                    "applications:kitty.desktop"
                     "applications:steam.desktop"
                   ];
                 };
@@ -209,11 +227,11 @@
               {
                 iconTasks = {
                   launchers = [
+                    "applications:kitty.desktop"
+                    "applications:org.kde.dolphin.desktop"
+                    "applications:vesktop.desktop"
                     "preferred://browser"
                     "applications:codium.desktop"
-                    "applications:vesktop.desktop"
-                    "applications:org.kde.dolphin.desktop"
-                    "applications:kitty.desktop"
                     "applications:steam.desktop"
                   ];
                 };
@@ -236,17 +254,15 @@
           }
         ];
 
-        # Configure locale for 24-hour time
         configFile = {
+          # Disable edge barriers (sticky screen edges) between monitors
+          "kwinrc"."EdgeBarrier"."EdgeBarrier" = 0;
+
           "plasma-localerc"."Formats" = {
             LANG = "en_US.UTF-8";
             LC_TIME = "C.UTF-8";
             useDetailed = true;
           };
-
-          "kscreenrc"."DP-3"."priority" = 2; # Primary/center monitor
-          "kscreenrc"."DP-2"."priority" = 1;
-          # "kscreenrc"."HDMI-A-1"."priority" = 3;  # Uncomment when right monitor is replaced
 
           # Set default terminal to Kitty
           "kdeglobals"."General"."TerminalApplication" = "kitty";
@@ -256,45 +272,6 @@
           "kscreenlockerrc"."Greeter"."WallpaperPlugin" = "org.kde.image";
           "kscreenlockerrc"."Greeter/Wallpaper/org.kde.image/General"."Image" = "${wallpaper1}";
 
-          # Start with an empty session (prevents apps like Prism Launcher from stuck reopening)
-          "ksmserverrc"."General"."loginMode" = "emptySession";
-
-          # KWin compositor performance optimizations
-          "kwinrc"."Compositing" = {
-            Backend = "OpenGL"; # Use OpenGL backend
-            Enabled = true; # Enable compositing
-            GLCore = true; # Use OpenGL core profile for better performance
-            GLPreferBufferSwap = "a"; # Automatic buffer swap (best for most systems)
-            GLTextureFilter = 1; # Bilinear filtering (faster than trilinear)
-            HiddenPreviews = 5; # Limit hidden window previews for alt-tab
-            MaxFPS = 240; # Match your monitor refresh rate (adjust if different)
-            RefreshRate = 0; # Auto-detect refresh rate
-            VSync = false; # Disable VSync for lower latency (tearing prevention handled by compositor)
-            WindowsBlockCompositing = true; # Allow fullscreen apps to bypass compositor
-          };
-
-          # Disable resource-intensive effects
-          "kwinrc"."Effect-PresentWindows" = {
-            BorderActivateAll = 9; # Disable all screen borders for present windows
-          };
-
-          # Optimize window switching animations
-          "kwinrc"."Plugins" = {
-            blurEnabled = false; # Disable blur effect for better performance
-            contrastEnabled = false; # Disable background contrast
-            kwin4_effect_fadingpopupsEnabled = true; # Keep minimal animations
-            slideEnabled = false; # Disable slide animation
-          };
-
-          # Window focus settings - allow apps to come to foreground
-          # "kwinrc"."Windows" = {
-          #   FocusPolicy = "ClickToFocus";
-          #   FocusStealingPreventionLevel = 1; # 0 = None (allow focus stealing), 1 = Low, 2 = Medium, 3 = High, 4 = Extreme
-          #   AutoRaise = true;
-          #   AutoRaiseInterval = 750;
-          #   DelayFocusInterval = 300;
-          #   SeparateScreenFocus = false; # Focus follows across screens
-          # };
         };
       };
     };
