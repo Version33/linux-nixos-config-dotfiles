@@ -21,6 +21,7 @@
 
         # development & creative
         godotPackages_4_6.godot
+        blender
 
         # audio
         lsp-plugins
