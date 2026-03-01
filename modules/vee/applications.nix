@@ -7,6 +7,7 @@
         osu-lazer-bin
         tidal-hifi
         prismlauncher
+        obs-studio
 
         # communication
         vesktop
