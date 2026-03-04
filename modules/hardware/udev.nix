@@ -8,6 +8,10 @@
       # Audient Evo 8
       SUBSYSTEM=="usb", ENV{ID_VENDOR_ID}=="2708", ENV{ID_MODEL_ID}=="0007", MODE="0666", GROUP="audio"
 
+      # NuPhy Air75 HE - WebHID access
+      SUBSYSTEM=="usb", ENV{ID_VENDOR_ID}=="19f5", ENV{ID_MODEL_ID}=="6120", MODE="0666", GROUP="plugdev", TAG+="uaccess"
+      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="19f5", ATTRS{idProduct}=="6120", MODE="0666", GROUP="plugdev", TAG+="uaccess"
+
       # WebUSB access for plugdev group members
       # TAG+="uaccess" grants logged-in users access via systemd-logind
       SUBSYSTEM=="usb", MODE="0664", GROUP="plugdev", TAG+="uaccess"
