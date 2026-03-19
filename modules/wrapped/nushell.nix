@@ -71,6 +71,5 @@
         nix-direnv.enable = true;
       };
 
-
     };
 }
