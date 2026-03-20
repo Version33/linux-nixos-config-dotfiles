@@ -8,7 +8,7 @@
           addKeysToAgent = "yes";
         };
         homeserver = {
-          hostname = "192.168.1.83";
+          hostname = "192.168.1.250";
           user = "vee";
           identityFile = "~/.ssh/homeserver";
           identitiesOnly = true;
