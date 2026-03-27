@@ -17,6 +17,7 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     nixmate.url = "github:daskladas/nixmate";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nur.url = "github:nix-community/NUR";
     opencode.url = "github:dan-online/opencode-nix";
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
