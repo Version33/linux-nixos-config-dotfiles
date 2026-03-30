@@ -11,7 +11,7 @@
       # Enable Services
       programs = {
         direnv.enable = true; # Shell extension that manages your environment.
-        # fish.enable = true;
+        fish.enable = true;
         dconf.enable = true;
         xfconf.enable = true; # Xfce configuration storage system
       };

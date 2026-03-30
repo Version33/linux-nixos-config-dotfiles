@@ -25,7 +25,7 @@
       '';
     in
     {
-      packages.kitty = inputs.wrappers.lib.wrapPackage {
+      packages.kitty = inputs.wrapper-modules.lib.wrapPackage {
         inherit pkgs;
         package = pkgs.kitty;
         flags = {

@@ -4,7 +4,7 @@
     { self, pkgs, ... }:
     {
       environment.shells = [
-        self.packages.${pkgs.stdenv.hostPlatform.system}.nushell
+        self.packages.${pkgs.stdenv.hostPlatform.system}.fish
       ];
 
       # Define a user account. Don't forget to set a password with 'passwd'.
@@ -12,7 +12,7 @@
         isNormalUser = true;
         description = "vee";
         initialPassword = "";
-        shell = self.packages.${pkgs.stdenv.hostPlatform.system}.nushell;
+        shell = self.packages.${pkgs.stdenv.hostPlatform.system}.fish;
         extraGroups = [
           "networkmanager"
           "input"

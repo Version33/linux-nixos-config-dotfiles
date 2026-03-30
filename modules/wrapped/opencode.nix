@@ -14,7 +14,7 @@
       configFile = pkgs.writeText "opencode.json" (builtins.toJSON settings);
     in
     {
-      packages.opencode = inputs.wrappers.lib.wrapPackage {
+      packages.opencode = inputs.wrapper-modules.lib.wrapPackage {
         inherit pkgs;
         package = inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default;
         env = {

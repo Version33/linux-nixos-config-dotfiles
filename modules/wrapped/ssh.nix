@@ -42,7 +42,7 @@
       configFile = pkgs.writeText "ssh_config" (toSshConfig matchBlocks);
     in
     {
-      packages.ssh = inputs.wrappers.lib.wrapPackage {
+      packages.ssh = inputs.wrapper-modules.lib.wrapPackage {
         inherit pkgs;
         package = pkgs.openssh;
         flags = {

@@ -15,7 +15,7 @@
     import-tree.url = "github:vic/import-tree"; # Automatic module discovery
 
     # Program wrappers
-    wrappers.url = "github:Lassulus/wrappers"; # Simple wrapper library
+    wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
 
     # Boilerplate reduction tools
     flake-file.url = "github:vic/flake-file"; # Generates flake.nix from modules

@@ -3,7 +3,7 @@
   perSystem =
     { pkgs, ... }:
     {
-      packages.git = inputs.wrappers.lib.wrapPackage {
+      packages.git = inputs.wrapper-modules.lib.wrapPackage {
         inherit pkgs;
         package = pkgs.git;
         env = rec {

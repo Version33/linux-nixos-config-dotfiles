@@ -29,12 +29,12 @@
     };
 
     # Add flatpak exports to XDG_DATA_DIRS so KDE can find flatpak applications
-    environment.sessionVariables = {
-      XDG_DATA_DIRS = [
-        "/var/lib/flatpak/exports/share"
-        "$HOME/.local/share/flatpak/exports/share"
-      ];
-    };
+    # environment.sessionVariables = {
+    #   XDG_DATA_DIRS = [
+    #     "/var/lib/flatpak/exports/share"
+    #     "$HOME/.local/share/flatpak/exports/share"
+    #   ];
+    # };
   };
 
 }
