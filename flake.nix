@@ -12,6 +12,10 @@
     nixmate.url = "github:daskladas/nixmate";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
+    nvf = {
+      url = "github:NotAShelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     opencode.url = "github:dan-online/opencode-nix";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
