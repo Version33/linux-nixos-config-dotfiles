@@ -8,6 +8,8 @@
         package = self.packages.${pkgs.stdenv.hostPlatform.system}.myNiri;
       };
 
+      environment.systemPackages = [ pkgs.catppuccin-cursors.mochaDark ];
+
       services.greetd = {
         enable = true;
         settings = {
@@ -37,7 +39,52 @@
 
           xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
-          input.keyboard.xkb.layout = "us,ua";
+          cursor = {
+            xcursor-theme = "catppuccin-mocha-dark-cursors";
+            xcursor-size = 24;
+          };
+
+          input = {
+            keyboard.xkb.layout = "us,ua";
+            mouse = {
+              accel-profile = "flat";
+            };
+          };
+
+          outputs = {
+            # DP-2 is on the left, DP-1 is on the right
+            # Logical size at scale 1.25: 3840/1.25 = 3072px wide each
+            "DP-2" = {
+              mode = "3840x2160@239.987";
+              scale = 1.25;
+              position = _: {
+                props = {
+                  x = 0;
+                  y = 0;
+                };
+              };
+              variable-refresh-rate = _: {
+                props = {
+                  on-demand = true;
+                };
+              };
+            };
+            "DP-1" = {
+              mode = "3840x2160@239.987";
+              scale = 1.25;
+              position = _: {
+                props = {
+                  x = 3072;
+                  y = 0;
+                };
+              };
+              variable-refresh-rate = _: {
+                props = {
+                  on-demand = true;
+                };
+              };
+            };
+          };
 
           layout.gaps = 5;
 
