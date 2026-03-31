@@ -20,7 +20,7 @@ let
     in
     pkgs.rustPlatform.buildRustPackage {
       pname = "meridian";
-      version = "0.1.0";
+      version = "0.1.1";
       inherit src;
       cargoLock.lockFile = "${src}/Cargo.lock";
     };
