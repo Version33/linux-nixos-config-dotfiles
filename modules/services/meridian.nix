@@ -1,69 +1,42 @@
-{
+#   systemctl --user start   meridian
+#   systemctl --user stop    meridian
+#   systemctl --user status  meridian
+#   journalctl --user -u     meridian -f
 
-  flake.modules.nixos.meridian =
-    { pkgs, lib, ... }:
+#   ANTHROPIC_BASE_URL=http://127.0.0.1:3456 opencode
+
+# One-time auth (if not already done):
+#   claude login
+{ ... }:
+
+let
+  meridianPkg =
+    pkgs:
     let
-      meridian = pkgs.buildNpmPackage rec {
-        pname = "meridian";
-        version = "1.21.1";
-
-        src = pkgs.fetchFromGitHub {
-          owner = "rynfar";
-          repo = "meridian";
-          rev = "v${version}";
-          hash = "sha256-b1zyDKfHNTyEO/7FpclSGuJgFWCJ+Eh3iLkSX3E+C9s="; # build once → nix will tell you the real hash
-        };
-
-        npmDepsFetcherVersion = 2;
-        npmFlags = [ "--legacy-peer-deps" ];
-        npmDepsHash = "sha256-9Htz7ldkNFVDWsuhL2hPdWTb9f5awKlVaR8C45SPvgg="; # same trick — build once to get the real hash
-
-        # Meridian's build step uses bun to bundle TypeScript → Node-compatible JS
-        nativeBuildInputs = [ pkgs.bun ];
-
-        # Override the default npm build to use bun (matches upstream's package.json "build" script)
-        buildPhase = ''
-          runHook preBuild
-          bun build bin/cli.ts src/proxy/server.ts \
-            --outdir dist \
-            --target node \
-            --splitting \
-            --external @anthropic-ai/claude-agent-sdk \
-            --entry-naming '[name].js'
-          runHook postBuild
-        '';
-
-        # The package.json declares bin.meridian = "./dist/cli.js"
-        # buildNpmPackage will wire that up automatically into $out/bin/meridian
-
-        # Ensure Node.js is available at runtime (the built JS targets Node, not bun)
-        postInstall = ''
-          wrapProgram $out/bin/meridian \
-            --prefix PATH : ${pkgs.nodejs_22}/bin
-        '';
-
-        meta = {
-          description = "Local Anthropic API proxy powered by Claude Max subscription";
-          homepage = "https://github.com/rynfar/meridian";
-          license = lib.licenses.mit;
-          mainProgram = "meridian";
-        };
+      src = builtins.fetchGit {
+        url = "/home/vee/Git/meridian/meridian-rust";
+        rev = "6ee5351b85feaeeeb82a23893e6f2addeb01c30e";
       };
     in
-    {
-      # User-level systemd service — off by default (no wantedBy).
-      # Start manually:  systemctl --user start meridian
-      # Stop:            systemctl --user stop meridian
-      # Logs:            journalctl --user -u meridian -f
-      systemd.user.services.meridian = {
-        description = "Meridian – Claude Max to Anthropic API proxy";
-        after = [ "network.target" ];
+    pkgs.rustPlatform.buildRustPackage {
+      pname = "meridian";
+      version = "0.1.0";
+      inherit src;
+      cargoLock.lockFile = "${src}/Cargo.lock";
+    };
 
-        # No wantedBy: the unit exists but never auto-starts.
+  nixosModule =
+    { pkgs, ... }:
+    {
+      systemd.user.services.meridian = {
+        description = "Meridian — Claude Max subscription proxy";
+        path = [ pkgs.claude-code ];
+
+        # No wantedBy: the unit exists but NEVER auto-starts.
+        # Start manually with: systemctl --user start meridian
 
         serviceConfig = {
-          Type = "simple";
-          ExecStart = "${meridian}/bin/meridian";
+          ExecStart = "${meridianPkg pkgs}/bin/meridian";
           Restart = "on-failure";
           RestartSec = "5s";
           TimeoutStopSec = "10s";
@@ -73,11 +46,20 @@
         };
 
         environment = {
-          MERIDIAN_HOST = "127.0.0.1";
           MERIDIAN_PORT = "3456";
-          NODE_ENV = "production";
+          MERIDIAN_HOST = "127.0.0.1";
+          RUST_LOG = "meridian=info";
         };
       };
     };
 
+in
+{
+  perSystem =
+    { pkgs, ... }:
+    {
+      packages.meridian = meridianPkg pkgs;
+    };
+
+  flake.modules.nixos.meridian = nixosModule;
 }
