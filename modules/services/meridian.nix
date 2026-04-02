@@ -7,25 +7,12 @@
 
 # One-time auth (if not already done):
 #   claude login
-{ ... }:
+{ inputs, ... }:
 
-let
-  meridianPkg =
-    pkgs:
-    let
-      src = builtins.fetchGit {
-        url = "/home/vee/Git/meridian/meridian-rust";
-        rev = "6ee5351b85feaeeeb82a23893e6f2addeb01c30e";
-      };
-    in
-    pkgs.rustPlatform.buildRustPackage {
-      pname = "meridian";
-      version = "0.1.1";
-      inherit src;
-      cargoLock.lockFile = "${src}/Cargo.lock";
-    };
+{
+  flake-file.inputs.meridian.url = "git+file:///home/vee/Git/meridian/meridian-rust";
 
-  nixosModule =
+  flake.modules.nixos.meridian =
     { pkgs, ... }:
     {
       systemd.user.services.meridian = {
@@ -36,7 +23,7 @@ let
         # Start manually with: systemctl --user start meridian
 
         serviceConfig = {
-          ExecStart = "${meridianPkg pkgs}/bin/meridian";
+          ExecStart = "${inputs.meridian.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/meridian";
           Restart = "on-failure";
           RestartSec = "5s";
           TimeoutStopSec = "10s";
@@ -52,14 +39,4 @@ let
         };
       };
     };
-
-in
-{
-  perSystem =
-    { pkgs, ... }:
-    {
-      packages.meridian = meridianPkg pkgs;
-    };
-
-  flake.modules.nixos.meridian = nixosModule;
 }

@@ -8,6 +8,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
     lanzaboote.url = "github:nix-community/lanzaboote/v1.0.0";
+    meridian.url = "git+file:///home/vee/Git/meridian/meridian-rust";
     nix-auto-follow.url = "github:fzakaria/nix-auto-follow";
     nixmate.url = "github:daskladas/nixmate";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
