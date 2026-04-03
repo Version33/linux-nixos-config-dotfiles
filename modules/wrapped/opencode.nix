@@ -1,26 +1,39 @@
-{ inputs, ... }:
 {
-  # OpenCode CLI with latest patches
-  flake-file.inputs.opencode.url = "github:dan-online/opencode-nix";
+  inputs,
+  lib,
+  ...
+}:
+{
+  flake-file.inputs.opencode-nix = {
+    url = "github:dan-online/opencode-nix";
+  };
 
   perSystem =
-    { pkgs, ... }:
+    { pkgs, inputs', ... }:
     let
-      settings = {
-        "$schema" = "https://opencode.ai/config.json";
-        plugin = [ "opencode-gemini-auth" ];
-      };
-
-      configFile = pkgs.writeText "opencode.json" (builtins.toJSON settings);
+      opencodeConf =
+        pkgs.writeText "opencode.json"
+          (builtins.toJSON {
+            "$schema" = "https://opencode.ai/config.json";
+            plugin = [
+              "opencode-gemini-auth"
+              "opencode-claude-bridge"
+            ];
+          });
     in
     {
-      packages.opencode = inputs.wrapper-modules.lib.wrapPackage {
-        inherit pkgs;
-        package = inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default;
-        env = {
-          OPENCODE_CONFIG_FILE = toString configFile;
+      packages.opencode =
+        pkgs.symlinkJoin {
+          name = "opencode";
+          paths = [
+            inputs'.opencode-nix.packages.default
+          ];
+          nativeBuildInputs = [ pkgs.makeWrapper ];
+          postBuild = ''
+            wrapProgram $out/bin/opencode \
+              --set OPENCODE_CONFIG ${opencodeConf}
+          '';
         };
-      };
     };
 
   flake.modules.nixos.wrapped-opencode =
