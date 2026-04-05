@@ -1,26 +1,51 @@
+{ lib, ... }:
 {
   neovimModules = [
     {
       config.vim.filetree.neo-tree = {
         enable = true;
         setupOpts = {
-          close_if_last_window = true;
-          enable_git_status = true;
-          enable_diagnostics = true;
+          sources = [
+            "filesystem"
+            "buffers"
+            "git_status"
+          ];
+          open_files_do_not_replace_types = [
+            "terminal"
+            "Trouble"
+            "trouble"
+            "qf"
+            "Outline"
+          ];
+
           filesystem = {
-            filtered_items = {
-              visible = false;
-              hide_dotfiles = false;
-              hide_gitignored = false;
-            };
-            follow_current_file = {
-              enabled = true;
-            };
+            bind_to_cwd = false;
+            follow_current_file.enabled = true;
+            use_libuv_file_watcher = true;
           };
+
           window = {
             width = 30;
             mappings = {
-              "<space>" = "none"; # don't override leader
+              "l" = "open";
+              "h" = "close_node";
+              "<space>" = "none";
+              "P" = {
+                "toggle_preview" = { };
+              };
+            };
+          };
+
+          default_component_configs = {
+            indent = {
+              with_expanders = true;
+              expander_collapsed = "";
+              expander_expanded = "";
+              expander_highlight = "NeoTreeExpander";
+            };
+            git_status.symbols = {
+              unstaged = "󰄱";
+              staged = "󰱒";
             };
           };
         };

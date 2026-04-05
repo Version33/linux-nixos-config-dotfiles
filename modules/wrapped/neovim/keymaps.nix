@@ -25,6 +25,28 @@
           silent = true;
           desc = "Up";
         }
+        {
+          key = "<Down>";
+          mode = [
+            "n"
+            "x"
+          ];
+          action = "v:count == 0 ? 'gj' : 'j'";
+          expr = true;
+          silent = true;
+          desc = "Down";
+        }
+        {
+          key = "<Up>";
+          mode = [
+            "n"
+            "x"
+          ];
+          action = "v:count == 0 ? 'gk' : 'k'";
+          expr = true;
+          silent = true;
+          desc = "Up";
+        }
 
         # ── Window navigation ─────────────────────────────────────────────
         {
@@ -104,14 +126,14 @@
         {
           key = "<A-j>";
           mode = "i";
-          action = "<esc><cmd>execute 'move .+' . v:count1<cr>==gi";
+          action = "<esc><cmd>m .+1<cr>==gi";
           silent = true;
           desc = "Move Down";
         }
         {
           key = "<A-k>";
           mode = "i";
-          action = "<esc><cmd>execute 'move .-' . (v:count1 + 1)<cr>==gi";
+          action = "<esc><cmd>m .-2<cr>==gi";
           silent = true;
           desc = "Move Up";
         }
@@ -167,18 +189,34 @@
           desc = "Switch to Other Buffer";
         }
         {
+          key = "<leader>`";
+          mode = "n";
+          action = "<cmd>e #<cr>";
+          silent = true;
+          desc = "Switch to Other Buffer";
+        }
+        {
           key = "<leader>bd";
           mode = "n";
-          action = "<cmd>bdelete<cr>";
+          lua = true;
+          action = "function() Snacks.bufdelete() end";
           silent = true;
           desc = "Delete Buffer";
         }
         {
           key = "<leader>bo";
           mode = "n";
-          action = "<cmd>%bd|e#|bd#<cr>";
+          lua = true;
+          action = "function() Snacks.bufdelete.other() end";
           silent = true;
           desc = "Delete Other Buffers";
+        }
+        {
+          key = "<leader>bD";
+          mode = "n";
+          action = "<cmd>bd<cr>";
+          silent = true;
+          desc = "Delete Buffer and Window";
         }
 
         # ── Escape / clear search ─────────────────────────────────────────
@@ -192,6 +230,70 @@
           action = "<cmd>nohlsearch<cr><esc>";
           silent = true;
           desc = "Escape and Clear hlsearch";
+        }
+        {
+          key = "<leader>ur";
+          mode = "n";
+          action = "<cmd>nohlsearch<bar>diffupdate<bar>normal! <C-L><cr>";
+          silent = true;
+          desc = "Redraw / Clear hlsearch / Diff Update";
+        }
+
+        # ── Saner n/N — always forward/backward, open folds ──────────────
+        {
+          key = "n";
+          mode = "n";
+          action = "'Nn'[v:searchforward].'zv'";
+          expr = true;
+          silent = true;
+          desc = "Next Search Result";
+        }
+        {
+          key = "n";
+          mode = [
+            "x"
+            "o"
+          ];
+          action = "'Nn'[v:searchforward]";
+          expr = true;
+          silent = true;
+          desc = "Next Search Result";
+        }
+        {
+          key = "N";
+          mode = "n";
+          action = "'nN'[v:searchforward].'zv'";
+          expr = true;
+          silent = true;
+          desc = "Prev Search Result";
+        }
+        {
+          key = "N";
+          mode = [
+            "x"
+            "o"
+          ];
+          action = "'nN'[v:searchforward]";
+          expr = true;
+          silent = true;
+          desc = "Prev Search Result";
+        }
+
+        # ── Undo break-points in insert mode ──────────────────────────────
+        {
+          key = ",";
+          mode = "i";
+          action = ",<c-g>u";
+        }
+        {
+          key = ".";
+          mode = "i";
+          action = ".<c-g>u";
+        }
+        {
+          key = ";";
+          mode = "i";
+          action = ";<c-g>u";
         }
 
         # ── Save / quit ───────────────────────────────────────────────────
@@ -215,11 +317,48 @@
           desc = "Quit All";
         }
         {
+          key = "<leader>K";
+          mode = "n";
+          action = "<cmd>norm! K<cr>";
+          silent = true;
+          desc = "Keywordprg";
+        }
+
+        # ── Files ─────────────────────────────────────────────────────────
+        {
           key = "<leader>fn";
           mode = "n";
           action = "<cmd>enew<cr>";
           silent = true;
           desc = "New File";
+        }
+
+        # ── Better indenting (stay in visual) ─────────────────────────────
+        {
+          key = "<";
+          mode = "x";
+          action = "<gv";
+          desc = "Indent Left";
+        }
+        {
+          key = ">";
+          mode = "x";
+          action = ">gv";
+          desc = "Indent Right";
+        }
+
+        # ── Comment above / below ─────────────────────────────────────────
+        {
+          key = "gco";
+          mode = "n";
+          action = "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>";
+          desc = "Add Comment Below";
+        }
+        {
+          key = "gcO";
+          mode = "n";
+          action = "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>";
+          desc = "Add Comment Above";
         }
 
         # ── Window splits ─────────────────────────────────────────────────
@@ -298,53 +437,60 @@
 
         # ── Diagnostics ───────────────────────────────────────────────────
         {
+          key = "<leader>cd";
+          mode = "n";
+          lua = true;
+          action = "function() vim.diagnostic.open_float() end";
+          silent = true;
+          desc = "Line Diagnostics";
+        }
+        {
           key = "]d";
           mode = "n";
-          action = "<cmd>lua vim.diagnostic.goto_next()<cr>";
+          lua = true;
+          action = "function() vim.diagnostic.jump({ count=vim.v.count1, float=true }) end";
           silent = true;
           desc = "Next Diagnostic";
         }
         {
           key = "[d";
           mode = "n";
-          action = "<cmd>lua vim.diagnostic.goto_prev()<cr>";
+          lua = true;
+          action = "function() vim.diagnostic.jump({ count=-vim.v.count1, float=true }) end";
           silent = true;
           desc = "Prev Diagnostic";
         }
         {
           key = "]e";
           mode = "n";
-          action = "<cmd>lua vim.diagnostic.goto_next({severity=vim.diagnostic.severity.ERROR})<cr>";
+          lua = true;
+          action = "function() vim.diagnostic.jump({ count=vim.v.count1,  severity=vim.diagnostic.severity.ERROR, float=true }) end";
           silent = true;
           desc = "Next Error";
         }
         {
           key = "[e";
           mode = "n";
-          action = "<cmd>lua vim.diagnostic.goto_prev({severity=vim.diagnostic.severity.ERROR})<cr>";
+          lua = true;
+          action = "function() vim.diagnostic.jump({ count=-vim.v.count1, severity=vim.diagnostic.severity.ERROR, float=true }) end";
           silent = true;
           desc = "Prev Error";
         }
         {
           key = "]w";
           mode = "n";
-          action = "<cmd>lua vim.diagnostic.goto_next({severity=vim.diagnostic.severity.WARN})<cr>";
+          lua = true;
+          action = "function() vim.diagnostic.jump({ count=vim.v.count1,  severity=vim.diagnostic.severity.WARN, float=true }) end";
           silent = true;
           desc = "Next Warning";
         }
         {
           key = "[w";
           mode = "n";
-          action = "<cmd>lua vim.diagnostic.goto_prev({severity=vim.diagnostic.severity.WARN})<cr>";
+          lua = true;
+          action = "function() vim.diagnostic.jump({ count=-vim.v.count1, severity=vim.diagnostic.severity.WARN, float=true }) end";
           silent = true;
           desc = "Prev Warning";
-        }
-        {
-          key = "<leader>cd";
-          mode = "n";
-          action = "<cmd>lua vim.diagnostic.open_float()<cr>";
-          silent = true;
-          desc = "Line Diagnostics";
         }
 
         # ── LSP ───────────────────────────────────────────────────────────
@@ -354,9 +500,21 @@
             "n"
             "x"
           ];
-          action = "<cmd>lua vim.lsp.buf.format({async=true})<cr>";
+          lua = true;
+          action = "function() require('conform').format({ force=true }) end";
           silent = true;
           desc = "Format";
+        }
+        {
+          key = "<leader>cF";
+          mode = [
+            "n"
+            "x"
+          ];
+          lua = true;
+          action = "function() require('conform').format({ formatters={'injected'}, timeout_ms=3000 }) end";
+          silent = true;
+          desc = "Format Injected Langs";
         }
         {
           key = "<leader>ca";
@@ -364,35 +522,67 @@
             "n"
             "x"
           ];
-          action = "<cmd>lua vim.lsp.buf.code_action()<cr>";
+          lua = true;
+          action = "function() vim.lsp.buf.code_action() end";
           silent = true;
           desc = "Code Action";
         }
         {
           key = "<leader>cr";
           mode = "n";
-          action = "<cmd>lua vim.lsp.buf.rename()<cr>";
+          lua = true;
+          action = "function() vim.lsp.buf.rename() end";
           silent = true;
           desc = "Rename";
         }
         {
           key = "<leader>cl";
           mode = "n";
-          action = "<cmd>LspInfo<cr>";
+          lua = true;
+          action = "function() require('fzf-lua').lsp_info() end";
           silent = true;
           desc = "Lsp Info";
         }
         {
+          key = "<leader>co";
+          mode = "n";
+          lua = true;
+          action = "function() vim.lsp.buf.code_action({ apply=true, context={only={'source.organizeImports'}} }) end";
+          silent = true;
+          desc = "Organize Imports";
+        }
+        {
+          key = "<leader>cc";
+          mode = [
+            "n"
+            "x"
+          ];
+          lua = true;
+          action = "function() vim.lsp.codelens.run() end";
+          silent = true;
+          desc = "Run Codelens";
+        }
+        {
+          key = "<leader>cC";
+          mode = "n";
+          lua = true;
+          action = "function() vim.lsp.codelens.refresh() end";
+          silent = true;
+          desc = "Refresh Codelens";
+        }
+        {
           key = "gd";
           mode = "n";
-          action = "<cmd>lua vim.lsp.buf.definition()<cr>";
+          lua = true;
+          action = "function() vim.lsp.buf.definition() end";
           silent = true;
           desc = "Goto Definition";
         }
         {
           key = "gD";
           mode = "n";
-          action = "<cmd>lua vim.lsp.buf.declaration()<cr>";
+          lua = true;
+          action = "function() vim.lsp.buf.declaration() end";
           silent = true;
           desc = "Goto Declaration";
         }
@@ -415,21 +605,32 @@
         {
           key = "gy";
           mode = "n";
-          action = "<cmd>lua vim.lsp.buf.type_definition()<cr>";
+          lua = true;
+          action = "function() vim.lsp.buf.type_definition() end";
           silent = true;
           desc = "Goto Type Definition";
         }
         {
           key = "K";
           mode = "n";
-          action = "<cmd>lua vim.lsp.buf.hover()<cr>";
+          lua = true;
+          action = "function() vim.lsp.buf.hover() end";
           silent = true;
           desc = "Hover";
         }
         {
           key = "gK";
           mode = "n";
-          action = "<cmd>lua vim.lsp.buf.signature_help()<cr>";
+          lua = true;
+          action = "function() vim.lsp.buf.signature_help() end";
+          silent = true;
+          desc = "Signature Help";
+        }
+        {
+          key = "<c-k>";
+          mode = "i";
+          lua = true;
+          action = "function() vim.lsp.buf.signature_help() end";
           silent = true;
           desc = "Signature Help";
         }
@@ -438,14 +639,16 @@
         {
           key = "<leader>xl";
           mode = "n";
-          action = "<cmd>lopen<cr>";
+          lua = true;
+          action = "function() local l=vim.fn.getloclist(0,{winid=0}); if l.winid~=0 then vim.cmd.lclose() else vim.cmd.lopen() end end";
           silent = true;
           desc = "Location List";
         }
         {
           key = "<leader>xq";
           mode = "n";
-          action = "<cmd>copen<cr>";
+          lua = true;
+          action = "function() local q=vim.fn.getqflist({winid=0}); if q.winid~=0 then vim.cmd.cclose() else vim.cmd.copen() end end";
           silent = true;
           desc = "Quickfix List";
         }
@@ -464,12 +667,12 @@
           desc = "Next Quickfix";
         }
 
-        # ── Which-key meta ───────────────────────────────────────────────
+        # ── Which-key meta ────────────────────────────────────────────────
         {
           key = "<leader>?";
           mode = "n";
           lua = true;
-          action = "function() require('which-key').show({ global = false }) end";
+          action = "function() require('which-key').show({ global=false }) end";
           silent = true;
           desc = "Buffer Keymaps (which-key)";
         }
@@ -477,7 +680,7 @@
           key = "<c-w><space>";
           mode = "n";
           lua = true;
-          action = "function() require('which-key').show({ keys = '<c-w>', loop = true }) end";
+          action = "function() require('which-key').show({ keys='<c-w>', loop=true }) end";
           silent = true;
           desc = "Window Hydra Mode (which-key)";
         }
@@ -535,12 +738,6 @@
 
         # ── Noice ─────────────────────────────────────────────────────────
         {
-          key = "<leader>sn";
-          mode = "n";
-          action = "";
-          desc = "+noice";
-        }
-        {
           key = "<leader>snl";
           mode = "n";
           lua = true;
@@ -589,7 +786,7 @@
           ];
           lua = true;
           expr = true;
-          action = "function() if not require('noice.lsp').scroll(4) then return '<c-f>' end end";
+          action = "function() if not require('noice.lsp').scroll(4)  then return '<c-f>' end end";
           silent = true;
           desc = "Scroll Forward";
         }
@@ -625,17 +822,25 @@
           desc = "Dismiss All Notifications";
         }
 
-        # ── Flash extras ──────────────────────────────────────────────────
+        # ── UI inspect ────────────────────────────────────────────────────
         {
-          key = "<c-s>";
-          mode = "c";
+          key = "<leader>ui";
+          mode = "n";
           lua = true;
-          action = "function() require('flash').toggle() end";
+          action = "function() vim.show_pos() end";
           silent = true;
-          desc = "Toggle Flash Search";
+          desc = "Inspect Pos";
+        }
+        {
+          key = "<leader>uI";
+          mode = "n";
+          lua = true;
+          action = "function() vim.treesitter.inspect_tree(); vim.api.nvim_input('I') end";
+          silent = true;
+          desc = "Inspect Tree";
         }
 
-        # ── fzf-lua (primary finder) ──────────────────────────────────────
+        # ── fzf-lua ───────────────────────────────────────────────────────
         {
           key = "<leader><space>";
           mode = "n";
@@ -776,7 +981,7 @@
           desc = "Git Status";
         }
 
-        # ── Flash.nvim ────────────────────────────────────────────────────
+        # ── Flash ─────────────────────────────────────────────────────────
         {
           key = "s";
           mode = [
@@ -820,6 +1025,14 @@
           silent = true;
           desc = "Treesitter Search";
         }
+        {
+          key = "<c-s>";
+          mode = "c";
+          lua = true;
+          action = "function() require('flash').toggle() end";
+          silent = true;
+          desc = "Toggle Flash Search";
+        }
 
         # ── Grug-far ──────────────────────────────────────────────────────
         {
@@ -829,7 +1042,7 @@
             "x"
           ];
           lua = true;
-          action = "function() require('grug-far').open({ prefills = { search = vim.fn.expand('<cword>') } }) end";
+          action = "function() require('grug-far').open({ prefills={ search=vim.fn.expand('<cword>') } }) end";
           silent = true;
           desc = "Search and Replace";
         }
@@ -852,9 +1065,16 @@
         {
           key = "<leader>cs";
           mode = "n";
-          action = "<cmd>Trouble symbols toggle focus=false<cr>";
+          action = "<cmd>Trouble symbols toggle<cr>";
           silent = true;
           desc = "Symbols (Trouble)";
+        }
+        {
+          key = "<leader>cS";
+          mode = "n";
+          action = "<cmd>Trouble lsp toggle<cr>";
+          silent = true;
+          desc = "LSP (Trouble)";
         }
         {
           key = "<leader>xL";
@@ -891,14 +1111,14 @@
         {
           key = "<leader>xt";
           mode = "n";
-          action = "<cmd>TodoTrouble<cr>";
+          action = "<cmd>Trouble todo toggle<cr>";
           silent = true;
           desc = "Todo (Trouble)";
         }
         {
           key = "<leader>xT";
           mode = "n";
-          action = "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>";
+          action = "<cmd>Trouble todo toggle filter={tag={TODO,FIX,FIXME}}<cr>";
           silent = true;
           desc = "Todo/Fix/Fixme (Trouble)";
         }
@@ -906,7 +1126,7 @@
           key = "<leader>st";
           mode = "n";
           lua = true;
-          action = "function() require('fzf-lua').grep({ search = 'TODO|FIXME|HACK|NOTE', no_esc = true }) end";
+          action = "function() require('fzf-lua').grep({ search='TODO|FIXME|HACK|NOTE', no_esc=true }) end";
           silent = true;
           desc = "Todo";
         }
@@ -917,7 +1137,7 @@
           mode = "n";
           action = "<cmd>Neotree toggle<cr>";
           silent = true;
-          desc = "Explorer (root)";
+          desc = "Explorer (Root Dir)";
         }
         {
           key = "<leader>E";
@@ -931,7 +1151,14 @@
           mode = "n";
           action = "<cmd>Neotree toggle<cr>";
           silent = true;
-          desc = "Explorer (root)";
+          desc = "Explorer (Root Dir)";
+        }
+        {
+          key = "<leader>fE";
+          mode = "n";
+          action = "<cmd>Neotree toggle dir=%:p:h<cr>";
+          silent = true;
+          desc = "Explorer (cwd)";
         }
         {
           key = "<leader>ge";
@@ -939,6 +1166,13 @@
           action = "<cmd>Neotree float git_status<cr>";
           silent = true;
           desc = "Git Explorer";
+        }
+        {
+          key = "<leader>be";
+          mode = "n";
+          action = "<cmd>Neotree float buffers<cr>";
+          silent = true;
+          desc = "Buffer Explorer";
         }
 
         # ── Session (persistence.nvim) ────────────────────────────────────
@@ -962,7 +1196,7 @@
           key = "<leader>ql";
           mode = "n";
           lua = true;
-          action = "function() require('persistence').load({ last = true }) end";
+          action = "function() require('persistence').load({ last=true }) end";
           silent = true;
           desc = "Restore Last Session";
         }

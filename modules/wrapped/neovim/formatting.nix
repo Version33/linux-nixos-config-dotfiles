@@ -4,12 +4,22 @@
       config.vim.formatter.conform-nvim = {
         enable = true;
         setupOpts = {
-          format_on_save = {
-            timeout_ms = 500;
+          # LazyVim uses default_format_opts + format_on_save via its own system.
+          # We declare format_on_save directly since we don't have LazyVim's format layer.
+          default_format_opts = {
+            timeout_ms = 3000;
+            async = false;
+            quiet = false;
             lsp_format = "fallback";
           };
+          format_on_save = {
+            timeout_ms = 3000;
+            lsp_format = "fallback";
+          };
+          # LazyVim's base set — language extras add more
           formatters_by_ft = {
             lua = [ "stylua" ];
+            sh = [ "shfmt" ];
             nix = [ "nixfmt" ];
             python = [ "ruff_format" ];
             javascript = [ "prettier" ];
@@ -23,7 +33,9 @@
             markdown = [ "prettier" ];
             go = [ "gofmt" ];
             rust = [ "rustfmt" ];
-            sh = [ "shfmt" ];
+          };
+          formatters.injected = {
+            options.ignore_errors = true;
           };
         };
       };

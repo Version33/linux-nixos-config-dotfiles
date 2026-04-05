@@ -17,7 +17,7 @@
           };
         };
 
-        # LazyVim: nvim-mini/mini.pairs
+        # LazyVim: nvim-mini/mini.pairs — full options from LazyVim source
         mini.pairs = {
           enable = true;
           setupOpts = {
@@ -26,25 +26,48 @@
               command = true;
               terminal = false;
             };
+            skip_next = ''[=[[%w%%%'%[%"%.%`%$]]=]'';
+            skip_ts = [ "string" ];
             skip_unbalanced = true;
+            markdown = true;
           };
         };
 
-        # LazyVim: nvim-mini/mini.ai
+        # LazyVim: nvim-mini/mini.ai — full custom textobjects from LazyVim source
         mini.ai = {
           enable = true;
-          setupOpts.n_lines = 500;
+          setupOpts = {
+            n_lines = 500;
+          };
         };
 
         # LazyVim: nvim-mini/mini.surround
-        mini.surround = {
-          enable = true;
-          # Default mappings: gsa=add, gsd=delete, gsr=replace, gsf=find, gsF=find_left, gsh=highlight, gsn=update_n_lines
-        };
+        # Mappings: gsa=add, gsd=delete, gsr=replace, gsf=find, gsF=find_left, gsh=highlight
+        mini.surround.enable = true;
       };
     }
 
-    # LazyVim: folke/ts-comments.nvim — no native nvf option, use extraPlugins
+    # mini.ai custom textobjects need Lua — wire them via luaConfigRC
+    {
+      config.vim.luaConfigRC.mini-ai-textobjects = ''
+        local ai = require("mini.ai")
+        require("mini.ai").setup(vim.tbl_deep_extend("force", require("mini.ai").config or {}, {
+          n_lines = 500,
+          custom_textobjects = {
+            o = ai.gen_spec.treesitter({
+              a = { "@block.outer", "@conditional.outer", "@loop.outer" },
+              i = { "@block.inner", "@conditional.inner", "@loop.inner" },
+            }),
+            f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }),
+            c = ai.gen_spec.treesitter({ a = "@class.outer",    i = "@class.inner" }),
+            t = { "<([%p%w]-)%f[^<%w][^<>]->.-</%1>", "^<.->().*()</[^/]->$" },
+            d = { "%f[%d]%d+" },
+          },
+        }))
+      '';
+    }
+
+    # LazyVim: folke/ts-comments.nvim
     (
       { pkgs, ... }:
       {
@@ -55,7 +78,7 @@
       }
     )
 
-    # LazyVim: folke/lazydev.nvim — LuaLS completions for Neovim config dev
+    # LazyVim: folke/lazydev.nvim
     (
       { pkgs, ... }:
       {

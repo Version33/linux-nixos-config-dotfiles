@@ -9,7 +9,9 @@
         config.vim.treesitter = {
           enable = true;
           fold = true;
-          # Explicit grammars on top of nvf defaults (c lua vim vimdoc query)
+          autotagHtml = true; # LazyVim: windwp/nvim-ts-autotag
+
+          # Matches LazyVim's ensure_installed (plus extras nvf provides by default)
           grammars = with grammars; [
             bash
             css
@@ -23,6 +25,7 @@
             markdown
             markdown_inline
             nix
+            printf
             python
             regex
             rust
@@ -32,6 +35,15 @@
             xml
             yaml
           ];
+
+          # LazyVim: nvim-treesitter/nvim-treesitter-textobjects
+          textobjects = {
+            enable = true;
+            setupOpts.move = {
+              enable = true;
+              set_jumps = true;
+            };
+          };
         };
       }
     )

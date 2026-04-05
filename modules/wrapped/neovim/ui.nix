@@ -67,6 +67,12 @@
         utility.snacks-nvim = {
           enable = true;
           setupOpts = {
+            bigfile = {
+              enabled = true;
+            }; # perf: disable features on large files
+            quickfile = {
+              enabled = true;
+            }; # fast file rendering
             indent = {
               enabled = true;
             };
@@ -74,20 +80,11 @@
               enabled = true;
             };
             notifier = {
-              enabled = false;
-            }; # using nvim-notify
+              enabled = true;
+            }; # snacks handles notifications
             picker = {
               enabled = false;
             }; # using fzf-lua
-            scope = {
-              enabled = true;
-            };
-            scroll = {
-              enabled = true;
-            };
-            words = {
-              enabled = true;
-            };
 
             # Dashboard — explicit sections to avoid lazy.stats reference
             dashboard = {

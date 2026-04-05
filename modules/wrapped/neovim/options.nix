@@ -100,8 +100,8 @@
         # Options that need vim.opt method calls rather than assignment
         luaConfigRC.lazyvim-options = ''
           vim.opt.fillchars = {
-            foldopen  = "",
-            foldclose = "",
+            foldopen  = "▾",
+            foldclose = "▸",
             fold      = " ",
             foldsep   = " ",
             diff      = "╱",
