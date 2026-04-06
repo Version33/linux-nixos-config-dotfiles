@@ -1,4 +1,3 @@
-{ lib, ... }:
 {
   neovimModules = [
     {
@@ -30,9 +29,7 @@
               "l" = "open";
               "h" = "close_node";
               "<space>" = "none";
-              "P" = {
-                "toggle_preview" = { };
-              };
+              "P" = "toggle_preview";
             };
           };
 

@@ -17,7 +17,38 @@
         # LazyVim: nvim-lualine/lualine.nvim
         statusline.lualine = {
           enable = true;
-          theme = "catppuccin";
+          # "auto" lets catppuccin register its lualine theme after the colorscheme loads.
+          # Setting "catppuccin" directly causes a LualineNotices warning because lualine
+          # validates the theme name before catppuccin has had a chance to register it.
+          theme = "auto";
+          globalStatus = true;
+          # Override the default x section — nvf's default references vim_lsp and coc
+          # which don't exist and cause LualineNotices warnings.
+          activeSection.x = [
+            ''
+              {
+                function()
+                  local clients = vim.lsp.get_clients({ bufnr = 0 })
+                  if vim.tbl_isempty(clients) then return "" end
+                  local names = {}
+                  for _, c in ipairs(clients) do table.insert(names, c.name) end
+                  return table.concat(names, ", ")
+                end,
+                icon = " ",
+                color = { fg = "#ffffff", gui = "bold" },
+              }
+            ''
+            ''
+              {
+                "diagnostics",
+                sources = { "nvim_lsp", "nvim_diagnostic" },
+                symbols = { error = " ", warn = " ", info = " ", hint = " " },
+                colored = true,
+                update_in_insert = false,
+                always_visible = false,
+              }
+            ''
+          ];
         };
 
         # LazyVim: folke/noice.nvim
