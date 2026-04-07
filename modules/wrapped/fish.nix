@@ -28,7 +28,8 @@
             # aliases
             alias v "nvim"
             alias oc "opencode"
-            alias lgit "lazygit"
+            alias g "git"
+            alias lg "lazygit"
             alias conf "z ~/.config"
             alias nixos "z /etc/nixos"
             alias nswitch "sudo nixos-rebuild switch --flake /etc/nixos#k0or"
