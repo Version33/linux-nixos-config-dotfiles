@@ -5,7 +5,7 @@
       vimAlias = true;
 
       lineNumberMode = "relNumber";
-      searchCase = "smart";
+      searchCase = "smart"; # sets ignorecase + smartcase
       hideSearchHighlight = true;
       preventJunkFiles = true;
       enableLuaLoader = true;
@@ -46,8 +46,6 @@
         smoothscroll = true;
 
         # Search
-        ignorecase = true;
-        smartcase = true;
         inccommand = "nosplit";
         grepformat = "%f:%l:%c:%m";
         grepprg = "rg --vimgrep";
@@ -59,8 +57,7 @@
         timeoutlen = 300;
         updatetime = 200;
 
-        # Folds — indent-based (LazyVim default), open by default
-        foldmethod = "indent";
+        # Folds — treesitter expr-based (set by treesitter.fold = true), open by default
         foldlevel = 99;
         foldtext = "";
 

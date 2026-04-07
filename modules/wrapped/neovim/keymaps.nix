@@ -152,20 +152,7 @@
       }
 
       # ── Buffers ───────────────────────────────────────────────────────
-      {
-        key = "<S-h>";
-        mode = "n";
-        action = "<cmd>bprevious<cr>";
-        silent = true;
-        desc = "Prev Buffer";
-      }
-      {
-        key = "<S-l>";
-        mode = "n";
-        action = "<cmd>bnext<cr>";
-        silent = true;
-        desc = "Next Buffer";
-      }
+      # Note: <S-h>/<S-l> are owned by bufferline (cycleNext/cyclePrevious in ui.nix)
       {
         key = "[b";
         mode = "n";
@@ -537,8 +524,7 @@
       {
         key = "<leader>cl";
         mode = "n";
-        lua = true;
-        action = "function() require('fzf-lua').lsp_info() end";
+        action = "<cmd>LspInfo<cr>";
         silent = true;
         desc = "Lsp Info";
       }

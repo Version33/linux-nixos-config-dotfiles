@@ -35,10 +35,9 @@
         };
 
         # LazyVim: nvim-mini/mini.ai — full custom textobjects from LazyVim source
-        mini.ai = {
-          enable = true;
-          setupOpts.n_lines = 500;
-        };
+        # Note: setup is handled entirely in luaConfigRC.mini-ai-textobjects below
+        # (custom textobjects require Lua function calls that Nix can't express)
+        mini.ai.enable = true;
 
         # LazyVim: nvim-mini/mini.surround
         # Mappings: gsa=add, gsd=delete, gsr=replace, gsf=find, gsF=find_left, gsh=highlight

@@ -37,7 +37,7 @@
       if vim.fn.executable("lazygit") == 1 then
         vim.keymap.set("n", "<leader>gg", function() Snacks.lazygit() end,
           { desc = "Lazygit", silent = true })
-        vim.keymap.set("n", "<leader>gG", function() Snacks.lazygit() end,
+        vim.keymap.set("n", "<leader>gG", function() Snacks.lazygit({ cwd = vim.uv.cwd() }) end,
           { desc = "Lazygit (cwd)", silent = true })
       end
 
