@@ -12,6 +12,7 @@
             cycleNext = "<S-l>";
             cyclePrevious = "<S-h>";
           };
+          setupOpts.options.numbers = "none";
         };
 
         # LazyVim: nvim-lualine/lualine.nvim
