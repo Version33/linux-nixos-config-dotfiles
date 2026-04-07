@@ -159,6 +159,16 @@
             "Ctrl+Print".screenshot-screen = _: { };
             "Alt+Print".screenshot-window = _: { };
 
+            # Media keys
+            "XF86AudioRaiseVolume".spawn-sh = "${lib.getExe pkgs.pamixer} --increase 5";
+            "XF86AudioLowerVolume".spawn-sh = "${lib.getExe pkgs.pamixer} --decrease 5";
+            "XF86AudioMute".spawn-sh = "${lib.getExe pkgs.pamixer} --toggle-mute";
+            "XF86AudioMicMute".spawn-sh = "${lib.getExe pkgs.pamixer} --default-source --toggle-mute";
+            "XF86AudioPlay".spawn-sh = "${lib.getExe pkgs.playerctl} play-pause";
+            "XF86AudioStop".spawn-sh = "${lib.getExe pkgs.playerctl} stop";
+            "XF86AudioNext".spawn-sh = "${lib.getExe pkgs.playerctl} next";
+            "XF86AudioPrev".spawn-sh = "${lib.getExe pkgs.playerctl} previous";
+
             # Misc
             "Mod+Shift+E".quit = _: { };
             "Mod+Shift+Slash".show-hotkey-overlay = _: { };
