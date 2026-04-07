@@ -1,5 +1,4 @@
 { inputs, ... }:
-
 {
 
   flake.modules.nixos.nixpkgs = {
