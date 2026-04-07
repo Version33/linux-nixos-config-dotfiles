@@ -26,6 +26,8 @@
             ${lib.getExe pkgs.zoxide} init fish | source
 
             # aliases
+            alias v "nvim"
+            alias oc "opencode"
             alias lgit "lazygit"
             alias conf "z ~/.config"
             alias nixos "z /etc/nixos"

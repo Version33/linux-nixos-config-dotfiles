@@ -29,8 +29,8 @@
           }).neovim;
       };
 
-    # System: add this flake's nixosModules.wrapped-neovim to your NixOS imports
-    flake.nixosModules.wrapped-neovim =
+    # System: auto-imported via flake.modules.nixos
+    flake.modules.nixos.wrapped-neovim =
       { self, pkgs, ... }:
       {
         environment.systemPackages = [

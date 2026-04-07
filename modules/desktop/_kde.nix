@@ -197,7 +197,6 @@
                     "applications:org.kde.dolphin.desktop"
                     "applications:vesktop.desktop"
                     "preferred://browser"
-                    "applications:codium.desktop"
                     "applications:steam.desktop"
                   ];
                 };
@@ -231,7 +230,6 @@
                     "applications:org.kde.dolphin.desktop"
                     "applications:vesktop.desktop"
                     "preferred://browser"
-                    "applications:codium.desktop"
                     "applications:steam.desktop"
                   ];
                 };

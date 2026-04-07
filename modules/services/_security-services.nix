@@ -107,10 +107,6 @@
             executable = "${lib.getBin pkgs.xfce.thunar}/bin/thunar";
             profile = "${pkgs.firejail}/etc/firejail/thunar.profile";
           };
-          vscodium = {
-            executable = "${lib.getBin self.packages.${pkgs.stdenv.hostPlatform.system}.vscode}/bin/codium";
-            profile = "${pkgs.firejail}/etc/firejail/vscodium.profile";
-          };
         };
       };
 
