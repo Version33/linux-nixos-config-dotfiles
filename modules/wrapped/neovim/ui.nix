@@ -181,16 +181,6 @@
                 gap = 1;
                 padding = 1;
               }
-              {
-                section = "recent_files";
-                indent = 2;
-                padding = 1;
-              }
-              {
-                section = "projects";
-                indent = 2;
-                padding = 1;
-              }
             ];
           };
         };
