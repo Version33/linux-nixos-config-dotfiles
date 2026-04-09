@@ -17,7 +17,6 @@
           "$schema" = "https://opencode.ai/config.json";
           plugin = [
             "opencode-gemini-auth"
-            "opencode-claude-bridge"
           ]
           ++ pkgs.lib.optional (meridian != null) "${meridian}/lib/meridian/plugin/meridian.ts";
         }
