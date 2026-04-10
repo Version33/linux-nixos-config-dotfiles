@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   flake-file.inputs.opencode-nix = {
     url = "github:dan-online/opencode-nix";
@@ -47,10 +48,10 @@
     };
 
   flake.modules.nixos.wrapped-opencode =
-    { self, pkgs, ... }:
+    { pkgs, ... }:
     {
       environment.systemPackages = [
-        self.packages.${pkgs.stdenv.hostPlatform.system}.opencode
+        inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.opencode
       ];
     };
 }

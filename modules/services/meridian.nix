@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
 
   perSystem =
@@ -76,12 +77,15 @@
     };
 
   flake.modules.nixos.meridian =
-    { self, pkgs, ... }:
+    { pkgs, ... }:
     let
-      inherit (self.packages.${pkgs.stdenv.hostPlatform.system}) meridian;
+      inherit (inputs.self.packages.${pkgs.stdenv.hostPlatform.system}) meridian;
     in
     {
-      environment.systemPackages = [ meridian pkgs.claude-code ];
+      environment.systemPackages = [
+        meridian
+        pkgs.claude-code
+      ];
 
       systemd.user.services.meridian = {
         description = "meridian Claude Max proxy";
