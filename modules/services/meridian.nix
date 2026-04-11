@@ -6,8 +6,8 @@
       src = pkgs.fetchFromGitHub {
         owner = "rynfar";
         repo = "meridian";
-        rev = "442e84c553fc3152f4e65af845340cdc8295c051";
-        hash = "sha256-ZjdANZQHXjdGm9mH6jLdTjL3z6Rd/5/nsqPJgQSGPts=";
+        rev = "02ddc1e3e5fdb20959297e3f13aba3a11d733944";
+        hash = "sha256-WAY1ByGe5foEAkk7VERaGoXRj1YIaMPKkFvd5oMWGxs=";
       };
 
       nodeModules = pkgs.stdenv.mkDerivation {
@@ -25,13 +25,13 @@
         installPhase = "mv node_modules $out";
         outputHashMode = "recursive";
         outputHashAlgo = "sha256";
-        outputHash = "sha256-uCjNAgUXVsDkyF6tNtBkLUl11/X27BIyOflWZnetKdE=";
+        outputHash = "sha256-Z7XiBgBgPCpPE1++1Z3eV9l4IISY4PBmsYflZuhdOSo=";
       };
     in
     {
       packages.meridian = pkgs.stdenv.mkDerivation {
         pname = "meridian";
-        version = "1.34.0";
+        version = "1.35.0";
         inherit src;
 
         nativeBuildInputs = [
